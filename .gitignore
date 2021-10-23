@@ -102,3 +102,9 @@ dist
 
 # TernJS port file
 .tern-port
+
+# custom files
+DataViewerLog.odt
+.~lock.DataViewerLog.odt#
+license.txt
+package-lock.json

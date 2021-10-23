@@ -1,0 +1,41 @@
+{
+  "name": "dataviewer",
+  "version": "1.0.0",
+  "description": "DataViewer from luftkluft",
+  "main": "app/main.js",
+  "email": "luftkluft@gmail.com",
+  "homepage": "https://github.com/luftkluft/dataviewer",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron .",
+    "electron:linux": "electron-builder --linux",
+    "electron:windows": "electron-builder --win"
+  },
+  "author": "luftkluft<luftkluft@gmail.com>",
+  "license": "MIT",
+  "build": {
+    "icon": "public/icons/app-256x256.png",
+    "appId": "luftkluft.dataviewer",
+    "linux": {
+      "target": "deb",
+      "icon": "public/icons/app-256x256.png"
+    },
+    "win": {
+      "target": [
+        "nsis"
+      ],
+      "icon": "public/icons/app-256x256.png",
+      "requestedExecutionLevel": "requireAdministrator"
+    },
+    "nsis": {
+      "uninstallDisplayName": "Dataviewer",
+      "license": "LICENSE",
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
+  },
+  "devDependencies": {
+    "electron": "15.3.0",
+    "electron-builder": "22.13.1"
+  }
+}
