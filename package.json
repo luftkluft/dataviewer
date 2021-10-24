@@ -2,10 +2,12 @@
   "name": "dataviewer",
   "version": "1.0.0",
   "description": "DataViewer from luftkluft",
-  "main": "app/main.js",
+  "main": "dist/app/main.js",
   "email": "luftkluft@gmail.com",
   "homepage": "https://github.com/luftkluft/dataviewer",
   "scripts": {
+    "eslint": "eslint --cache --ext .js,.jsx,.ts,.tsx",
+    "eslint:dump": "eslint --print-config ./.eslintrc.json",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "electron .",
     "electron:linux": "electron-builder --linux",
@@ -14,11 +16,17 @@
   "author": "luftkluft<luftkluft@gmail.com>",
   "license": "MIT",
   "build": {
+    "productName": "DataViewer",
     "icon": "public/icons/app-256x256.png",
     "appId": "luftkluft.dataviewer",
     "linux": {
       "target": "deb",
-      "icon": "public/icons/app-256x256.png"
+      "icon": "public/icons/app-256x256.png",
+      "desktop": "public/icons/app-256x256.png",
+      "category": "Utility"
+    },
+    "directories": {
+      "output": "build"
     },
     "win": {
       "target": [
@@ -28,14 +36,20 @@
       "requestedExecutionLevel": "requireAdministrator"
     },
     "nsis": {
-      "uninstallDisplayName": "Dataviewer",
+      "uninstallDisplayName": "DataViewer",
       "license": "LICENSE",
       "oneClick": false,
       "allowToChangeInstallationDirectory": true
     }
   },
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.1.0",
+    "@typescript-eslint/parser": "^5.1.0",
     "electron": "15.3.0",
-    "electron-builder": "22.13.1"
-  }
+    "electron-builder": "22.13.1",
+    "eslint": "^8.1.0",
+    "prettier": "2.4.1",
+    "typescript": "4.4.4"
+  },
+  "dependencies": {}
 }
