@@ -108,4 +108,5 @@ DataViewerLog.odt
 .~lock.DataViewerLog.odt#
 license.txt
 package-lock.json
-soft
+soft/
+test/
