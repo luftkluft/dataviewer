@@ -1,4 +1,5 @@
 import { getCurrentLocale } from '../app/lib/getCurrentLocale'
+import { setCurrentLocale } from '../app/lib/setCurrentLocale'
 
 const { app, BrowserWindow } = require('electron')
 let electronEjs = require('electron-ejs')
@@ -19,5 +20,9 @@ function createWindow() {
 
 app.on('ready', () => {
   createWindow()
+  console.log(getCurrentLocale())
+  setCurrentLocale('ru-RU')
+  console.log(getCurrentLocale())
+  setCurrentLocale()
   console.log(getCurrentLocale())
 })

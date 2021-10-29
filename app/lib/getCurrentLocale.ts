@@ -13,14 +13,14 @@ export function getCurrentLocale() {
     )
     const app_config = JSON.parse(data)
     if (app_config.current_locale === undefined) {
-      console.log('Сonfig app_config not found!')
-      console.log('Used default locale: ' + DEFAULT_LOCALE)
+      console.log(`Сonfig app_config not found!`)
+      console.log(`Used default locale: ${DEFAULT_LOCALE}`)
       return DEFAULT_LOCALE
     }
     return app_config.current_locale
   } catch (error) {
-    console.log('GetCurrentLocale(): ' + error)
-    console.log('Used default locale: ' + DEFAULT_LOCALE)
+    console.log(`getCurrentLocale(): ${error}`)
+    console.log(`Used default locale: ${DEFAULT_LOCALE}`)
     return DEFAULT_LOCALE
   }
 }
