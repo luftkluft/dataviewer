@@ -110,3 +110,4 @@ license.txt
 package-lock.json
 soft/
 test/
+.vscode
