@@ -48,6 +48,7 @@ export function setCurrentLocale(setLocale: string = DEFAULT_LOCALE) {
     swalOptions.text = `Current locale set successfully!`
     swalOptions.timer = 3000
     swalOptions.icon = 'success'
+    swalOptions.showConfirmButton = false
     Alert.fireToast(swalOptions)
   } catch (error) {
     swalOptions.title = `setCurrentLocale()`

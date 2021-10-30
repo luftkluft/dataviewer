@@ -11,6 +11,16 @@ import { getCurrentLocale } from '../lib/getCurrentLocale'
 
 const fs = require('fs')
 const appRoot = require('app-root-path')
+const Alert = require('electron-alert')
+
+let swalOptions = {
+  position: 'top-end',
+  title: 'Title',
+  text: 'Text',
+  icon: 'warning',
+  showConfirmButton: true,
+  timer: 30000,
+}
 
 export class I18n {
   static t(_word: string = BAD_STRING) {
@@ -25,12 +35,16 @@ export class I18n {
             )
             const en_words = JSON.parse(data)
             if (en_words[_word] === undefined) {
-              console.log(`I18n.t(): en word not found!`)
+              swalOptions.title = `I18n.t()`
+              swalOptions.text = `En word not found!`
+              Alert.fireToast(swalOptions)
               return BAD_STRING
             }
             return en_words[_word]
           } catch (error) {
-            console.log(`I18n.t(): ${error}`)
+            swalOptions.title = `I18n.t()`
+            swalOptions.text = `${error}`
+            Alert.fireToast(swalOptions)
             return BAD_STRING
           }
           break
@@ -42,22 +56,30 @@ export class I18n {
             )
             const ru_words = JSON.parse(data)
             if (ru_words[_word] === undefined) {
-              console.log(`I18n.t(): ru word not found!`)
+              swalOptions.title = `I18n.t()`
+              swalOptions.text = `Ru word not found!`
+              Alert.fireToast(swalOptions)
               return BAD_STRING
             }
             return ru_words[_word]
           } catch (error) {
-            console.log(`I18n.t(): ${error}`)
+            swalOptions.title = `I18n.t()`
+            swalOptions.text = `${error}`
+            Alert.fireToast(swalOptions)
             return BAD_STRING
           }
           break
         default: {
-          console.log(`I18n.t(): language not found!`)
+          swalOptions.title = `I18n.t()`
+          swalOptions.text = `Language not found!`
+          Alert.fireToast(swalOptions)
           return BAD_STRING
         }
       }
     } catch (error) {
-      console.log(`I18n.t()crash: ${error}`)
+      swalOptions.title = `I18n.t()`
+      swalOptions.text = `${error}`
+      Alert.fireToast(swalOptions)
       return BAD_STRING
     }
   }
