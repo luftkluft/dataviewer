@@ -6,8 +6,11 @@ import {
   EN_WORDS_FILE,
   RU_WORDS_FILE,
 } from '../constants'
+
 import { getCurrentLocale } from '../lib/getCurrentLocale'
+
 const fs = require('fs')
+const appRoot = require('app-root-path')
 
 export class I18n {
   static t(_word: string = BAD_STRING) {
@@ -17,7 +20,7 @@ export class I18n {
         case EN_LOCALE:
           try {
             const data = fs.readFileSync(
-              PATH_TO_LOCALES + EN_WORDS_FILE,
+              appRoot + PATH_TO_LOCALES + EN_WORDS_FILE,
               'utf8'
             )
             const en_words = JSON.parse(data)
@@ -34,7 +37,7 @@ export class I18n {
         case RU_LOCALE:
           try {
             const data = fs.readFileSync(
-              PATH_TO_LOCALES + RU_WORDS_FILE,
+              appRoot + PATH_TO_LOCALES + RU_WORDS_FILE,
               'utf8'
             )
             const ru_words = JSON.parse(data)

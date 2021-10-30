@@ -5,6 +5,7 @@ import {
 } from '../constants'
 
 const fs = require('fs')
+const appRoot = require('app-root-path')
 
 const Alert = require('electron-alert')
 let swalOptions = {
@@ -19,7 +20,7 @@ let swalOptions = {
 export function getCurrentLocale() {
   try {
     const data = fs.readFileSync(
-      PATH_TO_APP_CONFIG + APP_CONFIG_FILE_NAME,
+      appRoot + PATH_TO_APP_CONFIG + APP_CONFIG_FILE_NAME,
       'utf8'
     )
     const app_config = JSON.parse(data)
