@@ -20,12 +20,12 @@
   "license": "MIT",
   "build": {
     "productName": "DataViewer",
-    "icon": "app/public/icons/app-256x256.png",
+    "icon": "./app/public/icons/app-256x256.png",
     "appId": "luftkluft.dataviewer",
     "linux": {
       "target": "deb",
-      "icon": "app/public/icons/app-256x256.png",
-      "desktop": "app/public/icons/app-256x256.png",
+      "icon": "./app/public/icons/app-256x256.png",
+      "desktop": "./app/public/icons/app-256x256.png",
       "category": "Utility"
     },
     "directories": {
@@ -35,7 +35,7 @@
       "target": [
         "nsis"
       ],
-      "icon": "app/public/icons/app-256x256.png",
+      "icon": "./app/public/icons/app-256x256.png",
       "requestedExecutionLevel": "requireAdministrator"
     },
     "nsis": {

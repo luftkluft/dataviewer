@@ -1,3 +1,7 @@
+export const APP_NAME = 'DataViewer'
+export const MAIN_ICON_PATH = '/app/public/icons/'
+export const MAIN_BIG_ICON_NAME = 'app-256x256.png'
+export const MAIN_SMAII_ICON_NAME = 'app-32x32.ico'
 export const APP_ENTER_INDEX_EJS_PATH = '/app/views/index.ejs'
 export const BAD_STRING = '#####'
 export const DEFAULT_LOCALE = 'en-US'
