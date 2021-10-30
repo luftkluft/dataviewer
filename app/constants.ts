@@ -1,3 +1,4 @@
+export const APP_ENTER_INDEX_EJS_PATH = '/app/views/index.ejs'
 export const BAD_STRING = '#####'
 export const DEFAULT_LOCALE = 'en-US'
 export const EN_LOCALE = 'en-US'
