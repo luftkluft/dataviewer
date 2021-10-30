@@ -1,3 +1,8 @@
 {
-  "hello": "Hello"
+  "hello": "Hello",
+  "file": "File",
+  "open": "Open",
+  "exit": "Exit",
+  "help": "Help",
+  "about": "About"
 }

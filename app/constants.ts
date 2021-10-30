@@ -1,3 +1,4 @@
+export const APP_GITHUB = 'https://github.com/luftkluft/dataviewer'
 export const APP_NAME = 'DataViewer'
 export const MAIN_ICON_PATH = '/app/public/icons/'
 export const MAIN_BIG_ICON_NAME = 'app-256x256.png'

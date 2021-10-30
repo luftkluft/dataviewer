@@ -7,8 +7,9 @@ import {
 } from './constants'
 import { setCurrentLocale } from './lib/setCurrentLocale'
 import { I18n } from './services/i18n_service'
+import { menuTemplate } from './components/menu/menuTemplate'
 
-const { app, BrowserWindow } = require('electron')
+const { app, BrowserWindow, Menu } = require('electron')
 const appRoot = require('app-root-path')
 let electronEjs = require('electron-ejs')
 
@@ -36,4 +37,6 @@ function createWindow() {
 app.on('ready', () => {
   setCurrentLocale(RU_LOCALE)
   createWindow()
+  const menu = Menu.buildFromTemplate(menuTemplate)
+  Menu.setApplicationMenu(menu)
 })
