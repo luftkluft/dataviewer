@@ -58,6 +58,7 @@
   },
   "dependencies": {
     "bootstrap": "5.1.3",
+    "electron-alert": "0.1.19",
     "electron-ejs": "1.2.1",
     "gquery": "0.1.0"
   }
