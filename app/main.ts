@@ -1,10 +1,10 @@
-import { getCurrentLocale } from '../app/lib/getCurrentLocale'
 import { setCurrentLocale } from '../app/lib/setCurrentLocale'
+import {I18n} from './services/i18n_service'
 
 const { app, BrowserWindow } = require('electron')
 let electronEjs = require('electron-ejs')
 
-let ejs = new electronEjs({ name: 'Luft Kluft!' }, {})
+let ejs = new electronEjs({ name: 'Luft Kluft!', hello: I18n.t('hello') })
 
 function createWindow() {
   const mainWindow = new BrowserWindow({
@@ -18,11 +18,7 @@ function createWindow() {
   mainWindow.webContents.openDevTools()
 }
 
-app.on('ready', () => {
-  createWindow()
-  console.log(getCurrentLocale())
-  setCurrentLocale('ru-RU')
-  console.log(getCurrentLocale())
-  setCurrentLocale()
-  console.log(getCurrentLocale())
+app.on('ready', async () => {
+  await setCurrentLocale('ru-RU')
+  await createWindow()
 })
