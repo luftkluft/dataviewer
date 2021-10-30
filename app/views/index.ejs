@@ -5,11 +5,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <script src="../../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../../node_modules/jquery/dist/jquery.min.js"></script>
     <title>DataViewer</title>
+    <script>
+      $(document).ready(function () {
+        $("button").click(function () {
+          $("div").animate({ left: '250px' });
+        });
+      });
+    </script>
   </head>
 
   <body>
     <h1><%= I18n.t('hello') %>, <%= name %></h1>
+    <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+      <button type="button" class="btn btn-danger" data-bs-toggle="tooltip" title="Press Me!">Left</button>
+      <button type="button" class="btn btn-warning" data-bs-toggle="tooltip" title="Press Me!">Middle</button>
+      <button type="button" class="btn btn-success" data-bs-toggle="tooltip" title="Press Me!">Right</button>
+    </div>
   </body>
 
 </html>
