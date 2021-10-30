@@ -6,15 +6,15 @@ import {
 
 const fs = require('fs')
 const appRoot = require('app-root-path')
-
 const Alert = require('electron-alert')
+
 let swalOptions = {
   position: 'top-end',
   title: 'Title',
   text: 'Text',
   icon: 'warning',
   showConfirmButton: true,
-  // timer: 3000,
+  timer: 30000,
 }
 
 export function getCurrentLocale() {
