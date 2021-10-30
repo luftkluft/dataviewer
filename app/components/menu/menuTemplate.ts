@@ -1,7 +1,7 @@
 import { I18n } from '../../services/i18n_service'
 import { fileOpen, fileExit, helpAbout } from './menuFunctions'
 
-export const menuTemplate = [
+export const menuTemplate: any = [
   {
     label: I18n.t('file'),
     submenu: [
