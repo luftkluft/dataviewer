@@ -1,4 +1,4 @@
-export const BAD_VALUE = '#####'
+export const BAD_STRING = '#####'
 export const DEFAULT_LOCALE = 'en-US'
 export const EN_LOCALE = 'en-US'
 export const RU_LOCALE = 'ru-RU'
