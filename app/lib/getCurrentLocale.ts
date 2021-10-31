@@ -14,7 +14,7 @@ let swalOptions = {
   text: 'Text',
   icon: 'warning',
   showConfirmButton: true,
-  timer: 30000,
+  timer: 10000,
 }
 
 export function getCurrentLocale() {

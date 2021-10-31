@@ -8,9 +8,9 @@ let swalOptions = {
   position: 'top-end',
   title: 'Title',
   text: 'Text',
-  icon: 'warning',
+  icon: 'success',
   showConfirmButton: true,
-  timer: 30000,
+  timer: 10000,
 }
 
 export function fileOpen() {
