@@ -4,5 +4,8 @@
   "open": "Open",
   "exit": "Exit",
   "help": "Help",
-  "about": "About"
+  "about": "About",
+  "language": "Language",
+  "rus_menu": "Русский",
+  "en_menu": "Английский"
 }

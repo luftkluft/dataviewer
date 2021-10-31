@@ -5,7 +5,6 @@ import {
   MAIN_ICON_PATH,
   MAIN_BIG_ICON_NAME,
 } from './constants'
-import { setCurrentLocale } from './lib/setCurrentLocale'
 import { I18n } from './services/i18n_service'
 import { menuTemplate } from './components/menu/menuTemplate'
 
@@ -20,8 +19,11 @@ let ejs = new electronEjs({
   shortcutIcon: appRoot + MAIN_ICON_PATH + MAIN_BIG_ICON_NAME,
 })
 
+let mainWindow: any
+let mainMenu: any
+
 function createWindow() {
-  const mainWindow = new BrowserWindow({
+  mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
     title: APP_NAME,
@@ -35,8 +37,13 @@ function createWindow() {
 }
 
 app.on('ready', () => {
-  setCurrentLocale(RU_LOCALE)
   createWindow()
-  const menu = Menu.buildFromTemplate(menuTemplate)
-  Menu.setApplicationMenu(menu)
+  mainMenu = Menu.buildFromTemplate(menuTemplate())
+  Menu.setApplicationMenu(mainMenu)
+})
+
+app.on('change-language', () => {
+  mainWindow.reload()
+  mainMenu = Menu.buildFromTemplate(menuTemplate())
+  Menu.setApplicationMenu(mainMenu)
 })

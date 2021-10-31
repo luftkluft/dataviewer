@@ -1,7 +1,8 @@
-import { APP_GITHUB } from '../../constants'
+import { APP_GITHUB, EN_LOCALE, RU_LOCALE } from '../../constants'
+import { setCurrentLocale } from '../../lib/setCurrentLocale'
 
-const electron = require('electron')
 const Alert = require('electron-alert')
+const { app, shell } = require('electron')
 
 let swalOptions = {
   position: 'top-end',
@@ -19,9 +20,19 @@ export function fileOpen() {
 }
 
 export function fileExit() {
-  electron.app.quit()
+  app.quit()
+}
+
+export async function setRusLanguage() {
+  await setCurrentLocale(RU_LOCALE)
+  await app.emit('change-language')
+}
+
+export async function setEnLanguage() {
+  await setCurrentLocale(EN_LOCALE)
+  await app.emit('change-language')
 }
 
 export function helpAbout(){
-  electron.shell.openExternal(APP_GITHUB)
+  shell.openExternal(APP_GITHUB)
 }
