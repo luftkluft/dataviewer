@@ -3,4 +3,6 @@ dist/
 # Ignore artifacts:
 build/
 coverage/
-soft/
+release/
+.vscode/
+.git/
