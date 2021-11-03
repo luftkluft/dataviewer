@@ -56,7 +56,7 @@ app.on('create_main_window', () => {
   createMainWindow()
 })
 
-app.on('window-all-closed', async () => {
+app.on('window-all-closed', () => {
   windowAllClosedService.ClosedAll(app, mainWindow)
 })
 
