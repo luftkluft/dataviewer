@@ -13,19 +13,21 @@ let swalOptions = {
   timer: 10000,
 }
 
-export class AppExitService {
-  static async appExit(app: any, mainWindow: any) {
+export class windowAllClosedService {
+  static async ClosedAll(app: any, mainWindow: any) {
     try {
       mainWindow.closed
       swalOptions.title = 'Exit from App?'
       swalOptions.text = ''
       const result = await alert.fireWithFrame(swalOptions, null, null, false)
-      if (result.value) {
-        // TODO
-        app.quit()
-      }
+        if (result.value) {
+          // TODO
+          app.quit()
+        } else if (result.dismiss) {
+          app.emit('create_main_window')
+        }
     } catch (error) {
-      swalOptions.title = `appExit()`
+      swalOptions.title = `ClosedAll()`
       swalOptions.text = `${error}`
       Alert.fireToast(swalOptions)
     }

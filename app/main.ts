@@ -7,6 +7,7 @@ import {
 import { I18n } from './services/i18n_service'
 import { InitService } from './services/init_service'
 import { AppExitService } from './services/app_exit_service'
+import { windowAllClosedService } from './services/window_all_closed_service'
 import { menuTemplate } from './components/menu/menuTemplate'
 
 const { app, BrowserWindow, Menu } = require('electron')
@@ -21,22 +22,10 @@ let ejs = new electronEjs({
   shortcutIcon: appRoot + MAIN_ICON_PATH + MAIN_BIG_ICON_NAME,
 })
 
-const Alert = require('electron-alert')
-let alert = new Alert()
-let swalOptions = {
-  position: 'top-end',
-  title: 'Title',
-  text: 'Text',
-  icon: 'warning',
-  showConfirmButton: true,
-  showCancelButton: true,
-  timer: 10000,
-}
-
 let mainWindow: any
 let mainMenu: any
 
-function createWindow() {
+function createMainWindow() {
   mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
@@ -52,7 +41,7 @@ function createWindow() {
 
 app.once('ready', async () => {
   await InitService.init()
-  await createWindow()
+  await createMainWindow()
   mainMenu = await Menu.buildFromTemplate(menuTemplate())
   await Menu.setApplicationMenu(mainMenu)
 })
@@ -63,22 +52,12 @@ app.on('change-language', () => {
   Menu.setApplicationMenu(mainMenu)
 })
 
+app.on('create_main_window', () => {
+  createMainWindow()
+})
+
 app.on('window-all-closed', async () => {
-  try {
-    mainWindow.closed
-    swalOptions.title = 'Exit from App?'
-    swalOptions.text = ''
-    const result = await alert.fireWithFrame(swalOptions, null, null, false)
-    if (result.value) {
-      app.quit()
-    } else if (result.dismiss) {
-      createWindow()
-    }
-  } catch (error) {
-    swalOptions.title = `window-all-closed`
-    swalOptions.text = `${error}`
-    Alert.fireToast(swalOptions)
-  }
+  windowAllClosedService.ClosedAll(app, mainWindow)
 })
 
 app.on('app_exit', () => {
