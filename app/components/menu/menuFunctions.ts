@@ -20,7 +20,7 @@ export function fileOpen() {
 }
 
 export function fileExit() {
-  app.quit()
+  app.emit('app_exit')
 }
 
 export async function setRusLanguage() {
