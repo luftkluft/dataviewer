@@ -6,6 +6,7 @@ import {
 } from './constants'
 import { I18n } from './services/i18n_service'
 import { InitService } from './services/init_service'
+import { AppExitService } from './services/app_exit_service'
 import { menuTemplate } from './components/menu/menuTemplate'
 
 const { app, BrowserWindow, Menu } = require('electron')
@@ -80,18 +81,6 @@ app.on('window-all-closed', async () => {
   }
 })
 
-app.on('app_exit', async () => {
-  try {
-    mainWindow.closed
-    swalOptions.title = 'Exit from App?'
-    swalOptions.text = ''
-    const result = await alert.fireWithFrame(swalOptions, null, null, false)
-    if (result.value) {
-      app.quit()
-    }
-  } catch (error) {
-    swalOptions.title = `window-all-closed`
-    swalOptions.text = `${error}`
-    Alert.fireToast(swalOptions)
-  }
+app.on('app_exit', () => {
+  AppExitService.appExit(app, mainWindow)
 })
