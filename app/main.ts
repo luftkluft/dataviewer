@@ -5,6 +5,7 @@ import {
   MAIN_BIG_ICON_NAME,
 } from './constants'
 import { I18n } from './services/i18n_service'
+import { InitService } from './services/init_service'
 import { menuTemplate } from './components/menu/menuTemplate'
 
 const { app, BrowserWindow, Menu } = require('electron')
@@ -35,10 +36,14 @@ function createWindow() {
   mainWindow.webContents.openDevTools()
 }
 
-app.on('ready', () => {
-  createWindow()
-  mainMenu = Menu.buildFromTemplate(menuTemplate())
-  Menu.setApplicationMenu(mainMenu)
+
+
+app.once('ready', async () => {
+  await InitService.init()
+  await createWindow()
+  mainMenu = await Menu.buildFromTemplate(menuTemplate())
+  await Menu.setApplicationMenu(mainMenu)
+
 })
 
 app.on('change-language', () => {
