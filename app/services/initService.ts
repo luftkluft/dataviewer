@@ -12,6 +12,7 @@ export class InitService {
       switch (params) {
         case 'default':
           try {
+            // TODO Test: global.storage = { "key1": "value1", "key2": "value2"}
             swOp.title = `init()`
             swOp.text = `Run as Default`
             swOp.icon = `success`
