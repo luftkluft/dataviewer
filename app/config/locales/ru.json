@@ -7,5 +7,6 @@
   "about": "О программе",
   "language": "Язык",
   "rus_menu": "Russian",
-  "en_menu": "English"
+  "en_menu": "English",
+  "quit_the_application?": "Выйти из приложения?"
 }

@@ -1,5 +1,6 @@
 const fs = require('fs')
 const appRoot = require('app-root-path')
+import { I18n } from '../services/i18n_service'
 import { alert, swalOptions, Alert } from './alert_service'
 
 export class windowAllClosedService {
@@ -11,7 +12,7 @@ export class windowAllClosedService {
     }
     try {
       mainWindow.closed
-      swOp.title = 'Exit from App?'
+      swOp.title = `${I18n.t('quit_the_application?')}`
       swOp.text = ''
       const result = await alert.fireWithFrame(swOp, null, null, false)
       if (result.value) {
