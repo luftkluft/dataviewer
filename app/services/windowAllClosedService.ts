@@ -1,10 +1,10 @@
 const fs = require('fs')
 const appRoot = require('app-root-path')
-import { I18n } from '../services/i18n_service'
-import { alert, swalOptions, Alert } from './alert_service'
+import { I18n } from './i18nService'
+import { alert, swalOptions, Alert } from './alertService'
 
-export class AppExitService {
-  static async appExit(app: any, mainWindow: any) {
+export class windowAllClosedService {
+  static async ClosedAll(app: any, mainWindow: any) {
     let swOp = {
       ...swalOptions,
       showConfirmButton: true,
@@ -18,9 +18,12 @@ export class AppExitService {
       if (result.value) {
         // TODO
         app.quit()
+      } else if (result.dismiss) {
+        app.emit('create_main_window')
       }
     } catch (error) {
-      swOp.title = `appExit()`
+      swOp.showCancelButton = false
+      swOp.title = `ClosedAll()`
       swOp.text = `${error}`
       Alert.fireToast(swOp)
     }

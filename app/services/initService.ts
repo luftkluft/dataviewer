@@ -1,6 +1,6 @@
 const fs = require('fs')
 const appRoot = require('app-root-path')
-import { swalOptions, Alert } from './alert_service'
+import { swalOptions, Alert } from './alertService'
 
 export class InitService {
   static init(params: string = 'default') {

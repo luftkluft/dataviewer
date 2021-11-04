@@ -4,10 +4,10 @@ import {
   MAIN_ICON_PATH,
   MAIN_BIG_ICON_NAME,
 } from './constants'
-import { I18n } from './services/i18n_service'
-import { InitService } from './services/init_service'
-import { AppExitService } from './services/app_exit_service'
-import { windowAllClosedService } from './services/window_all_closed_service'
+import { I18n } from './services/i18nService'
+import { InitService } from './services/initService'
+import { AppExitService } from './services/appExitService'
+import { windowAllClosedService } from './services/windowAllClosedService'
 import { menuTemplate } from './components/menu/menuTemplate'
 
 const { app, BrowserWindow, Menu } = require('electron')

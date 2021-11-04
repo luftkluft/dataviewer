@@ -1,5 +1,5 @@
 import { EN_LOCALE, RU_LOCALE } from '../../constants'
-import { I18n } from '../../services/i18n_service'
+import { I18n } from '../../services/i18nService'
 import {
   fileOpen,
   fileExit,

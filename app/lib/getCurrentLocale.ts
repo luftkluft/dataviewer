@@ -6,7 +6,7 @@ import {
 
 const fs = require('fs')
 const appRoot = require('app-root-path')
-import { swalOptions, Alert } from '../services/alert_service'
+import { swalOptions, Alert } from '../services/alertService'
 
 export function getCurrentLocale() {
   let swOp = {
