@@ -1,44 +1,39 @@
 const fs = require('fs')
 const appRoot = require('app-root-path')
-const Alert = require('electron-alert')
-
-let swalOptions = {
-  position: 'top-end',
-  title: 'Title',
-  text: 'Text',
-  icon: 'warning',
-  showConfirmButton: true,
-  timer: 30000,
-}
+import { swalOptions, Alert } from './alert_service'
 
 export class InitService {
   static init(params: string = 'default') {
+    let swOp = {
+      ...swalOptions,
+      showConfirmButton: true,
+    }
     try {
       switch (params) {
         case 'default':
           try {
-            swalOptions.title = `init()`
-            swalOptions.text = `Run as Default`
-            swalOptions.icon = `success`
-            Alert.fireToast(swalOptions)
+            swOp.title = `init()`
+            swOp.text = `Run as Default`
+            swOp.icon = `success`
+            Alert.fireToast(swOp)
           } catch (error) {
-            swalOptions.title = `init()`
-            swalOptions.text = `${error}`
-            Alert.fireToast(swalOptions)
+            swOp.title = `init()`
+            swOp.text = `${error}`
+            Alert.fireToast(swOp)
           }
           break
 
         default: {
-          swalOptions.title = `init()`
-          swalOptions.text = `Run as default in Default`
-          swalOptions.icon = `success`
-          Alert.fireToast(swalOptions)
+          swOp.title = `init()`
+          swOp.text = `Run as default in Default`
+          swOp.icon = `success`
+          Alert.fireToast(swOp)
         }
       }
     } catch (error) {
-      swalOptions.title = `init()`
-      swalOptions.text = `${error}`
-      Alert.fireToast(swalOptions)
+      swOp.title = `init()`
+      swOp.text = `${error}`
+      Alert.fireToast(swOp)
     }
   }
 }

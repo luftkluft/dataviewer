@@ -6,18 +6,13 @@ import {
 
 const fs = require('fs')
 const appRoot = require('app-root-path')
-const Alert = require('electron-alert')
-
-let swalOptions = {
-  position: 'top-end',
-  title: 'Title',
-  text: 'Text',
-  icon: 'warning',
-  showConfirmButton: true,
-  timer: 10000,
-}
+import { swalOptions, Alert } from '../services/alert_service'
 
 export async function setCurrentLocale(setLocale: string = DEFAULT_LOCALE) {
+  let swOp = await {
+    ...swalOptions,
+    showConfirmButton: true,
+  }
   try {
     const oldData = await fs.readFileSync(
       appRoot + PATH_TO_APP_CONFIG + APP_CONFIG_FILE_NAME,
@@ -25,9 +20,9 @@ export async function setCurrentLocale(setLocale: string = DEFAULT_LOCALE) {
     )
     const app_config = await JSON.parse(oldData)
     if (app_config.current_locale === undefined) {
-      swalOptions.title = `setCurrentLocale()`
-      swalOptions.text = `Сonfig app_config not found!`
-      Alert.fireToast(swalOptions)
+      swOp.title = `setCurrentLocale()`
+      swOp.text = `Сonfig app_config not found!`
+      Alert.fireToast(swOp)
     }
     app_config.current_locale = await setLocale
     const newData = await JSON.stringify(app_config)
@@ -37,15 +32,15 @@ export async function setCurrentLocale(setLocale: string = DEFAULT_LOCALE) {
       'utf8',
       (error: string) => {
         if (error) {
-          swalOptions.title = `setCurrentLocale()`
-          swalOptions.text = `setCurrentLocale(): ${error}`
-          Alert.fireToast(swalOptions)
+          swOp.title = `setCurrentLocale()`
+          swOp.text = `setCurrentLocale(): ${error}`
+          Alert.fireToast(swOp)
         }
       }
     )
   } catch (error) {
-    swalOptions.title = `setCurrentLocale()`
-    swalOptions.text = `Сonfig app_config not found! ${error}`
-    Alert.fireToast(swalOptions)
+    swOp.title = `setCurrentLocale()`
+    swOp.text = `Сonfig app_config not found! ${error}`
+    Alert.fireToast(swOp)
   }
 }

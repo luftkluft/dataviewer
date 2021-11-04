@@ -6,18 +6,13 @@ import {
 
 const fs = require('fs')
 const appRoot = require('app-root-path')
-const Alert = require('electron-alert')
-
-let swalOptions = {
-  position: 'top-end',
-  title: 'Title',
-  text: 'Text',
-  icon: 'warning',
-  showConfirmButton: true,
-  timer: 10000,
-}
+import { swalOptions, Alert } from '../services/alert_service'
 
 export function getCurrentLocale() {
+  let swOp = {
+    ...swalOptions,
+    showConfirmButton: true,
+  }
   try {
     const data = fs.readFileSync(
       appRoot + PATH_TO_APP_CONFIG + APP_CONFIG_FILE_NAME,
@@ -25,16 +20,16 @@ export function getCurrentLocale() {
     )
     const app_config = JSON.parse(data)
     if (app_config.current_locale === undefined) {
-      swalOptions.title = `getCurrentLocale()`
-      swalOptions.text = `Сonfig app_config not found!`
-      Alert.fireToast(swalOptions)
+      swOp.title = `getCurrentLocale()`
+      swOp.text = `Сonfig app_config not found!`
+      Alert.fireToast(swOp)
       return DEFAULT_LOCALE
     }
     return app_config.current_locale
   } catch (error) {
-    swalOptions.title = `getCurrentLocale()`
-    swalOptions.text = `${error}`
-    Alert.fireToast(swalOptions)
+    swOp.title = `getCurrentLocale()`
+    swOp.text = `${error}`
+    Alert.fireToast(swOp)
     return DEFAULT_LOCALE
   }
 }
