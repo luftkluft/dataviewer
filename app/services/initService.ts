@@ -1,6 +1,7 @@
 const fs = require('fs')
 const appRoot = require('app-root-path')
 import { swalOptions, Alert } from './alertService'
+import { initAppConfigFromFile } from '../lib/initAppConfigFromFile'
 
 export class InitService {
   static init(params: string = 'default') {
@@ -12,18 +13,13 @@ export class InitService {
       switch (params) {
         case 'default':
           try {
-            // TODO Test: global.storage = { "key1": "value1", "key2": "value2"}
-            swOp.title = `init()`
-            swOp.text = `Run as Default`
-            swOp.icon = `success`
-            Alert.fireToast(swOp)
+            initAppConfigFromFile()
           } catch (error) {
             swOp.title = `init()`
             swOp.text = `${error}`
             Alert.fireToast(swOp)
           }
           break
-
         default: {
           swOp.title = `init()`
           swOp.text = `Run as default in Default`

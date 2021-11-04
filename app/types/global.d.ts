@@ -1,14 +1,11 @@
-/**
- * IMPORTANT - do not use imports in this file!
- * It will break global definition.
- */
 declare namespace NodeJS {
   export interface Global {
     storage: any
   }
+  export interface Global {
+    app_config: any
+  }
 }
 
 declare let storage: any
-
-// use storage variable in ather files
-// global.storage = {} ...
+declare let app_config: any

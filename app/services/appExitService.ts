@@ -2,6 +2,7 @@ const fs = require('fs')
 const appRoot = require('app-root-path')
 import { I18n } from './i18nService'
 import { alert, swalOptions, Alert } from './alertService'
+import { saveAppConfigToFile } from '../lib/saveAppConfigToFile'
 
 export class AppExitService {
   static async appExit(app: any, mainWindow: any) {
@@ -16,8 +17,8 @@ export class AppExitService {
       swOp.text = ''
       const result = await alert.fireWithFrame(swOp, null, null, false)
       if (result.value) {
-        // TODO
-        app.quit()
+        await saveAppConfigToFile()
+        await app.quit()
       }
     } catch (error) {
       swOp.title = `appExit()`

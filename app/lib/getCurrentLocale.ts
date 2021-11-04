@@ -1,11 +1,8 @@
 import {
-  PATH_TO_APP_CONFIG,
-  APP_CONFIG_FILE_NAME,
-  DEFAULT_LOCALE,
+  DEFAULT_LOCALE
 } from '../constants'
 
 const fs = require('fs')
-const appRoot = require('app-root-path')
 import { swalOptions, Alert } from '../services/alertService'
 
 export function getCurrentLocale() {
@@ -14,18 +11,14 @@ export function getCurrentLocale() {
     showConfirmButton: true,
   }
   try {
-    const data = fs.readFileSync(
-      appRoot + PATH_TO_APP_CONFIG + APP_CONFIG_FILE_NAME,
-      'utf8'
-    )
-    const app_config = JSON.parse(data)
-    if (app_config.current_locale === undefined) {
+    const current_locale = global.app_config.current_locale
+    if (current_locale === undefined) {
       swOp.title = `getCurrentLocale()`
-      swOp.text = `Сonfig app_config not found!`
+      swOp.text = `Global app_config not found!`
       Alert.fireToast(swOp)
       return DEFAULT_LOCALE
     }
-    return app_config.current_locale
+    return current_locale
   } catch (error) {
     swOp.title = `getCurrentLocale()`
     swOp.text = `${error}`
