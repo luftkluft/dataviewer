@@ -30,11 +30,11 @@ export function csvParser() {
 // =====
 export async function setRusLanguage() {
   await setCurrentLocale(RU_LOCALE)
-  await app.emit('change-language')
+  await app.emit('update_app')
 }
 export async function setEnLanguage() {
   await setCurrentLocale(EN_LOCALE)
-  await app.emit('change-language')
+  await app.emit('update_app')
 }
 // =====
 export function about() {
@@ -44,4 +44,12 @@ export function about() {
 }
 export function codeGithub(){
   shell.openExternal(APP_GITHUB)
+}
+export async function changeAppMode() {
+  if (process.env.NODE_ENV === 'development') {
+    process.env.NODE_ENV = await 'production'
+  } else {
+    process.env.NODE_ENV = await 'development'
+  }
+  await app.emit('change_app_mode')
 }

@@ -23,6 +23,7 @@ export async function saveAppConfigToFile() {
       swOp.text = `Сonfig app_config not found!`
       Alert.fireToast(swOp)
     }
+    global.app_config.app_mode = await process.env.NODE_ENV
     const app_config = await global.app_config
     const newData = await JSON.stringify(app_config)
     await fs.writeFileSync(

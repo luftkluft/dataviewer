@@ -9,10 +9,10 @@ import { InitService } from './services/initService'
 import { AppExitService } from './services/appExitService'
 import { windowAllClosedService } from './services/windowAllClosedService'
 import { menuTemplate } from './components/menu/menuTemplate'
+import {RestartAppService} from './services/restartAppService'
 
 const { app, BrowserWindow, Menu } = require('electron')
 const appRoot = require('app-root-path')
-
 let electronEjs = require('electron-ejs')
 
 let ejs = new electronEjs({
@@ -36,7 +36,9 @@ function createMainWindow() {
     },
   })
   mainWindow.loadFile(appRoot + APP_ENTER_INDEX_EJS_PATH)
-  mainWindow.webContents.openDevTools()
+  if (process.env.NODE_ENV !== 'production') {
+    mainWindow.webContents.openDevTools()
+  }
 }
 
 app.once('ready', async () => {
@@ -46,10 +48,14 @@ app.once('ready', async () => {
   await Menu.setApplicationMenu(mainMenu)
 })
 
-app.on('change-language', () => {
+app.on('update_app', () => {
   mainWindow.reload()
   mainMenu = Menu.buildFromTemplate(menuTemplate())
   Menu.setApplicationMenu(mainMenu)
+})
+
+app.on('change_app_mode', ()=>{
+  RestartAppService.restart(app, mainWindow)
 })
 
 app.on('create_main_window', () => {

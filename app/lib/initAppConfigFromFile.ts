@@ -2,6 +2,7 @@ import { PATH_TO_APP_CONFIG, APP_CONFIG_FILE_NAME } from '../constants'
 
 const fs = require('fs')
 const appRoot = require('app-root-path')
+require('dotenv').config()
 import { swalOptions, Alert } from '../services/alertService'
 
 export function initAppConfigFromFile() {
@@ -21,7 +22,11 @@ export function initAppConfigFromFile() {
       Alert.fireToast(swOp)
     } else {
       global.app_config = app_config
-      console.log('initStorageFromFile: ' + global.app_config)
+      if (global.app_config.app_mode === 'production'){
+        process.env.NODE_ENV = 'production'
+      }else{
+        process.env.NODE_ENV = 'development'
+      }
     }
   } catch (error) {
     swOp.title = `initStorageFromFile()`

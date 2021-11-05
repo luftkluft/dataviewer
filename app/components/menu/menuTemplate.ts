@@ -8,6 +8,7 @@ import {
   setEnLanguage,
   about,
   codeGithub,
+  changeAppMode,
 } from './menuFunctions'
 import { getCurrentLocale } from '../../lib/getCurrentLocale'
 
@@ -67,6 +68,10 @@ export function menuTemplate() {
         {
           label: I18n.t('code'),
           click: codeGithub,
+        },
+        {
+          label: I18n.t('change_app_mode'),
+          click: changeAppMode,
         },
       ],
     },
