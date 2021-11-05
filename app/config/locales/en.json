@@ -3,10 +3,17 @@
   "file": "File",
   "open": "Open",
   "exit": "Exit",
-  "help": "Help",
-  "about": "About",
+
+  "parser": "Parser",
+    "csv": "csv",
+
   "language": "Language",
   "rus_menu": "Русский",
   "en_menu": "Английский",
+
+  "help": "Help",
+  "about": "About",
+  "code": "github",
+
   "quit_the_application?": "Quit the application?"
 }

@@ -3,9 +3,11 @@ import { I18n } from '../../services/i18nService'
 import {
   fileOpen,
   fileExit,
-  helpAbout,
+  csvParser,
   setRusLanguage,
   setEnLanguage,
+  about,
+  codeGithub,
 } from './menuFunctions'
 import { getCurrentLocale } from '../../lib/getCurrentLocale'
 
@@ -28,6 +30,17 @@ export function menuTemplate() {
         },
       ],
     },
+    // =====
+    {
+      label: I18n.t('parser'),
+      submenu: [
+        {
+          label: I18n.t('csv'),
+          click: csvParser,
+        },
+      ],
+    },
+    // =====
     {
       label: I18n.t('language'),
       submenu: [
@@ -43,12 +56,17 @@ export function menuTemplate() {
         },
       ],
     },
+    // =====
     {
       label: I18n.t('help'),
       submenu: [
         {
           label: I18n.t('about'),
-          click: helpAbout,
+          click: about,
+        },
+        {
+          label: I18n.t('code'),
+          click: codeGithub,
         },
       ],
     },

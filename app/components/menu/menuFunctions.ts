@@ -18,21 +18,30 @@ export function fileOpen() {
   swalOptions.text = `Click`
   Alert.fireToast(swalOptions)
 }
-
 export function fileExit() {
   app.emit('app_exit')
 }
-
+// =====
+export function csvParser() {
+  swalOptions.title = `csvParser()`
+  swalOptions.text = `Click`
+  Alert.fireToast(swalOptions)
+}
+// =====
 export async function setRusLanguage() {
   await setCurrentLocale(RU_LOCALE)
   await app.emit('change-language')
 }
-
 export async function setEnLanguage() {
   await setCurrentLocale(EN_LOCALE)
   await app.emit('change-language')
 }
-
-export function helpAbout(){
+// =====
+export function about() {
+  swalOptions.title = `about()`
+  swalOptions.text = `Click`
+  Alert.fireToast(swalOptions)
+}
+export function codeGithub(){
   shell.openExternal(APP_GITHUB)
 }

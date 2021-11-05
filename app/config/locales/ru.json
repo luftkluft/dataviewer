@@ -3,10 +3,17 @@
   "file": "Файл",
   "open": "Открыть",
   "exit": "Выход",
-  "help": "Помощь",
-  "about": "О программе",
+
+  "parser": "Парсер",
+  "csv": "csv",
+
   "language": "Язык",
   "rus_menu": "Russian",
   "en_menu": "English",
+
+  "help": "Помощь",
+  "about": "О программе",
+  "code": "github",
+
   "quit_the_application?": "Выйти из приложения?"
 }
