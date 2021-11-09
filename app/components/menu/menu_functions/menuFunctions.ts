@@ -1,4 +1,4 @@
-import { APP_GITHUB, EN_LOCALE, RU_LOCALE } from '../../../constants'
+import { APP_GITHUB, EN_LOCALE, RU_LOCALE } from '../../../constants/constants'
 import { setCurrentLocale } from '../../../lib/set_current_locale/setCurrentLocale'
 
 const Alert = require('electron-alert')

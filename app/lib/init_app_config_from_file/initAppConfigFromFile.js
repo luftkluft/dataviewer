@@ -12,7 +12,7 @@ var __assign = (this && this.__assign) || function () {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.initAppConfigFromFile = void 0;
-var constants_1 = require("../../constants");
+var constants_1 = require("../../constants/constants");
 var fs = require('fs');
 var appRoot = require('app-root-path');
 require('dotenv').config();

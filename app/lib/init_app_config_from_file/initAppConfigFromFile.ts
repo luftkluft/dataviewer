@@ -1,4 +1,4 @@
-import { PATH_TO_APP_CONFIG, APP_CONFIG_FILE_NAME } from '../../constants'
+import { PATH_TO_APP_CONFIG, APP_CONFIG_FILE_NAME } from '../../constants/constants'
 
 const fs = require('fs')
 const appRoot = require('app-root-path')

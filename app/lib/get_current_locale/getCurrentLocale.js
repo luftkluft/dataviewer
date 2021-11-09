@@ -12,7 +12,7 @@ var __assign = (this && this.__assign) || function () {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getCurrentLocale = void 0;
-var constants_1 = require("../../constants");
+var constants_1 = require("../../constants/constants");
 var fs = require('fs');
 var alertService_1 = require("../../services/alert_service/alertService");
 function getCurrentLocale() {

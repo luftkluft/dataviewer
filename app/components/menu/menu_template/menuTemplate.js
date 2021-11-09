@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.menuTemplate = void 0;
-var constants_1 = require("../../../constants");
+var constants_1 = require("../../../constants/constants");
 var i18nService_1 = require("../../../services/i18n_service/i18nService");
 var menuFunctions_1 = require("../menu_functions/menuFunctions");
 var getCurrentLocale_1 = require("../../../lib/get_current_locale/getCurrentLocale");

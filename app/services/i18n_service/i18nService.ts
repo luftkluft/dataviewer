@@ -5,7 +5,7 @@ import {
   PATH_TO_LOCALES,
   EN_WORDS_FILE,
   RU_WORDS_FILE,
-} from '../../constants'
+} from '../../constants/constants'
 
 import { getCurrentLocale } from '../../lib/get_current_locale/getCurrentLocale'
 

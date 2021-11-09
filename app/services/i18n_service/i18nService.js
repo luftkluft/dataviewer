@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.I18n = void 0;
-var constants_1 = require("../../constants");
+var constants_1 = require("../../constants/constants");
 var getCurrentLocale_1 = require("../../lib/get_current_locale/getCurrentLocale");
 var fs = require('fs');
 var appRoot = require('app-root-path');

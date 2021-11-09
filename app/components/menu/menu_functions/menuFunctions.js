@@ -37,7 +37,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.changeAppMode = exports.codeGithub = exports.about = exports.setEnLanguage = exports.setRusLanguage = exports.csvParser = exports.fileExit = exports.fileOpen = void 0;
-var constants_1 = require("../../../constants");
+var constants_1 = require("../../../constants/constants");
 var setCurrentLocale_1 = require("../../../lib/set_current_locale/setCurrentLocale");
 var Alert = require('electron-alert');
 var _a = require('electron'), app = _a.app, shell = _a.shell;

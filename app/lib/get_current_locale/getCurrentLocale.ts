@@ -1,6 +1,6 @@
 import {
   DEFAULT_LOCALE
-} from '../../constants'
+} from '../../constants/constants'
 
 const fs = require('fs')
 import { swalOptions, Alert } from '../../services/alert_service/alertService'

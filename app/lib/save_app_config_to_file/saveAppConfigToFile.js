@@ -48,7 +48,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.saveAppConfigToFile = void 0;
-var constants_1 = require("../../constants");
+var constants_1 = require("../../constants/constants");
 var fs = require('fs');
 var appRoot = require('app-root-path');
 var alertService_1 = require("../../services/alert_service/alertService");
