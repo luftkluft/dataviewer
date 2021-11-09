@@ -1,4 +1,4 @@
-import { ChartService } from '../services/ChartService'
+import { ChartService } from '../services/chart_service/ChartService'
 
 export class MainController {
   static render() {

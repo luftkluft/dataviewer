@@ -37,12 +37,12 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var constants_1 = require("./constants");
-var i18nService_1 = require("./services/i18nService");
-var initService_1 = require("./services/initService");
-var appExitService_1 = require("./services/appExitService");
-var windowAllClosedService_1 = require("./services/windowAllClosedService");
-var menuTemplate_1 = require("./components/menu/menuTemplate");
-var restartAppService_1 = require("./services/restartAppService");
+var i18nService_1 = require("./services/i18n_service/i18nService");
+var initService_1 = require("./services/init_service/initService");
+var appExitService_1 = require("./services/app_exit_service/appExitService");
+var windowAllClosedService_1 = require("./services/window_all_closed_service/windowAllClosedService");
+var menuTemplate_1 = require("./components/menu/menu_template/menuTemplate");
+var restartAppService_1 = require("./services/restart_app_service/restartAppService");
 var _a = require('electron'), app = _a.app, BrowserWindow = _a.BrowserWindow, Menu = _a.Menu;
 var appRoot = require('app-root-path');
 var electronEjs = require('electron-ejs');

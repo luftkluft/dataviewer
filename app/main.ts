@@ -4,12 +4,12 @@ import {
   MAIN_ICON_PATH,
   MAIN_BIG_ICON_NAME,
 } from './constants'
-import { I18n } from './services/i18nService'
-import { InitService } from './services/initService'
-import { AppExitService } from './services/appExitService'
-import { windowAllClosedService } from './services/windowAllClosedService'
-import { menuTemplate } from './components/menu/menuTemplate'
-import { RestartAppService } from './services/restartAppService'
+import { I18n } from './services/i18n_service/i18nService'
+import { InitService } from './services/init_service/initService'
+import { AppExitService } from './services/app_exit_service/appExitService'
+import { windowAllClosedService } from './services/window_all_closed_service/windowAllClosedService'
+import { menuTemplate } from './components/menu/menu_template/menuTemplate'
+import { RestartAppService } from './services/restart_app_service/restartAppService'
 
 const { app, BrowserWindow, Menu } = require('electron')
 const appRoot = require('app-root-path')
