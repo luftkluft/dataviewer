@@ -33,6 +33,7 @@ function createMainWindow() {
     icon: appRoot + MAIN_ICON_PATH + MAIN_BIG_ICON_NAME,
     webPreferences: {
       nodeIntegration: true,
+      contextIsolation: false,
     },
   })
   mainWindow.loadFile(appRoot + APP_ENTER_INDEX_EJS_PATH)
