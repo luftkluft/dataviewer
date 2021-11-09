@@ -1,5 +1,5 @@
 const $ = require('jquery')
-import { MainController } from '../../dist/app/controllers/mainController'
+import { MainController } from '../controllers/mainController'
 const html = MainController.render()
 
 $(document).ready(() => {

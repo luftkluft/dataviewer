@@ -2,7 +2,7 @@
   "name": "dataviewer",
   "version": "1.0.0",
   "description": "DataViewer from luftkluft",
-  "main": "dist/app/main.js",
+  "main": "app/main.js",
   "email": "luftkluft@gmail.com",
   "homepage": "https://github.com/luftkluft/dataviewer",
   "scripts": {
@@ -26,8 +26,7 @@
       "category": "Utility"
     },
     "files": [
-      "app/**/*",
-      "dist/**/*"
+      "app/**/*"
     ],
     "directories": {
       "output": "release"
