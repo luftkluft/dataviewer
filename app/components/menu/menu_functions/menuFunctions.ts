@@ -28,6 +28,18 @@ export function csvParser() {
   Alert.fireToast(swalOptions)
 }
 // =====
+export function noSorting() {
+  swalOptions.title = `noSorting()`
+  swalOptions.text = `Click`
+  Alert.fireToast(swalOptions)
+}
+// =====
+export function manualSorting() {
+  swalOptions.title = `manualSorting()`
+  swalOptions.text = `Click`
+  Alert.fireToast(swalOptions)
+}
+// =====
 export async function setRusLanguage() {
   await setCurrentLocale(RU_LOCALE)
   await app.emit('update_app')

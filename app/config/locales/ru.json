@@ -7,6 +7,10 @@
   "parser": "Парсер",
   "csv": "csv",
 
+  "sorting": "Сортировка",
+  "no_sorting": "Без сортировки",
+  "manual": "Ручная",
+
   "language": "Язык",
   "rus_menu": "Russian",
   "en_menu": "English",

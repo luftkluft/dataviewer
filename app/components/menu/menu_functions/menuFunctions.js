@@ -36,7 +36,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.changeAppMode = exports.codeGithub = exports.about = exports.setEnLanguage = exports.setRusLanguage = exports.csvParser = exports.fileExit = exports.fileOpen = void 0;
+exports.changeAppMode = exports.codeGithub = exports.about = exports.setEnLanguage = exports.setRusLanguage = exports.manualSorting = exports.noSorting = exports.csvParser = exports.fileExit = exports.fileOpen = void 0;
 var constants_1 = require("../../../constants/constants");
 var setCurrentLocale_1 = require("../../../lib/set_current_locale/setCurrentLocale");
 var Alert = require('electron-alert');
@@ -65,6 +65,18 @@ function csvParser() {
     Alert.fireToast(swalOptions);
 }
 exports.csvParser = csvParser;
+function noSorting() {
+    swalOptions.title = "noSorting()";
+    swalOptions.text = "Click";
+    Alert.fireToast(swalOptions);
+}
+exports.noSorting = noSorting;
+function manualSorting() {
+    swalOptions.title = "manualSorting()";
+    swalOptions.text = "Click";
+    Alert.fireToast(swalOptions);
+}
+exports.manualSorting = manualSorting;
 function setRusLanguage() {
     return __awaiter(this, void 0, void 0, function () {
         return __generator(this, function (_a) {

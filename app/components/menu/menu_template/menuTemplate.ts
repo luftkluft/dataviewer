@@ -4,6 +4,8 @@ import {
   fileOpen,
   fileExit,
   csvParser,
+  noSorting,
+  manualSorting,
   setRusLanguage,
   setEnLanguage,
   about,
@@ -38,6 +40,20 @@ export function menuTemplate() {
         {
           label: I18n.t('csv'),
           click: csvParser,
+        },
+      ],
+    },
+    // =====
+    {
+      label: I18n.t('sorting'),
+      submenu: [
+        {
+          label: I18n.t('no_sorting'),
+          click: noSorting,
+        },
+        {
+          label: I18n.t('manual'),
+          click: manualSorting,
         },
       ],
     },

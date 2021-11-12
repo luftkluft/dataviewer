@@ -5,7 +5,11 @@
   "exit": "Exit",
 
   "parser": "Parser",
-    "csv": "csv",
+  "csv": "csv",
+
+  "sorting": "Sorting",
+  "no_sorting": "No sorting",
+  "manual": "Manual",
 
   "language": "Language",
   "rus_menu": "Русский",

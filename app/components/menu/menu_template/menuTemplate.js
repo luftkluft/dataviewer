@@ -34,6 +34,19 @@ function menuTemplate() {
             ],
         },
         {
+            label: i18nService_1.I18n.t('sorting'),
+            submenu: [
+                {
+                    label: i18nService_1.I18n.t('no_sorting'),
+                    click: menuFunctions_1.noSorting,
+                },
+                {
+                    label: i18nService_1.I18n.t('manual'),
+                    click: menuFunctions_1.manualSorting,
+                },
+            ],
+        },
+        {
             label: i18nService_1.I18n.t('language'),
             submenu: [
                 {
