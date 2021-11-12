@@ -2,7 +2,8 @@ const $ = require('jquery')
 const ApexCharts = require('apexcharts')
 import { MainController } from '../controllers/mainController'
 const Sortable = require('sortablejs')
-const charts = MainController.render()
+const chartsData = new MainController
+const charts = chartsData.render()
 
 $(document).ready(async () => {
   const divChartsArea: any = document.createElement('div')

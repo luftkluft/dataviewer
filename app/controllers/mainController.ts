@@ -1,6 +1,8 @@
 import { ChartService } from '../services/chart_service/ChartService'
+import { SortingService } from '../services/sorting_service/sortingService'
+import { ParserService } from '../services/parser_service/parserService'
 
-const parserData: {} = [
+const testData: {} = [
   {
     series: [
       {
@@ -107,8 +109,18 @@ const parserData: {} = [
 ]
 
 export class MainController {
-  static render() {
-    const charts = new ChartService(parserData)
+  parseredData: {} = []
+  parserData(){
+    // TODO data source
+    return new ParserService(testData).getParserData()
+  }
+  sortingData(_parserData: {}){
+    return new SortingService(_parserData).sorting()
+  }
+  render() {
+    this.parseredData = this.parserData()
+    const sortedData = this.sortingData(this.parseredData)
+    const charts = new ChartService(sortedData)
     return charts.getCharts()
   }
 }

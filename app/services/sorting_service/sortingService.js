@@ -9,10 +9,24 @@ var SortingService = (function () {
         this.parserData = _parserData;
     }
     SortingService.prototype.noSortingData = function () {
-        (0, noSorting_1.noSorting)(this.parserData);
+        return (0, noSorting_1.noSorting)(this.parserData);
     };
     SortingService.prototype.manualSortingData = function () {
-        (0, manualSorting_1.manualSorting)(this.parserData);
+        return (0, manualSorting_1.manualSorting)(this.parserData);
+    };
+    SortingService.prototype.sorting = function (sortAs) {
+        if (sortAs === void 0) { sortAs = 'no_sorting'; }
+        switch (sortAs) {
+            case 'no_sorting':
+                return this.noSortingData();
+                break;
+            case 'manual_sorting':
+                return this.manualSortingData();
+                break;
+            default:
+                return this.noSortingData();
+                break;
+        }
     };
     return SortingService;
 }());

@@ -1,3 +1,6 @@
 export declare class MainController {
-    static render(): any;
+    parseredData: {};
+    parserData(): {};
+    sortingData(_parserData: {}): any;
+    render(): any;
 }

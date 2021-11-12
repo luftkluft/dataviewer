@@ -2,7 +2,9 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.MainController = void 0;
 var ChartService_1 = require("../services/chart_service/ChartService");
-var parserData = [
+var sortingService_1 = require("../services/sorting_service/sortingService");
+var parserService_1 = require("../services/parser_service/parserService");
+var testData = [
     {
         series: [
             {
@@ -106,9 +108,18 @@ var parserData = [
 ];
 var MainController = (function () {
     function MainController() {
+        this.parseredData = [];
     }
-    MainController.render = function () {
-        var charts = new ChartService_1.ChartService(parserData);
+    MainController.prototype.parserData = function () {
+        return new parserService_1.ParserService(testData).getParserData();
+    };
+    MainController.prototype.sortingData = function (_parserData) {
+        return new sortingService_1.SortingService(_parserData).sorting();
+    };
+    MainController.prototype.render = function () {
+        this.parseredData = this.parserData();
+        var sortedData = this.sortingData(this.parseredData);
+        var charts = new ChartService_1.ChartService(sortedData);
         return charts.getCharts();
     };
     return MainController;

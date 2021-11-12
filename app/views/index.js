@@ -40,7 +40,8 @@ var $ = require('jquery');
 var ApexCharts = require('apexcharts');
 var mainController_1 = require("../controllers/mainController");
 var Sortable = require('sortablejs');
-var charts = mainController_1.MainController.render();
+var chartsData = new mainController_1.MainController;
+var charts = chartsData.render();
 $(document).ready(function () { return __awaiter(void 0, void 0, void 0, function () {
     var divChartsArea, rootArea, i, _a, _b, i, error_1, el, sortable;
     return __generator(this, function (_c) {
