@@ -1,13 +1,39 @@
-import { ChartModel } from '../../models/chartModel'
+ import { ChartModel } from '../../models/chartModel'
 
-const chart = new ChartModel('Test Chart Name')
+let chartsArray: any = []
+let chart: any = {}
 
 export class ChartService {
-  charts: any
-  constructor(_charts: any) {
-    this.charts = _charts
+  parserData: any
+
+  constructor(_parserData: {}) {
+    this.parserData = _parserData
   }
-  static render() {
-    return `<h1>Hello ${chart.chartName}</h1>`
+
+  getChartOptions(chartKey: number = 0) {
+    return new ChartModel(this.parserData[chartKey]).getOptions()
+  }
+  async createChartObject(chartOptions: any) {
+    chart.divId = await chartOptions.chart.id
+    chart.chartAreaDiv = await`<div id="${chartOptions.chart.id}"></div>`
+    chart.options = await chartOptions
+    return await chart
+  }
+  async createCharts() {
+    for (let i = 0; i < this.parserData.length; i++) {
+      const options = await this.getChartOptions(i)
+      const chartObject = await this.createChartObject(options)
+      chartsArray[i] = await chartObject
+      chart = await {}
+    }
+  }
+  getCharts() {
+    try {
+      this.createCharts()
+      return chartsArray
+    } catch (error) {
+      console.log(`getCharts(): ${error}`)
+      return []
+    }
   }
 }

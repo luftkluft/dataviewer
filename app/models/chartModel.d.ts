@@ -1,4 +1,6 @@
 export declare class ChartModel {
-    chartName: string;
-    constructor(_chartName: string);
+    chartOptions: any;
+    constructor(options: any);
+    private dataCorrector;
+    getOptions(): any;
 }

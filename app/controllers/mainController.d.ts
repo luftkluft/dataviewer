@@ -1,3 +1,3 @@
 export declare class MainController {
-    static render(): string;
+    static render(): any;
 }
