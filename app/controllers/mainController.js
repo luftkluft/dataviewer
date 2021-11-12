@@ -12,7 +12,7 @@ var parserData = [
         ],
         chart: {
             id: 'tw3',
-            group: 'social2',
+            group: 'social',
             type: 'area',
             height: 160,
         },
@@ -45,7 +45,7 @@ var parserData = [
         ],
         chart: {
             id: 'tw4',
-            group: 'social2',
+            group: 'social',
             type: 'area',
             height: 160,
         },
