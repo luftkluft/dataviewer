@@ -15,7 +15,7 @@ export class ChartService {
   }
   async createChartObject(chartOptions: any) {
     chart.divId = await chartOptions.chart.id
-    chart.chartAreaDiv = await`<div id="${chartOptions.chart.id}"></div>`
+    chart.chartAreaDiv = await`<div id="${chartOptions.chart.id}" class="list-group-item"></div>`
     chart.options = await chartOptions
     return await chart
   }

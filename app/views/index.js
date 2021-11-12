@@ -39,9 +39,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var $ = require('jquery');
 var ApexCharts = require('apexcharts');
 var mainController_1 = require("../controllers/mainController");
+var Sortable = require('sortablejs');
 var charts = mainController_1.MainController.render();
 $(document).ready(function () { return __awaiter(void 0, void 0, void 0, function () {
-    var divChartsArea, rootArea, i, _a, _b, i, error_1;
+    var divChartsArea, rootArea, i, _a, _b, i, error_1, el, sortable;
     return __generator(this, function (_c) {
         switch (_c.label) {
             case 0:
@@ -86,7 +87,10 @@ $(document).ready(function () { return __awaiter(void 0, void 0, void 0, functio
                 error_1 = _c.sent();
                 console.log("new ApexCharts(): " + error_1);
                 return [3, 12];
-            case 12: return [2];
+            case 12:
+                el = document.getElementById('charts-area');
+                sortable = Sortable.create(el, { delay: 1000 });
+                return [2];
         }
     });
 }); });

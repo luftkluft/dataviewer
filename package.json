@@ -67,6 +67,7 @@
     "electron-alert": "0.1.19",
     "electron-db": "0.15.7",
     "electron-ejs": "1.2.1",
-    "jquery": "3.6.0"
+    "jquery": "3.6.0",
+    "sortablejs": "1.14.0"
   }
 }

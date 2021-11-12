@@ -59,7 +59,7 @@ var ChartService = (function () {
                     case 1:
                         _a.divId = _d.sent();
                         _b = chart;
-                        return [4, "<div id=\"" + chartOptions.chart.id + "\"></div>"];
+                        return [4, "<div id=\"" + chartOptions.chart.id + "\" class=\"list-group-item\"></div>"];
                     case 2:
                         _b.chartAreaDiv = _d.sent();
                         _c = chart;

@@ -1,6 +1,7 @@
 const $ = require('jquery')
 const ApexCharts = require('apexcharts')
 import { MainController } from '../controllers/mainController'
+const Sortable = require('sortablejs')
 const charts = MainController.render()
 
 $(document).ready(async () => {
@@ -30,4 +31,6 @@ $(document).ready(async () => {
       console.log(`new ApexCharts(): ${error}`)
     }
   }
+  const el = document.getElementById('charts-area')
+  const sortable = Sortable.create(el, { delay: 1000 })
 })
