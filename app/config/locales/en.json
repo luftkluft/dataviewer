@@ -18,7 +18,7 @@
   "help": "Help",
   "about": "About",
   "code": "github",
-    "change_app_mode": "Hide/show DevTools",
+  "change_app_mode": "Hide/show DevTools",
 
   "quit_the_application?": "Quit the application?",
   "required_restart_app": "App restart required"
