@@ -10,12 +10,13 @@ import { AppExitService } from '../services/app_exit_service/appExitService'
 import { windowAllClosedService } from '../services/window_all_closed_service/windowAllClosedService'
 import { menuTemplate } from '../components/menu/menu_template/menuTemplate'
 import { RestartAppService } from '../services/restart_app_service/restartAppService'
+import { closeChildWindows } from '../lib/close_child_windows/closeChildWindows'
 
 const { app, BrowserWindow, Menu } = require('electron')
 const appRoot = require('app-root-path')
 let electronEjs = require('electron-ejs')
 
-export let ejs = new electronEjs({
+let ejs = new electronEjs({
   name: 'Luft Kluft!',
   I18n,
   appName: APP_NAME,
@@ -50,6 +51,7 @@ app.once('ready', async () => {
 })
 
 app.on('update_app', () => {
+  closeChildWindows(mainWindow)
   mainWindow.reload()
   mainMenu = Menu.buildFromTemplate(menuTemplate())
   Menu.setApplicationMenu(mainMenu)

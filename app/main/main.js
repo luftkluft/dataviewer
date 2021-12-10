@@ -36,7 +36,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.mainWindow = exports.ejs = void 0;
+exports.mainWindow = void 0;
 var constants_1 = require("../constants/constants");
 var i18nService_1 = require("../services/i18n_service/i18nService");
 var initService_1 = require("../services/init_service/initService");
@@ -44,10 +44,11 @@ var appExitService_1 = require("../services/app_exit_service/appExitService");
 var windowAllClosedService_1 = require("../services/window_all_closed_service/windowAllClosedService");
 var menuTemplate_1 = require("../components/menu/menu_template/menuTemplate");
 var restartAppService_1 = require("../services/restart_app_service/restartAppService");
+var closeChildWindows_1 = require("../lib/close_child_windows/closeChildWindows");
 var _a = require('electron'), app = _a.app, BrowserWindow = _a.BrowserWindow, Menu = _a.Menu;
 var appRoot = require('app-root-path');
 var electronEjs = require('electron-ejs');
-exports.ejs = new electronEjs({
+var ejs = new electronEjs({
     name: 'Luft Kluft!',
     I18n: i18nService_1.I18n,
     appName: constants_1.APP_NAME,
@@ -90,6 +91,7 @@ app.once('ready', function () { return __awaiter(void 0, void 0, void 0, functio
     });
 }); });
 app.on('update_app', function () {
+    (0, closeChildWindows_1.closeChildWindows)(exports.mainWindow);
     exports.mainWindow.reload();
     mainMenu = Menu.buildFromTemplate((0, menuTemplate_1.menuTemplate)());
     Menu.setApplicationMenu(mainMenu);
