@@ -1,9 +1,9 @@
-export class ParserService{
+export class ParserService {
   parserData: {} = []
-  constructor(_parserData: {}){
+  constructor(_parserData: {}) {
     this.parserData = _parserData
   }
-  getParserData(){
+  getParserData() {
     // TODO
     return this.parserData
   }

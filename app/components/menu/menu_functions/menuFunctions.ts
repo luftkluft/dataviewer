@@ -1,8 +1,14 @@
 import { APP_GITHUB, EN_LOCALE, RU_LOCALE } from '../../../constants/constants'
 import { setCurrentLocale } from '../../../lib/set_current_locale/setCurrentLocale'
+import { I18n } from '../../../services/i18n_service/i18nService'
 
 const Alert = require('electron-alert')
 const { app, shell } = require('electron')
+
+import { mainWindow } from '../../../main/main'
+import { createChildWindow } from '../../../lib/create_child_window/createChildWindow'
+
+import { PARSER_CSV_EJS_PATH } from '../../../constants/constants'
 
 let swalOptions = {
   position: 'top-end',
@@ -23,9 +29,7 @@ export function fileExit() {
 }
 // =====
 export function csvParser() {
-  swalOptions.title = `csvParser()`
-  swalOptions.text = `Click`
-  Alert.fireToast(swalOptions)
+  createChildWindow(mainWindow, PARSER_CSV_EJS_PATH, I18n.t('parser_csv'))
 }
 // =====
 export function noSorting() {
@@ -54,7 +58,7 @@ export function about() {
   swalOptions.text = `Click`
   Alert.fireToast(swalOptions)
 }
-export function codeGithub(){
+export function codeGithub() {
   shell.openExternal(APP_GITHUB)
 }
 export async function changeAppMode() {

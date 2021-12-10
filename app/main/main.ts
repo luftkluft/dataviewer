@@ -15,14 +15,14 @@ const { app, BrowserWindow, Menu } = require('electron')
 const appRoot = require('app-root-path')
 let electronEjs = require('electron-ejs')
 
-let ejs = new electronEjs({
+export let ejs = new electronEjs({
   name: 'Luft Kluft!',
   I18n,
   appName: APP_NAME,
   shortcutIcon: appRoot + MAIN_ICON_PATH + MAIN_BIG_ICON_NAME,
 })
 
-let mainWindow: any
+export let mainWindow: any
 let mainMenu: any
 
 function createMainWindow() {

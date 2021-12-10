@@ -39,8 +39,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.changeAppMode = exports.codeGithub = exports.about = exports.setEnLanguage = exports.setRusLanguage = exports.manualSorting = exports.noSorting = exports.csvParser = exports.fileExit = exports.fileOpen = void 0;
 var constants_1 = require("../../../constants/constants");
 var setCurrentLocale_1 = require("../../../lib/set_current_locale/setCurrentLocale");
+var i18nService_1 = require("../../../services/i18n_service/i18nService");
 var Alert = require('electron-alert');
 var _a = require('electron'), app = _a.app, shell = _a.shell;
+var main_1 = require("../../../main/main");
+var createChildWindow_1 = require("../../../lib/create_child_window/createChildWindow");
+var constants_2 = require("../../../constants/constants");
 var swalOptions = {
     position: 'top-end',
     title: 'Title',
@@ -60,9 +64,7 @@ function fileExit() {
 }
 exports.fileExit = fileExit;
 function csvParser() {
-    swalOptions.title = "csvParser()";
-    swalOptions.text = "Click";
-    Alert.fireToast(swalOptions);
+    (0, createChildWindow_1.createChildWindow)(main_1.mainWindow, constants_2.PARSER_CSV_EJS_PATH, i18nService_1.I18n.t('parser_csv'));
 }
 exports.csvParser = csvParser;
 function noSorting() {

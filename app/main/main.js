@@ -36,6 +36,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.mainWindow = exports.ejs = void 0;
 var constants_1 = require("../constants/constants");
 var i18nService_1 = require("../services/i18n_service/i18nService");
 var initService_1 = require("../services/init_service/initService");
@@ -46,16 +47,15 @@ var restartAppService_1 = require("../services/restart_app_service/restartAppSer
 var _a = require('electron'), app = _a.app, BrowserWindow = _a.BrowserWindow, Menu = _a.Menu;
 var appRoot = require('app-root-path');
 var electronEjs = require('electron-ejs');
-var ejs = new electronEjs({
+exports.ejs = new electronEjs({
     name: 'Luft Kluft!',
     I18n: i18nService_1.I18n,
     appName: constants_1.APP_NAME,
     shortcutIcon: appRoot + constants_1.MAIN_ICON_PATH + constants_1.MAIN_BIG_ICON_NAME,
 });
-var mainWindow;
 var mainMenu;
 function createMainWindow() {
-    mainWindow = new BrowserWindow({
+    exports.mainWindow = new BrowserWindow({
         width: 800,
         height: 600,
         title: constants_1.APP_NAME,
@@ -65,9 +65,9 @@ function createMainWindow() {
             contextIsolation: false,
         },
     });
-    mainWindow.loadFile(appRoot + constants_1.APP_ENTER_INDEX_EJS_PATH);
+    exports.mainWindow.loadFile(appRoot + constants_1.APP_ENTER_INDEX_EJS_PATH);
     if (process.env.NODE_ENV !== 'production') {
-        mainWindow.webContents.openDevTools();
+        exports.mainWindow.webContents.openDevTools();
     }
 }
 app.once('ready', function () { return __awaiter(void 0, void 0, void 0, function () {
@@ -90,20 +90,20 @@ app.once('ready', function () { return __awaiter(void 0, void 0, void 0, functio
     });
 }); });
 app.on('update_app', function () {
-    mainWindow.reload();
+    exports.mainWindow.reload();
     mainMenu = Menu.buildFromTemplate((0, menuTemplate_1.menuTemplate)());
     Menu.setApplicationMenu(mainMenu);
 });
 app.on('change_app_mode', function () {
-    restartAppService_1.RestartAppService.restart(app, mainWindow);
+    restartAppService_1.RestartAppService.restart(app, exports.mainWindow);
 });
 app.on('create_main_window', function () {
     createMainWindow();
 });
 app.on('window-all-closed', function () {
-    windowAllClosedService_1.windowAllClosedService.ClosedAll(app, mainWindow);
+    windowAllClosedService_1.windowAllClosedService.ClosedAll(app, exports.mainWindow);
 });
 app.on('app_exit', function () {
-    appExitService_1.AppExitService.appExit(app, mainWindow);
+    appExitService_1.AppExitService.appExit(app, exports.mainWindow);
 });
 //# sourceMappingURL=main.js.map

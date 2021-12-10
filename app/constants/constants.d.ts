@@ -4,6 +4,7 @@ export declare const MAIN_ICON_PATH = "/app/public/icons/";
 export declare const MAIN_BIG_ICON_NAME = "app-256x256.png";
 export declare const MAIN_SMAII_ICON_NAME = "app-32x32.ico";
 export declare const APP_ENTER_INDEX_EJS_PATH = "/app/views/index.ejs";
+export declare const PARSER_CSV_EJS_PATH = "/app/views/parser_csv/parser_csv.ejs";
 export declare const BAD_STRING = "#####";
 export declare const DEFAULT_LOCALE = "en-US";
 export declare const EN_LOCALE = "en-US";
