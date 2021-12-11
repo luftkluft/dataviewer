@@ -2,6 +2,10 @@ body {
   margin: 10px;
 }
 
+#info{
+  font-size: 12px;
+}
+
 .glyphicon-move {
   cursor: move;
   cursor: -webkit-grabbing;

@@ -23,5 +23,8 @@
   "change_app_mode": "Hide/show DevTools",
 
   "quit_the_application?": "Quit the application?",
-  "required_restart_app": "App restart required"
+  "required_restart_app": "App restart required",
+
+  "target_file_path":"Target file path",
+  "target_file_name":"File"
 }

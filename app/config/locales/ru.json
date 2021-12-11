@@ -23,5 +23,8 @@
   "change_app_mode": "Скрыть/показать DevTools",
 
   "quit_the_application?": "Выйти из приложения?",
-  "required_restart_app": "Необходима перезагрузка приложения"
+  "required_restart_app": "Необходима перезагрузка приложения",
+
+  "target_file_path": "Путь к целевому файлу",
+  "target_file_name": "Файл"
 }

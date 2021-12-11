@@ -45,6 +45,7 @@ var windowAllClosedService_1 = require("../services/window_all_closed_service/wi
 var menuTemplate_1 = require("../components/menu/menu_template/menuTemplate");
 var restartAppService_1 = require("../services/restart_app_service/restartAppService");
 var closeChildWindows_1 = require("../lib/close_child_windows/closeChildWindows");
+var appInfo_1 = require("../lib/app_info/appInfo");
 var _a = require('electron'), app = _a.app, BrowserWindow = _a.BrowserWindow, Menu = _a.Menu;
 var appRoot = require('app-root-path');
 var electronEjs = require('electron-ejs');
@@ -86,6 +87,9 @@ app.once('ready', function () { return __awaiter(void 0, void 0, void 0, functio
                 return [4, Menu.setApplicationMenu(mainMenu)];
             case 4:
                 _a.sent();
+                return [4, exports.mainWindow.setTitle((0, appInfo_1.appInfo)(global))];
+            case 5:
+                _a.sent();
                 return [2];
         }
     });
@@ -95,6 +99,7 @@ app.on('update_app', function () {
     exports.mainWindow.reload();
     mainMenu = Menu.buildFromTemplate((0, menuTemplate_1.menuTemplate)());
     Menu.setApplicationMenu(mainMenu);
+    exports.mainWindow.setTitle((0, appInfo_1.appInfo)(global));
 });
 app.on('change_app_mode', function () {
     restartAppService_1.RestartAppService.restart(app, exports.mainWindow);

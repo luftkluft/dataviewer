@@ -11,6 +11,7 @@ import { windowAllClosedService } from '../services/window_all_closed_service/wi
 import { menuTemplate } from '../components/menu/menu_template/menuTemplate'
 import { RestartAppService } from '../services/restart_app_service/restartAppService'
 import { closeChildWindows } from '../lib/close_child_windows/closeChildWindows'
+import { appInfo } from '../lib/app_info/appInfo'
 
 const { app, BrowserWindow, Menu } = require('electron')
 const appRoot = require('app-root-path')
@@ -48,6 +49,7 @@ app.once('ready', async () => {
   await createMainWindow()
   mainMenu = await Menu.buildFromTemplate(menuTemplate())
   await Menu.setApplicationMenu(mainMenu)
+  await mainWindow.setTitle(appInfo(global))
 })
 
 app.on('update_app', () => {
@@ -55,6 +57,7 @@ app.on('update_app', () => {
   mainWindow.reload()
   mainMenu = Menu.buildFromTemplate(menuTemplate())
   Menu.setApplicationMenu(mainMenu)
+  mainWindow.setTitle(appInfo(global))
 })
 
 app.on('change_app_mode', () => {
