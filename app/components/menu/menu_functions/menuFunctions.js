@@ -67,9 +67,7 @@ function csvParser() {
 }
 exports.csvParser = csvParser;
 function noSorting() {
-    swalOptions.title = "noSorting()";
-    swalOptions.text = "Click";
-    Alert.fireToast(swalOptions);
+    (0, createChildWindow_1.createChildWindow)(main_1.mainWindow, constants_1.SORTING_NO_SORTING_EJS_PATH, i18nService_1.I18n.t('no_sorting'));
 }
 exports.noSorting = noSorting;
 function manualSorting() {
