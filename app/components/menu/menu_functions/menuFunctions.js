@@ -44,7 +44,6 @@ var Alert = require('electron-alert');
 var _a = require('electron'), app = _a.app, shell = _a.shell;
 var main_1 = require("../../../main/main");
 var createChildWindow_1 = require("../../../lib/create_child_window/createChildWindow");
-var constants_2 = require("../../../constants/constants");
 var swalOptions = {
     position: 'top-end',
     title: 'Title',
@@ -64,7 +63,7 @@ function fileExit() {
 }
 exports.fileExit = fileExit;
 function csvParser() {
-    (0, createChildWindow_1.createChildWindow)(main_1.mainWindow, constants_2.PARSER_CSV_EJS_PATH, i18nService_1.I18n.t('parser_csv'));
+    (0, createChildWindow_1.createChildWindow)(main_1.mainWindow, constants_1.PARSER_CSV_EJS_PATH, i18nService_1.I18n.t('parser_csv'));
 }
 exports.csvParser = csvParser;
 function noSorting() {
@@ -74,9 +73,7 @@ function noSorting() {
 }
 exports.noSorting = noSorting;
 function manualSorting() {
-    swalOptions.title = "manualSorting()";
-    swalOptions.text = "Click";
-    Alert.fireToast(swalOptions);
+    (0, createChildWindow_1.createChildWindow)(main_1.mainWindow, constants_1.SORTING_MANUAL_EJS_PATH, i18nService_1.I18n.t('sorting_manual'));
 }
 exports.manualSorting = manualSorting;
 function setRusLanguage() {

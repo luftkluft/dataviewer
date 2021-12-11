@@ -1,4 +1,10 @@
-import { APP_GITHUB, EN_LOCALE, RU_LOCALE } from '../../../constants/constants'
+import {
+  APP_GITHUB,
+  EN_LOCALE,
+  RU_LOCALE,
+  PARSER_CSV_EJS_PATH,
+  SORTING_MANUAL_EJS_PATH,
+} from '../../../constants/constants'
 import { setCurrentLocale } from '../../../lib/set_current_locale/setCurrentLocale'
 import { I18n } from '../../../services/i18n_service/i18nService'
 
@@ -7,8 +13,6 @@ const { app, shell } = require('electron')
 
 import { mainWindow } from '../../../main/main'
 import { createChildWindow } from '../../../lib/create_child_window/createChildWindow'
-
-import { PARSER_CSV_EJS_PATH } from '../../../constants/constants'
 
 let swalOptions = {
   position: 'top-end',
@@ -39,9 +43,7 @@ export function noSorting() {
 }
 // =====
 export function manualSorting() {
-  swalOptions.title = `manualSorting()`
-  swalOptions.text = `Click`
-  Alert.fireToast(swalOptions)
+  createChildWindow(mainWindow, SORTING_MANUAL_EJS_PATH, I18n.t('sorting_manual'))
 }
 // =====
 export async function setRusLanguage() {
