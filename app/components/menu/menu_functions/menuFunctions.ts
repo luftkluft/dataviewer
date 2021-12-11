@@ -4,7 +4,6 @@ import {
   RU_LOCALE,
   PARSER_CSV_EJS_PATH,
   SORTING_MANUAL_EJS_PATH,
-  SORTING_NO_SORTING_EJS_PATH,
 } from '../../../constants/constants'
 import { setCurrentLocale } from '../../../lib/set_current_locale/setCurrentLocale'
 import { I18n } from '../../../services/i18n_service/i18nService'
@@ -38,11 +37,9 @@ export function csvParser() {
 }
 // =====
 export function noSorting() {
-  createChildWindow(
-    mainWindow,
-    SORTING_NO_SORTING_EJS_PATH,
-    I18n.t('no_sorting')
-  )
+  swalOptions.title = `noSorting()`
+  swalOptions.text = `Click`
+  Alert.fireToast(swalOptions)
 }
 // =====
 export function manualSorting() {
