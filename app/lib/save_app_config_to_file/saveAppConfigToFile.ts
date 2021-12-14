@@ -24,6 +24,7 @@ export async function saveAppConfigToFile() {
       Alert.fireToast(swOp)
     }
     global.app_config.app_mode = await process.env.NODE_ENV
+    global.app_config.file_content = await ""
     const app_config = await global.app_config
     const newData = await JSON.stringify(app_config)
     await fs.writeFileSync(

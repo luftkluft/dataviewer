@@ -14,10 +14,14 @@ var fileContent = function (_fileName) {
     }
     return fileContent;
 };
+var setGlobalFileContent = function () {
+    ipcRenderer.send('set_global_file_content', fileContent(fileField.value));
+};
 form.addEventListener('submit', function (event) {
     event.preventDefault();
     var memo = document.getElementById('memo');
     memo.value = fileContent(fileField.value);
+    setGlobalFileContent();
 });
 var chooseFile = function () {
     console.log("chooseFile");

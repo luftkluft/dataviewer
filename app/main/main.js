@@ -118,4 +118,7 @@ ipcMain.on('target_path_file', function (event, arg) {
     var result = global.app_config.target_file_path + global.app_config.target_file_name;
     event.returnValue = result;
 });
+ipcMain.on('set_global_file_content', function (event, arg) {
+    global.app_config.file_content = arg;
+});
 //# sourceMappingURL=main.js.map

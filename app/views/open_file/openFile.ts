@@ -13,11 +13,14 @@ const fileContent = (_fileName: string) => {
   }
   return fileContent
 }
+const setGlobalFileContent = () => {
+  ipcRenderer.send('set_global_file_content', fileContent(fileField.value))
+}
 form.addEventListener('submit', function (event: any) {
   event.preventDefault()
-  //const formData: {} = { file: fileField.value }
   const memo: any = document.getElementById('memo')
   memo.value = fileContent(fileField.value)
+  setGlobalFileContent()
 })
 const chooseFile = () => {
   console.log(`chooseFile`)
