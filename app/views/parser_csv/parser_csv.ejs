@@ -13,18 +13,47 @@
   </head>
 
   <body>
-    <form class='form'>
+    <form class='parser-form'>
       <div>
         <div>
-          <label><%= I18n.t('file') %>:</label>
+          <label><%= I18n.t('target_file_name') %>:</label>
         </div>
         <div>
-          <input type='text' class='file-field' />
-          <button type='button' class='load-file-btn'>...</button>
+          <input type='text' class='target-file-name-field' />
         </div>
-      </div>
-      <div>
-        <button type='submit' class='parser-btn'>TODO</button>
+        <div class="field">
+          <label><%= I18n.t('end_row') %>:</label>
+          <input type='text' class='end-row-field' list="end-row" />
+          <datalist id="end-row">
+            <option value="\n">
+            <option value="\r">
+          </datalist>
+        </div>
+        <div class="field">
+          <label><%= I18n.t('delemiter') %>:</label>
+          <input type='text' class='delemiter-field' list="delemiter" />
+          <datalist id="delemiter">
+            <option value="'">
+            <option value=":">
+          </datalist>
+        </div>
+        <div class="field">
+          <label><%= I18n.t('rows') %>:</label>
+          <input type='text' class='rows-field' list="rows" />
+          <datalist id="rows">
+            <option value="0">
+          </datalist>
+        </div>
+        <div class="field">
+          <label><%= I18n.t('columns') %>:</label>
+          <input type='text' class='columns-field' list="columns" />
+          <datalist id="columns">
+            <option value="0">
+          </datalist>
+        </div>
+        <div class="field">
+          <button type='submit' class='set-parser-params-btn'>TODO</button>
+        </div>
       </div>
     </form>
     <script>const exports = { "__esModule": true }</script>

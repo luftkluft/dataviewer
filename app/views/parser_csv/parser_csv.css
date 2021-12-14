@@ -7,7 +7,7 @@ body {
   cursor: -webkit-grabbing;
 }
 
-.form {
+.parser-form {
   display: inline-block;
   width: 100%;
   margin-left: auto;
@@ -21,14 +21,22 @@ body {
   border-radius: 5px;
 }
 
-.parser-btn{
+.set-parser-params-btn {
   margin-top: 15px;
 }
 
-.load-file-btn{
-  width: 10%;
+.target-file-name-field {
+  width: 100%;
 }
 
-.file-field{
-  width: 89%;
+.field {
+  clear: both;
+  text-align: right;
+  line-height: 25px;
+  margin-top: 5px;
+}
+
+label {
+  float: left;
+  padding-right: 10px;
 }

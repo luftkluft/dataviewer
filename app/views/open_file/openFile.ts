@@ -4,8 +4,8 @@ const form: any = document.querySelector('.form')
 const fileField = form.querySelector('.file-field')
 fileField.value = ipcRenderer.sendSync('target_path_file')
 
-const fileContent = (_fileName: string) => {
-  let fileContent: string = ''
+const fileContent = (_fileName: any) => {
+  let fileContent: any = ''
   try {
     fileContent = fs.readFileSync(_fileName, 'utf8')
   } catch (error) {

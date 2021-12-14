@@ -27,5 +27,10 @@
 
   "target_file_path":"Target file path",
   "target_file_name":"Target file",
-  "last_opened_file": "Last opened file"
+  "last_opened_file": "Last opened file",
+
+  "end_row": "End row",
+  "delemiter": "Delemiter",
+  "rows": "Number of rows",
+  "columns": "Number of columns"
 }
