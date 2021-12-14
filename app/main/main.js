@@ -47,6 +47,7 @@ var restartAppService_1 = require("../services/restart_app_service/restartAppSer
 var closeChildWindows_1 = require("../lib/close_child_windows/closeChildWindows");
 var appInfo_1 = require("../lib/app_info/appInfo");
 var _a = require('electron'), app = _a.app, BrowserWindow = _a.BrowserWindow, Menu = _a.Menu;
+var ipcMain = require('electron').ipcMain;
 var appRoot = require('app-root-path');
 var electronEjs = require('electron-ejs');
 var ejs = new electronEjs({
@@ -112,5 +113,9 @@ app.on('window-all-closed', function () {
 });
 app.on('app_exit', function () {
     appExitService_1.AppExitService.appExit(app, exports.mainWindow);
+});
+ipcMain.on('target_path_file', function (event, arg) {
+    var result = global.app_config.target_file_path + global.app_config.target_file_name;
+    event.returnValue = result;
 });
 //# sourceMappingURL=main.js.map

@@ -4,6 +4,7 @@ import {
   RU_LOCALE,
   PARSER_CSV_EJS_PATH,
   SORTING_MANUAL_EJS_PATH,
+  OPEN_FILE_EJS_PATH,
 } from '../../../constants/constants'
 import { setCurrentLocale } from '../../../lib/set_current_locale/setCurrentLocale'
 import { I18n } from '../../../services/i18n_service/i18nService'
@@ -24,9 +25,7 @@ let swalOptions = {
 }
 
 export function fileOpen() {
-  swalOptions.title = `fileOpen()`
-  swalOptions.text = `Click`
-  Alert.fireToast(swalOptions)
+  createChildWindow(mainWindow, OPEN_FILE_EJS_PATH, I18n.t('file'))
 }
 export function fileExit() {
   app.emit('app_exit')

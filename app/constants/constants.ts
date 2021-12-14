@@ -5,6 +5,7 @@ export const MAIN_BIG_ICON_NAME = 'app-256x256.png'
 export const MAIN_SMAII_ICON_NAME = 'app-32x32.ico'
 export const APP_ENTER_INDEX_EJS_PATH = '/app/views/index.ejs'
 export const PARSER_CSV_EJS_PATH = '/app/views/parser_csv/parser_csv.ejs'
+export const OPEN_FILE_EJS_PATH = '/app/views/open_file/open_file.ejs'
 export const SORTING_MANUAL_EJS_PATH =
   '/app/views/sorting_manual/sorting_manual.ejs'
 export const BAD_STRING = '#####'

@@ -14,6 +14,7 @@ import { closeChildWindows } from '../lib/close_child_windows/closeChildWindows'
 import { appInfo } from '../lib/app_info/appInfo'
 
 const { app, BrowserWindow, Menu } = require('electron')
+const { ipcMain } = require('electron')
 const appRoot = require('app-root-path')
 let electronEjs = require('electron-ejs')
 
@@ -74,4 +75,9 @@ app.on('window-all-closed', () => {
 
 app.on('app_exit', () => {
   AppExitService.appExit(app, mainWindow)
+})
+
+ipcMain.on('target_path_file', (event: any, arg: any) => {
+  const result = global.app_config.target_file_path + global.app_config.target_file_name
+  event.returnValue = result
 })

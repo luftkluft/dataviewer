@@ -6,6 +6,8 @@ var ParserService = (function () {
         this.parserData = [];
         this.parserData = _parserData;
     }
+    ParserService.prototype.getDataFromFile = function () {
+    };
     ParserService.prototype.getParserData = function () {
         return this.parserData;
     };

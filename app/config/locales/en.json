@@ -26,5 +26,6 @@
   "required_restart_app": "App restart required",
 
   "target_file_path":"Target file path",
-  "target_file_name":"File"
+  "target_file_name":"Target file",
+  "last_opened_file": "Last opened file"
 }

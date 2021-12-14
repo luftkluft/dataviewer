@@ -53,9 +53,7 @@ var swalOptions = {
     timer: 10000,
 };
 function fileOpen() {
-    swalOptions.title = "fileOpen()";
-    swalOptions.text = "Click";
-    Alert.fireToast(swalOptions);
+    (0, createChildWindow_1.createChildWindow)(main_1.mainWindow, constants_1.OPEN_FILE_EJS_PATH, i18nService_1.I18n.t('file'));
 }
 exports.fileOpen = fileOpen;
 function fileExit() {

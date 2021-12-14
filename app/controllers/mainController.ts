@@ -212,6 +212,7 @@ const testData: {} = [
 ]
 
 export class MainController {
+  // TODO make singleton
   parseredData: {} = []
   parserData(){
     // TODO data source
