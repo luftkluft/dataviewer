@@ -49,6 +49,8 @@ var appInfo_1 = require("../lib/app_info/appInfo");
 var _a = require('electron'), app = _a.app, BrowserWindow = _a.BrowserWindow, Menu = _a.Menu;
 var ipcMain = require('electron').ipcMain;
 var appRoot = require('app-root-path');
+var dialog = require('electron').dialog;
+var _b = require('path'), basename = _b.basename, dirname = _b.dirname;
 var electronEjs = require('electron-ejs');
 var ejs = new electronEjs({
     name: 'Luft Kluft!',
@@ -132,5 +134,27 @@ ipcMain.on('get_csv_params', function (event, arg) {
 ipcMain.on('set_csv_params', function (event, arg) {
     global.app_config.csv_params = arg;
     app.emit('update_app');
+});
+ipcMain.on('open-file-dialog', function (event) {
+    dialog
+        .showOpenDialog({ properties: ['openFile'] })
+        .then(function (response) {
+        if (!response.canceled) {
+            var result = response.filePaths[0];
+            global.app_config.target_file_name = basename(result);
+            global.app_config.target_file_path = dirname(result) + "/";
+            global.app_config.last_opened_file = result;
+            event.returnValue = result;
+        }
+        else {
+            event.returnValue = 'no_file_selected';
+        }
+    });
+});
+ipcMain.on('open-file', function (event, arg) {
+    exports.mainWindow.setTitle((0, appInfo_1.appInfo)(global));
+});
+ipcMain.on('i18n', function (event, arg) {
+    event.returnValue = i18nService_1.I18n.t(arg);
 });
 //# sourceMappingURL=main.js.map

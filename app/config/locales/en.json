@@ -28,6 +28,7 @@
   "target_file_path":"Target file path",
   "target_file_name":"Target file",
   "last_opened_file": "Last opened file",
+  "no_file_selected": "No file selected!",
 
   "head_rows": "Number of rows in table head",
   "end_row": "End row",

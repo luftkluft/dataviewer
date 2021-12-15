@@ -21,7 +21,14 @@ form.addEventListener('submit', function (event: any) {
   const memo: any = document.getElementById('memo')
   memo.value = fileContent(fileField.value)
   setGlobalFileContent()
+  ipcRenderer.send('open-file')
 })
 const chooseFile = () => {
-  console.log(`chooseFile`)
+  const path = ipcRenderer.sendSync('open-file-dialog')
+  if (path == 'no_file_selected') {
+    const memo: any = document.getElementById('memo')
+    memo.value = ipcRenderer.sendSync('i18n', path)
+  } else {
+    fileField.value = path
+  }
 }

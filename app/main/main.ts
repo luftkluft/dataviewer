@@ -16,6 +16,8 @@ import { appInfo } from '../lib/app_info/appInfo'
 const { app, BrowserWindow, Menu } = require('electron')
 const { ipcMain } = require('electron')
 const appRoot = require('app-root-path')
+const dialog = require('electron').dialog
+const { basename, dirname } = require('path')
 let electronEjs = require('electron-ejs')
 
 let ejs = new electronEjs({
@@ -99,4 +101,28 @@ ipcMain.on('get_csv_params', (event: any, arg: any) => {
 ipcMain.on('set_csv_params', (event: any, arg: any) => {
   global.app_config.csv_params = arg
   app.emit('update_app')
+})
+
+ipcMain.on('open-file-dialog', function (event: any) {
+  dialog
+    .showOpenDialog({ properties: ['openFile'] })
+    .then(function (response: any) {
+      if (!response.canceled) {
+        const result = response.filePaths[0]
+        global.app_config.target_file_name = basename(result)
+        global.app_config.target_file_path = `${dirname(result)}/`
+        global.app_config.last_opened_file = result
+        event.returnValue = result
+      } else {
+        event.returnValue = 'no_file_selected'
+      }
+    })
+})
+
+ipcMain.on('open-file', (event: any, arg: any) => {
+  mainWindow.setTitle(appInfo(global))
+})
+
+ipcMain.on('i18n', (event: any, arg: any) => {
+  event.returnValue = I18n.t(arg)
 })

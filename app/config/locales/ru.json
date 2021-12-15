@@ -28,6 +28,7 @@
   "target_file_path": "Путь к целевому файлу",
   "target_file_name": "Целевой файл",
   "last_opened_file": "Последний открытый файл",
+  "no_file_selected": "Файл не выбран!",
 
   "head_rows": "Число строк в шапке таблицы",
   "end_row": "Конец строки",

@@ -22,8 +22,16 @@ form.addEventListener('submit', function (event) {
     var memo = document.getElementById('memo');
     memo.value = fileContent(fileField.value);
     setGlobalFileContent();
+    ipcRenderer.send('open-file');
 });
 var chooseFile = function () {
-    console.log("chooseFile");
+    var path = ipcRenderer.sendSync('open-file-dialog');
+    if (path == 'no_file_selected') {
+        var memo = document.getElementById('memo');
+        memo.value = ipcRenderer.sendSync('i18n', path);
+    }
+    else {
+        fileField.value = path;
+    }
 };
 //# sourceMappingURL=openFile.js.map
