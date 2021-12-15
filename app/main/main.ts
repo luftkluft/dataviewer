@@ -83,5 +83,5 @@ ipcMain.on('target_path_file', (event: any, arg: any) => {
 })
 
 ipcMain.on('set_global_file_content', (event: any, arg: any) => {
-  global.app_config.file_content = arg
+  global.file_content = arg
 })

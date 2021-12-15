@@ -119,6 +119,6 @@ ipcMain.on('target_path_file', function (event, arg) {
     event.returnValue = result;
 });
 ipcMain.on('set_global_file_content', function (event, arg) {
-    global.app_config.file_content = arg;
+    global.file_content = arg;
 });
 //# sourceMappingURL=main.js.map
