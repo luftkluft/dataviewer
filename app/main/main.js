@@ -125,4 +125,12 @@ ipcMain.on('target_file_name', function (event, arg) {
 ipcMain.on('set_global_file_content', function (event, arg) {
     global.file_content = arg;
 });
+ipcMain.on('get_csv_params', function (event, arg) {
+    var result = global.app_config.csv_params;
+    event.returnValue = result;
+});
+ipcMain.on('set_csv_params', function (event, arg) {
+    global.app_config.csv_params = arg;
+    app.emit('update_app');
+});
 //# sourceMappingURL=main.js.map

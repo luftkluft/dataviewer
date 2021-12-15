@@ -22,9 +22,9 @@
           <input type='text' class='target-file-name-field' />
         </div>
         <div class="field">
-          <label><%= I18n.t('head_row') %>:</label>
-          <input type='text' class='head-row-field' list="head-row" />
-          <datalist id="head-row">
+          <label><%= I18n.t('head_rows') %>:</label>
+          <input type='text' class='head-rows-field' list="head-rows" />
+          <datalist id="head-rows">
             <option value="0">
             <option value="1">
             <option value="2">
@@ -62,7 +62,7 @@
           </datalist>
         </div>
         <div class="field">
-          <button type='submit' class='set-parser-params-btn'>TODO</button>
+          <button type='submit' class='set-parser-params-btn'><%= I18n.t('set_csv_params') %></button>
         </div>
       </div>
     </form>
