@@ -22,6 +22,16 @@
           <input type='text' class='target-file-name-field' />
         </div>
         <div class="field">
+          <label><%= I18n.t('head_row') %>:</label>
+          <input type='text' class='head-row-field' list="head-row" />
+          <datalist id="head-row">
+            <option value="0">
+            <option value="1">
+            <option value="2">
+            <option value="3">
+          </datalist>
+        </div>
+        <div class="field">
           <label><%= I18n.t('end_row') %>:</label>
           <input type='text' class='end-row-field' list="end-row" />
           <datalist id="end-row">

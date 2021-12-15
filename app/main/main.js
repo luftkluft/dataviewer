@@ -114,8 +114,12 @@ app.on('window-all-closed', function () {
 app.on('app_exit', function () {
     appExitService_1.AppExitService.appExit(app, exports.mainWindow);
 });
-ipcMain.on('target_path_file', function (event, arg) {
-    var result = global.app_config.target_file_path + global.app_config.target_file_name;
+ipcMain.on('last_opened_file', function (event, arg) {
+    var result = global.app_config.last_opened_file;
+    event.returnValue = result;
+});
+ipcMain.on('target_file_name', function (event, arg) {
+    var result = global.app_config.target_file_name;
     event.returnValue = result;
 });
 ipcMain.on('set_global_file_content', function (event, arg) {

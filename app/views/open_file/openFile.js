@@ -3,7 +3,7 @@ var fs = require('fs');
 var ipcRenderer = require('electron').ipcRenderer;
 var form = document.querySelector('.form');
 var fileField = form.querySelector('.file-field');
-fileField.value = ipcRenderer.sendSync('target_path_file');
+fileField.value = ipcRenderer.sendSync('last_opened_file');
 var fileContent = function (_fileName) {
     var fileContent = '';
     try {

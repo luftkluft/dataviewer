@@ -1,1 +1,1 @@
-{"version":3,"file":"parserCSV.js","sourceRoot":"","sources":["parserCSV.ts"],"names":[],"mappings":""}
+{"version":3,"file":"parserCSV.js","sourceRoot":"","sources":["parserCSV.ts"],"names":[],"mappings":";AAAA,IAAM,cAAc,GAAG,OAAO,CAAC,UAAU,CAAC,CAAC,WAAW,CAAA;AACtD,IAAM,OAAO,GAAQ,QAAQ,CAAC,aAAa,CAAC,cAAc,CAAC,CAAA;AAC3D,IAAM,YAAY,GAAG,OAAO,CAAC,aAAa,CAAC,yBAAyB,CAAC,CAAA;AACrE,YAAY,CAAC,KAAK,GAAG,cAAc,CAAC,QAAQ,CAAC,kBAAkB,CAAC,CAAA;AAChE,OAAO,CAAC,gBAAgB,CAAC,QAAQ,EAAE,UAAU,KAAU;IACrD,KAAK,CAAC,cAAc,EAAE,CAAA;IACtB,OAAO,CAAC,GAAG,CAAC,WAAW,CAAC,CAAA;AAC1B,CAAC,CAAC,CAAA"}

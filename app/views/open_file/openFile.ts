@@ -2,7 +2,7 @@ const fs = require('fs')
 const { ipcRenderer } = require('electron')
 const form: any = document.querySelector('.form')
 const fileField = form.querySelector('.file-field')
-fileField.value = ipcRenderer.sendSync('target_path_file')
+fileField.value = ipcRenderer.sendSync('last_opened_file')
 
 const fileContent = (_fileName: any) => {
   let fileContent: any = ''

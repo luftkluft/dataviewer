@@ -77,8 +77,13 @@ app.on('app_exit', () => {
   AppExitService.appExit(app, mainWindow)
 })
 
-ipcMain.on('target_path_file', (event: any, arg: any) => {
-  const result = global.app_config.target_file_path + global.app_config.target_file_name
+ipcMain.on('last_opened_file', (event: any, arg: any) => {
+  const result = global.app_config.last_opened_file
+  event.returnValue = result
+})
+
+ipcMain.on('target_file_name', (event: any, arg: any) => {
+  const result = global.app_config.target_file_name
   event.returnValue = result
 })
 

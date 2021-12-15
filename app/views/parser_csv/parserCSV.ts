@@ -1,8 +1,8 @@
-// const { ipcRenderer } = require('electron')
-// const form: any = document.querySelector('.form')
-// const fileField = form.querySelector('.file-field')
-// fileField.value = ipcRenderer.sendSync('target_path_file')
-// form.addEventListener('submit', function (event: any) {
-//   event.preventDefault()
-//   const formData: {} = {"file": fileField.value}
-// })
+const ipcCsvRenderer = require('electron').ipcRenderer
+const formCsv: any = document.querySelector('.parser-form')
+const fileCsvField = formCsv.querySelector('.target-file-name-field')
+fileCsvField.value = ipcCsvRenderer.sendSync('target_file_name')
+formCsv.addEventListener('submit', function (event: any) {
+  event.preventDefault()
+  console.log(`csv click`)
+})
