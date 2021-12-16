@@ -13,9 +13,11 @@ const fileContent = (_fileName: any) => {
   }
   return fileContent
 }
+
 const setGlobalFileContent = () => {
   ipcRenderer.send('set_global_file_content', fileContent(fileField.value))
 }
+
 form.addEventListener('submit', function (event: any) {
   event.preventDefault()
   const memo: any = document.getElementById('memo')
@@ -23,12 +25,24 @@ form.addEventListener('submit', function (event: any) {
   setGlobalFileContent()
   ipcRenderer.send('open-file')
 })
+
+const fileStat = (stat: any) => {
+  return `birthtime: ${stat.birthtime}\nmtime: ${stat.mtime}\nctime: ${stat.ctime}\nsize: ${stat.size}`
+}
+
 const chooseFile = () => {
   const path = ipcRenderer.sendSync('open-file-dialog')
+  const memo: any = document.getElementById('memo')
   if (path == 'no_file_selected') {
-    const memo: any = document.getElementById('memo')
     memo.value = ipcRenderer.sendSync('i18n', path)
   } else {
     fileField.value = path
+    fs.stat(path, function (err: any, stat: any) {
+      if (err) {
+        memo.value = err
+      } else {
+        memo.value = fileStat(stat)
+      }
+    })
   }
 }

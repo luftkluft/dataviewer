@@ -24,14 +24,25 @@ form.addEventListener('submit', function (event) {
     setGlobalFileContent();
     ipcRenderer.send('open-file');
 });
+var fileStat = function (stat) {
+    return "birthtime: " + stat.birthtime + "\nmtime: " + stat.mtime + "\nctime: " + stat.ctime + "\nsize: " + stat.size;
+};
 var chooseFile = function () {
     var path = ipcRenderer.sendSync('open-file-dialog');
+    var memo = document.getElementById('memo');
     if (path == 'no_file_selected') {
-        var memo = document.getElementById('memo');
         memo.value = ipcRenderer.sendSync('i18n', path);
     }
     else {
         fileField.value = path;
+        fs.stat(path, function (err, stat) {
+            if (err) {
+                memo.value = err;
+            }
+            else {
+                memo.value = fileStat(stat);
+            }
+        });
     }
 };
 //# sourceMappingURL=openFile.js.map
