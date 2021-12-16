@@ -21,23 +21,23 @@ body {
   border-radius: 5px;
 }
 
-.open-file-btn{
+.open-file-btn {
   margin-top: 15px;
 }
 
-.choose-file-btn{
+.choose-file-btn {
   width: 10%;
 }
 
-.file-field{
+.file-field {
   width: 89%;
 }
 
-div.content{
+div.content {
   height: calc(100% - 70px);
 }
 
-textarea.memo{
+textarea.memo {
   height: 100%;
   width: 100%;
   outline: none;
@@ -45,8 +45,12 @@ textarea.memo{
   margin-top: 10px;
   background-color: #d4d4d4;
   border: none;
-  color: #1B1811;
+  color: #1b1811;
   font-size: 10pt;
   /* overflow-y: scroll; */
   overflow: scroll;
+}
+
+.show-data-btn {
+  margin-top: 15px;
 }

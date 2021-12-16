@@ -124,8 +124,12 @@ ipcMain.on('target_file_name', function (event, arg) {
     var result = global.app_config.target_file_name;
     event.returnValue = result;
 });
-ipcMain.on('set_global_file_content', function (event, arg) {
-    global.file_content = arg;
+ipcMain.on('set_file_content', function (event, arg) {
+    global.app_config.file_content = arg;
+});
+ipcMain.on('get_file_content', function (event, arg) {
+    var result = global.app_config.file_content;
+    event.returnValue = result;
 });
 ipcMain.on('get_csv_params', function (event, arg) {
     var result = global.app_config.csv_params;
@@ -153,6 +157,9 @@ ipcMain.on('open-file-dialog', function (event) {
 });
 ipcMain.on('open-file', function (event, arg) {
     exports.mainWindow.setTitle((0, appInfo_1.appInfo)(global));
+});
+ipcMain.on('update_app', function (event, arg) {
+    app.emit('update_app');
 });
 ipcMain.on('i18n', function (event, arg) {
     event.returnValue = i18nService_1.I18n.t(arg);

@@ -15,7 +15,7 @@ var fileContent = function (_fileName) {
     return fileContent;
 };
 var setGlobalFileContent = function () {
-    ipcRenderer.send('set_global_file_content', fileContent(fileField.value));
+    ipcRenderer.send('set_file_content', fileContent(fileField.value));
 };
 form.addEventListener('submit', function (event) {
     event.preventDefault();
@@ -44,5 +44,8 @@ var chooseFile = function () {
             }
         });
     }
+};
+var showData = function () {
+    ipcRenderer.sendSync('update_app');
 };
 //# sourceMappingURL=openFile.js.map

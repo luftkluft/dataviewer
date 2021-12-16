@@ -15,7 +15,7 @@ const fileContent = (_fileName: any) => {
 }
 
 const setGlobalFileContent = () => {
-  ipcRenderer.send('set_global_file_content', fileContent(fileField.value))
+  ipcRenderer.send('set_file_content', fileContent(fileField.value))
 }
 
 form.addEventListener('submit', function (event: any) {
@@ -45,4 +45,8 @@ const chooseFile = () => {
       }
     })
   }
+}
+
+const showData = () => {
+  ipcRenderer.sendSync('update_app')
 }

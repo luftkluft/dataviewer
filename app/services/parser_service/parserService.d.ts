@@ -1,6 +1,6 @@
 export declare class ParserService {
-    parserData: {};
-    constructor(_parserData: {});
-    getDataFromFile(): void;
-    getParserData(): {};
+    parseredData: {};
+    private getDataFromFile;
+    private parsering;
+    getParseredData(): {};
 }

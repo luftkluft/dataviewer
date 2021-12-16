@@ -29,6 +29,10 @@
   "target_file_name":"Target file",
   "last_opened_file": "Last opened file",
   "no_file_selected": "No file selected!",
+  "no_data": "No data!",
+  "empty_label": "Empty label",
+  "empty_text": "Empty text",
+  "show_data": "Show data",
 
   "head_rows": "Number of rows in table head",
   "first_column_name": "First column name",

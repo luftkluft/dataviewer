@@ -78,7 +78,7 @@ function saveAppConfigToFile() {
                     return [4, process.env.NODE_ENV];
                 case 5:
                     _a.app_mode = _c.sent();
-                    _b = global;
+                    _b = global.app_config;
                     return [4, ""];
                 case 6:
                     _b.file_content = _c.sent();
