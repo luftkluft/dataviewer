@@ -9,6 +9,9 @@ const csvParams = ipcCsvRenderer.sendSync('get_csv_params')
 const headRowsField = formCsv.querySelector('.head-rows-field')
 headRowsField.value = csvParams.head_rows
 
+const firstColumnName = formCsv.querySelector('.first-column-name-field')
+firstColumnName.value = csvParams.first_column_name
+
 const endRowField = formCsv.querySelector('.end-row-field')
 endRowField.value = csvParams.end_row
 
@@ -23,6 +26,7 @@ columns.value = csvParams.columns
 
 const setCsvParams = () => {
   csvParams.head_rows = headRowsField.value
+  csvParams.first_column_name = firstColumnName.value
   csvParams.end_row = endRowField.value
   csvParams.delemiter = delemiter.value
   csvParams.rows = rows.value

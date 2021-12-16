@@ -32,6 +32,13 @@
           </datalist>
         </div>
         <div class="field">
+          <label><%= I18n.t('first_column_name') %>:</label>
+          <input type='text' class='first-column-name-field' list="first-column-name" />
+          <datalist id="head-rows">
+            <option value="default">
+          </datalist>
+        </div>
+        <div class="field">
           <label><%= I18n.t('end_row') %>:</label>
           <input type='text' class='end-row-field' list="end-row" />
           <datalist id="end-row">

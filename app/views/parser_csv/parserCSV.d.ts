@@ -3,6 +3,7 @@ declare const formCsv: any;
 declare const fileCsvField: any;
 declare const csvParams: any;
 declare const headRowsField: any;
+declare const firstColumnName: any;
 declare const endRowField: any;
 declare const delemiter: any;
 declare const rows: any;
