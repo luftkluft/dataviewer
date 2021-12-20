@@ -164,4 +164,8 @@ ipcMain.on('update_app', function (event, arg) {
 ipcMain.on('i18n', function (event, arg) {
     event.returnValue = i18nService_1.I18n.t(arg);
 });
+ipcMain.on('get_parser_status', function (event, arg) {
+    var result = global.app_config.parser;
+    event.returnValue = result;
+});
 //# sourceMappingURL=main.js.map

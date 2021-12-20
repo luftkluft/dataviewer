@@ -121,6 +121,27 @@ var ParserService = (function () {
             return '';
         }
     };
+    ParserService.prototype.getParserStatus = function () {
+        try {
+            var result = ipcPServiceRenderer.sendSync('get_parser_status');
+            return result;
+        }
+        catch (error) {
+            console.log("getParserStatus(): " + error);
+            return '';
+        }
+    };
+    ParserService.prototype.doParsering = function (dataFromFile) {
+        var parser = this.getParserStatus();
+        switch (parser) {
+            case 'parser_csv':
+                return testData;
+                break;
+            default:
+                return emptyData;
+                break;
+        }
+    };
     ParserService.prototype.parsering = function () {
         try {
             var dataFromFile = this.getDataFromFile();
@@ -128,7 +149,7 @@ var ParserService = (function () {
                 return emptyData;
             }
             else {
-                return testData;
+                return this.doParsering(dataFromFile);
             }
         }
         catch (error) {

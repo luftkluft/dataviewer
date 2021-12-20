@@ -122,13 +122,35 @@ export class ParserService {
     }
   }
 
+  private getParserStatus() {
+    try {
+      const result = ipcPServiceRenderer.sendSync('get_parser_status')
+      return result
+    } catch (error) {
+      console.log(`getParserStatus(): ${error}`)
+      return ''
+    }
+  }
+
+  private doParsering(dataFromFile: any) {
+    const parser = this.getParserStatus()
+    switch (parser) {
+      case 'parser_csv':
+        return testData
+        break
+      default:
+        return emptyData
+        break
+    }
+  }
+
   private parsering() {
     try {
       const dataFromFile = this.getDataFromFile()
       if (dataFromFile == '' || dataFromFile == undefined) {
         return emptyData
       } else {
-        return testData
+        return this.doParsering(dataFromFile)
       }
     } catch (error) {
       console.log(`parsering(): ${error}`)

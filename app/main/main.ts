@@ -135,3 +135,8 @@ ipcMain.on('update_app', (event: any, arg: any) => {
 ipcMain.on('i18n', (event: any, arg: any) => {
   event.returnValue = I18n.t(arg)
 })
+
+ipcMain.on('get_parser_status', (event: any, arg: any) => {
+  const result = global.app_config.parser
+  event.returnValue = result
+})
