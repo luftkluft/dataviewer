@@ -1,4 +1,4 @@
-import { ChartService } from '../services/chart_service/ChartService'
+import { ChartService } from '../services/chart_service/chartService'
 import { SortingService } from '../services/sorting_service/sortingService'
 import { ParserService } from '../services/parser_service/parserService'
 

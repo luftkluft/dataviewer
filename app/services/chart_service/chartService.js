@@ -118,4 +118,4 @@ var ChartService = (function () {
     return ChartService;
 }());
 exports.ChartService = ChartService;
-//# sourceMappingURL=ChartService.js.map
+//# sourceMappingURL=chartService.js.map

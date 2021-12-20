@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.MainController = void 0;
-var ChartService_1 = require("../services/chart_service/ChartService");
+var chartService_1 = require("../services/chart_service/chartService");
 var sortingService_1 = require("../services/sorting_service/sortingService");
 var parserService_1 = require("../services/parser_service/parserService");
 var MainController = (function () {
@@ -17,7 +17,7 @@ var MainController = (function () {
     MainController.prototype.render = function () {
         this.parseredData = this.getParseredData();
         var sortedData = this.sortingData(this.parseredData);
-        var charts = new ChartService_1.ChartService(sortedData);
+        var charts = new chartService_1.ChartService(sortedData);
         return charts.getCharts();
     };
     return MainController;
