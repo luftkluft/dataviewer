@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ParserService = void 0;
 var ipcPServiceRenderer = require('electron').ipcRenderer;
+var csvParserService_1 = require("../csv_parser_service/csvParserService");
 var emptyData = [
     {
         series: [
@@ -38,74 +39,6 @@ var emptyData = [
         },
     },
 ];
-var testData = [
-    {
-        series: [
-            {
-                name: 'sales1',
-                data: [30, 40, 35, -50, 49, 60, -70, 91, 125],
-            },
-        ],
-        chart: {
-            id: 'tw1',
-            group: 'social',
-            type: 'area',
-            height: 160,
-        },
-        colors: ['green'],
-        yaxis: {
-            labels: {
-                minWidth: 40,
-            },
-        },
-        title: {
-            text: 'test1',
-            align: 'left',
-            margin: 10,
-            offsetX: 0,
-            offsetY: 0,
-            floating: false,
-            style: {
-                fontSize: '12px',
-                fontWeight: 'normal',
-                color: 'blue',
-            },
-        },
-    },
-    {
-        series: [
-            {
-                name: 'sales2',
-                data: [0, 0, 1, 1, 1, 0, 1, 0, 0],
-            },
-        ],
-        chart: {
-            id: 'tw2',
-            group: 'social',
-            type: 'area',
-            height: 160,
-        },
-        colors: ['red'],
-        yaxis: {
-            labels: {
-                minWidth: 40,
-            },
-        },
-        title: {
-            text: 'test 2',
-            align: 'left',
-            margin: 10,
-            offsetX: 0,
-            offsetY: 0,
-            floating: false,
-            style: {
-                fontSize: '12px',
-                fontWeight: 'normal',
-                color: 'black',
-            },
-        },
-    },
-];
 var ParserService = (function () {
     function ParserService() {
         this.parseredData = [];
@@ -113,7 +46,6 @@ var ParserService = (function () {
     ParserService.prototype.getDataFromFile = function () {
         try {
             var result = ipcPServiceRenderer.sendSync('get_file_content');
-            console.log("file_content: " + result);
             return result;
         }
         catch (error) {
@@ -135,7 +67,8 @@ var ParserService = (function () {
         var parser = this.getParserStatus();
         switch (parser) {
             case 'parser_csv':
-                return testData;
+                var parseredData = new csvParserService_1.CsvParserService(dataFromFile).csvParsering();
+                return parseredData;
                 break;
             default:
                 return emptyData;

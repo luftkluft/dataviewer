@@ -13,7 +13,17 @@ const firstColumnName = formCsv.querySelector('.first-column-name-field')
 firstColumnName.value = csvParams.first_column_name
 
 const endRowField = formCsv.querySelector('.end-row-field')
-endRowField.value = csvParams.end_row
+switch (csvParams.end_row) {
+  case '\n':
+    endRowField.value = '\\n'
+    break
+  case '\r':
+    endRowField.value = '\\r'
+    break
+  default:
+    endRowField.value = csvParams.end_row
+    break
+}
 
 const delemiter = formCsv.querySelector('.delemiter-field')
 delemiter.value = csvParams.delemiter
@@ -27,7 +37,19 @@ columns.value = csvParams.columns
 const setCsvParams = () => {
   csvParams.head_rows = headRowsField.value
   csvParams.first_column_name = firstColumnName.value
-  csvParams.end_row = endRowField.value
+  switch (endRowField.value) {
+    case '\\n':
+      csvParams.end_row = '\n'
+      break
+    case '\\r':
+      csvParams.end_row = '\r'
+      break
+
+    default:
+      csvParams.end_row = endRowField.value
+      break
+  }
+
   csvParams.delemiter = delemiter.value
   csvParams.rows = rows.value
   csvParams.columns = columns.value
