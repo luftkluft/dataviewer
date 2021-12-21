@@ -1,5 +1,5 @@
 const ipcCsvPServiceRenderer = require('electron').ipcRenderer
-import { columnСounting } from '../../lib/csv/column_counting/columnCounting'
+import { csvColumnСounting } from '../../lib/csv/csv_column_counting/csvColumnCounting'
 const testData: {} = [
   {
     series: [
@@ -85,7 +85,7 @@ export class CsvParserService {
   }
   csvParsering() {
     console.log(`file_content: ${this.dataFromFile}`)
-    console.log(`columnСounting: ${columnСounting(this.dataFromFile)}`)
+    console.log(`columnСounting: ${csvColumnСounting(this.dataFromFile)}`)
     return testData
   }
 }

@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.columnСounting = void 0;
+exports.csvColumnСounting = void 0;
 var ipcCsvCCRenderer = require('electron').ipcRenderer;
-var columnСounting = function (dataFromFile) {
+var csvColumnСounting = function (dataFromFile) {
     try {
         var csvParams_1 = ipcCsvCCRenderer.sendSync('get_csv_params');
         if ((csvParams_1.columns = '0')) {
@@ -25,5 +25,5 @@ var columnСounting = function (dataFromFile) {
         return 0;
     }
 };
-exports.columnСounting = columnСounting;
-//# sourceMappingURL=columnCounting.js.map
+exports.csvColumnСounting = csvColumnСounting;
+//# sourceMappingURL=csvColumnCounting.js.map

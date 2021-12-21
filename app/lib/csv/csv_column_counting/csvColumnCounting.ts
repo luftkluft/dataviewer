@@ -1,6 +1,6 @@
 const ipcCsvCCRenderer = require('electron').ipcRenderer
 
-export const columnСounting = (dataFromFile: string) => {
+export const csvColumnСounting = (dataFromFile: string) => {
   try {
     const csvParams = ipcCsvCCRenderer.sendSync('get_csv_params')
     if ((csvParams.columns = '0')) {
