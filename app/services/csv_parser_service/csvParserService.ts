@@ -1,16 +1,21 @@
 const ipcCsvPServiceRenderer = require('electron').ipcRenderer
+import { columnСounting } from '../../lib/csv/column_counting/columnCounting'
 const testData: {} = [
   {
     series: [
       {
         name: 'sales1',
-        data: [30, 40, 35, -50, 49, 60, -70, 91, 125],
+        data: [
+          30, 40, 35, -50, 49, 60, -70, 91, 125, 30, 40, 35, -50, 49, 60, -70,
+          91, 125, 30, 40, 35, -50, 49, 60, -70, 91, 125, 30, 40, 35, -50, 49,
+          60, -70, 91, 125,
+        ],
       },
     ],
     chart: {
       id: 'tw1',
       group: 'social',
-      type: 'area',
+      type: 'line',
       height: 160,
     },
     colors: ['green'],
@@ -38,13 +43,16 @@ const testData: {} = [
     series: [
       {
         name: 'sales2',
-        data: [0, 0, 1, 1, 1, 0, 1, 0, 0],
+        data: [
+          0, 0, 1, 1, 1, 0, 1, 0, 0, 0, 0, 1, 1, 1, 0, 1, 0, 0, 0, 0, 1, 1, 1,
+          0, 1, 0, 0, 0, 0, 1, 1, 1, 0, 1, 0, 0,
+        ],
       },
     ],
     chart: {
       id: 'tw2',
       group: 'social',
-      type: 'area',
+      type: 'line',
       height: 160,
     },
     colors: ['red'],
@@ -74,30 +82,10 @@ export class CsvParserService {
   csvParams: any
   constructor(_dataFromFile: any) {
     this.dataFromFile = _dataFromFile
-    try {
-      this.csvParams = ipcCsvPServiceRenderer.sendSync('get_csv_params')
-    } catch (error) {
-      console.log(`CsvParserService:constructor: ${error}`)
-    }
-  }
-  private columnСounting(dataFromFile: string) {
-    if ((this.csvParams.columns = '0')) {
-      let delemiterCount = 0
-      for (let i = 0; i <= dataFromFile.length; i++) {
-        if (dataFromFile[i] == this.csvParams.delemiter) {
-          delemiterCount = delemiterCount + 1
-        }
-        if (dataFromFile[i] == this.csvParams.end_row) {
-          return delemiterCount
-        }
-      }
-    } else {
-      return this.csvParams.columns
-    }
   }
   csvParsering() {
     console.log(`file_content: ${this.dataFromFile}`)
-    console.log(`columnСounting: ${this.columnСounting(this.dataFromFile)}`)
+    console.log(`columnСounting: ${columnСounting(this.dataFromFile)}`)
     return testData
   }
 }
