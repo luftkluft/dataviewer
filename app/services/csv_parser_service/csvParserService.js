@@ -1,8 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CsvParserService = void 0;
-var ipcCsvPServiceRenderer = require('electron').ipcRenderer;
-var csvColumnCounting_1 = require("../../lib/csv/csv_column_counting/csvColumnCounting");
+var csvGetColumns_1 = require("../../lib/csv/csv_get_columns/csvGetColumns");
 var testData = [
     {
         series: [
@@ -83,8 +82,10 @@ var CsvParserService = (function () {
         this.dataFromFile = _dataFromFile;
     }
     CsvParserService.prototype.csvParsering = function () {
-        console.log("file_content: " + this.dataFromFile);
-        console.log("column\u0421ounting: " + (0, csvColumnCounting_1.csvColumnСounting)(this.dataFromFile));
+        var result = (0, csvGetColumns_1.csvGetColumns)(this.dataFromFile);
+        console.log("[0][0]: " + result[0][0]);
+        console.log("[1][0]: " + result[1][0]);
+        console.log("[1][2]: " + result[1][2]);
         return testData;
     };
     return CsvParserService;

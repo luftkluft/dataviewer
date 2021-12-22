@@ -21,7 +21,7 @@ var csvColumnСounting = function (dataFromFile) {
         }
     }
     catch (error) {
-        console.log("column\u0421ounting: " + error);
+        console.log("column\u0421ounting(): " + error);
         return 0;
     }
 };

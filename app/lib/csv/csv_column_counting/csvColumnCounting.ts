@@ -17,7 +17,7 @@ export const csvColumnСounting = (dataFromFile: string) => {
       return Number(csvParams.columns)
     }
   } catch (error) {
-    console.log(`columnСounting: ${error}`)
+    console.log(`columnСounting(): ${error}`)
     return 0
   }
 }
