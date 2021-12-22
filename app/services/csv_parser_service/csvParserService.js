@@ -20,7 +20,7 @@ var testData = [
             type: 'line',
             height: 160,
         },
-        colors: ['green'],
+        colors: ['#008FFB'],
         yaxis: {
             labels: {
                 minWidth: 40,
@@ -56,7 +56,7 @@ var testData = [
             type: 'line',
             height: 160,
         },
-        colors: ['red'],
+        colors: ['#5FFFFB'],
         yaxis: {
             labels: {
                 minWidth: 40,
