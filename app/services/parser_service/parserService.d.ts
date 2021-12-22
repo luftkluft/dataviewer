@@ -4,5 +4,5 @@ export declare class ParserService {
     private getParserStatus;
     private doParsering;
     private parsering;
-    getParseredData(): {};
+    getParseredData(): any;
 }

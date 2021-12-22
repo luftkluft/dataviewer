@@ -1,6 +1,6 @@
 export declare class MainController {
     parseredData: {};
-    getParseredData(): {};
+    getParseredData(): any;
     sortingData(_parserData: {}): any;
     render(): any;
 }
