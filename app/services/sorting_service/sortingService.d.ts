@@ -1,7 +1,5 @@
 export declare class SortingService {
-    parseredData: {};
-    constructor(_parseredData: {});
-    noSortingData(parseredData: any): {};
-    manualSortingData(): any;
+    parseredData: [];
+    constructor(_parseredData: []);
     sorting(sortAs?: string): any;
 }

@@ -1,3 +1,3 @@
-export function noSorting(data: any){
-  return data
+export function noSorting(parseredData: []) {
+  return parseredData
 }

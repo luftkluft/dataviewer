@@ -1,3 +1,43 @@
+const testChart: {} = 
+  {
+    series: [
+      {
+        name: 'test chart',
+        data: [
+          30, 40, 35, -50, 49, 60, -70, 91, 125, 30, 40, 35, -50, 49, 60, -70,
+          91, 125, 30, 40, 35, -50, 49, 60, -70, 91, 125, 30, 40, 35, -50, 49,
+          60, -70, 91, 125,
+        ],
+      },
+    ],
+    chart: {
+      id: 'twt',
+      group: 'social',
+      type: 'line',
+      height: 160,
+    },
+    colors: ['#008F00'],
+    yaxis: {
+      labels: {
+        minWidth: 40,
+      },
+    },
+    title: {
+      text: 'test chart',
+      align: 'left',
+      margin: 10,
+      offsetX: 0,
+      offsetY: 0,
+      floating: false,
+      style: {
+        fontSize: '12px',
+        fontWeight: 'normal',
+        //fontFamily: undefined,
+        color: 'blue',
+      },
+    },
+  }
+
 export class ChartModel {
   // chartName: string
   // chartData: number[]
@@ -19,8 +59,9 @@ export class ChartModel {
   // // chartTitleStyleFontFamily: xxx
   // chartTitleStyleFontColor: string
   chartOptions: any
+  sortedData: []
 
-  constructor(options: any) {
+  constructor(sortedData: []) {
     // this.chartName = options.series[0].name
     // this.chartData = options.series[0].data
     // this.chartId = options.chart.id
@@ -39,13 +80,14 @@ export class ChartModel {
     // this.chartTitleStyleFontSize = options.title.style.fontSize
     // this.chartTitleStyleFontWeight = options.title.style.fontWeigth
     // this.chartTitleStyleFontColor = options.title.style.fontColor
-    this.chartOptions = options
+    ////this.chartOptions = options
   }
-  private dataCorrector(options: any){
-    // TODO
-    return options
-  }
-  getOptions(){
-    return this.dataCorrector(this.chartOptions)
+  // private dataCorrector(options: any){
+  //   // TODO
+  //   return options
+  // }
+  createChart() {
+    //return this.dataCorrector(this.chartOptions)
+    return testChart
   }
 }

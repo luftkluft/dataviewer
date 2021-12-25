@@ -1,1 +1,1 @@
-export declare function noSorting(data: any): any;
+export declare function noSorting(parseredData: []): [];

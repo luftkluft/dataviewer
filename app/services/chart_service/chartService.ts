@@ -1,36 +1,54 @@
- import { ChartModel } from '../../models/chartModel'
+import { ChartModel } from '../../models/chartModel'
 
-let chartsArray: any = []
-let chart: any = {}
+// TODO
+// console.log(`[0][0]: ${result[0][0]}`)
+// console.log(`[1][0]: ${result[1][0]}`)
+// console.log(`[1][2]: ${result[1][2]}`)
+// result[0][0]: Адрес
+// result[1][0]: A0.0
+// result[1][2]: nasos 2 na linii 250 bar
 
 export class ChartService {
-  parserData: any
+  sortedData: [] = []
 
-  constructor(_parserData: {}) {
-    this.parserData = _parserData
+  constructor(_sortedData: []) {
+    this.sortedData = _sortedData
   }
 
-  getChartOptions(chartKey: number = 0) {
-    return new ChartModel(this.parserData[chartKey]).getOptions()
+  private getChart = (chartArray: []) => {
+    const chart: {} = new ChartModel(chartArray).createChart()
+    return chart
   }
-  async createChartObject(chartOptions: any) {
-    chart.divId = await chartOptions.chart.id
-    chart.chartAreaDiv = await`<div id="${chartOptions.chart.id}" class="list-group-item"></div>`
-    chart.options = await chartOptions
-    return await chart
+
+  createChartObject(options: any) {
+    try {
+      let chartObject: { divId: string; chartAreaDiv: string; options: {} } = {
+        divId: options.chart.id,
+        chartAreaDiv: `<div id="${options.chart.id}" class="list-group-item"></div>`,
+        options: options,
+      }
+      return chartObject
+    } catch (error) {
+      console.log(`createChartObject(): ${error}`)
+      return {}
+    }
   }
-  async createCharts() {
-    for (let i = 0; i < this.parserData.length; i++) {
-      const options = await this.getChartOptions(i)
-      const chartObject = await this.createChartObject(options)
-      chartsArray[i] = await chartObject
-      chart = await {}
+
+  private createCharts = (sortedData: []) => {
+    const charts: {}[] = []
+    for (let i = 0; i < sortedData.length; i++) {
+      const options = this.getChart(sortedData[i])
+      const chartObject = this.createChartObject(options)
+      charts.push(chartObject)
+      return charts
     }
   }
   getCharts() {
     try {
-      this.createCharts()
-      return chartsArray
+      const charts: any = this.createCharts(this.sortedData)
+      console.log(`ChartServ getChart() charts:`)
+      console.dir(charts)
+      return charts
     } catch (error) {
       console.log(`getCharts(): ${error}`)
       return []
