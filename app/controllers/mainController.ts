@@ -14,6 +14,6 @@ export class MainController {
     this.parseredData = this.getParseredData()
     const sortedData = this.sortingData(this.parseredData)
     const charts = new ChartService(sortedData)
-    return charts.getCharts()
+    return charts.getChartsOptions()
   }
 }

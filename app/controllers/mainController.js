@@ -18,7 +18,7 @@ var MainController = (function () {
         this.parseredData = this.getParseredData();
         var sortedData = this.sortingData(this.parseredData);
         var charts = new chartService_1.ChartService(sortedData);
-        return charts.getCharts();
+        return charts.getChartsOptions();
     };
     return MainController;
 }());

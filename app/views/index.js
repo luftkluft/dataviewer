@@ -40,8 +40,8 @@ var $ = require('jquery');
 var ApexCharts = require('apexcharts');
 var mainController_1 = require("../controllers/mainController");
 var Sortable = require('sortablejs');
-var chartsData = new mainController_1.MainController();
-var charts = chartsData.render();
+var mainController = new mainController_1.MainController();
+var chartsOptions = mainController.render();
 $(document).ready(function () { return __awaiter(void 0, void 0, void 0, function () {
     var divChartsArea, rootArea, i, _a, _b, i, error_1, el, sortable;
     return __generator(this, function (_c) {
@@ -61,10 +61,10 @@ $(document).ready(function () { return __awaiter(void 0, void 0, void 0, functio
                 i = 0;
                 _c.label = 3;
             case 3:
-                if (!(i < charts.length)) return [3, 6];
+                if (!(i < chartsOptions.length)) return [3, 6];
                 _a = divChartsArea;
                 _b = _a.innerHTML;
-                return [4, charts[i].chartAreaDiv];
+                return [4, chartsOptions[i].chartAreaDiv];
             case 4:
                 _a.innerHTML = _b + _c.sent();
                 _c.label = 5;
@@ -75,8 +75,8 @@ $(document).ready(function () { return __awaiter(void 0, void 0, void 0, functio
                 i = 0;
                 _c.label = 7;
             case 7:
-                if (!(i < charts.length)) return [3, 10];
-                return [4, new ApexCharts(document.getElementById(charts[i].divId), charts[i].options).render()];
+                if (!(i < chartsOptions.length)) return [3, 10];
+                return [4, new ApexCharts(document.getElementById(chartsOptions[i].divId), chartsOptions[i].options).render()];
             case 8:
                 _c.sent();
                 _c.label = 9;

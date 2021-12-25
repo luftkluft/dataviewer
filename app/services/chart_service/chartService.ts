@@ -15,8 +15,8 @@ export class ChartService {
     this.sortedData = _sortedData
   }
 
-  private getChart = (chartArray: []) => {
-    const chart: {} = new ChartModel(chartArray).createChart()
+  private getChartOptions = (chartArray: [], chartId: number) => {
+    const chart: any = new ChartModel(chartArray, chartId).createChartOptions()
     return chart
   }
 
@@ -34,23 +34,23 @@ export class ChartService {
     }
   }
 
-  private createCharts = (sortedData: []) => {
+  private createChartsOptions = (sortedData: []) => {
     const charts: {}[] = []
     for (let i = 0; i < sortedData.length; i++) {
-      const options = this.getChart(sortedData[i])
+      const options = this.getChartOptions(sortedData[i], i)
       const chartObject = this.createChartObject(options)
       charts.push(chartObject)
       return charts
     }
   }
-  getCharts() {
+  getChartsOptions() {
     try {
-      const charts: any = this.createCharts(this.sortedData)
-      console.log(`ChartServ getChart() charts:`)
-      console.dir(charts)
-      return charts
+      const chartsOptions: any = this.createChartsOptions(this.sortedData)
+      console.log(`ChartServ getChartsOptions():`)
+      console.dir(chartsOptions)
+      return chartsOptions
     } catch (error) {
-      console.log(`getCharts(): ${error}`)
+      console.log(`getChartsOptions(): ${error}`)
       return []
     }
   }

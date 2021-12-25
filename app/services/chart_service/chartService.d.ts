@@ -1,8 +1,8 @@
 export declare class ChartService {
     sortedData: [];
     constructor(_sortedData: []);
-    private getChart;
+    private getChartOptions;
     createChartObject(options: any): {};
-    private createCharts;
-    getCharts(): any;
+    private createChartsOptions;
+    getChartsOptions(): any;
 }

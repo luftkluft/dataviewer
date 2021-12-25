@@ -2,8 +2,8 @@ const $ = require('jquery')
 const ApexCharts = require('apexcharts')
 import { MainController } from '../controllers/mainController'
 const Sortable = require('sortablejs')
-const chartsData = new MainController()
-const charts = chartsData.render()
+const mainController = new MainController()
+const chartsOptions = mainController.render()
 
 $(document).ready(async () => {
   const divChartsArea: any = document.createElement('div')
@@ -19,13 +19,13 @@ $(document).ready(async () => {
   } else {
     rootArea.appendChild(divChartsArea)
     try {
-      for (let i = 0; i < charts.length; i++) {
-        divChartsArea.innerHTML += await charts[i].chartAreaDiv
+      for (let i = 0; i < chartsOptions.length; i++) {
+        divChartsArea.innerHTML += await chartsOptions[i].chartAreaDiv
       }
-      for (let i = 0; i < charts.length; i++) {
+      for (let i = 0; i < chartsOptions.length; i++) {
         await new ApexCharts(
-          document.getElementById(charts[i].divId),
-          charts[i].options
+          document.getElementById(chartsOptions[i].divId),
+          chartsOptions[i].options
         ).render()
       }
     } catch (error) {

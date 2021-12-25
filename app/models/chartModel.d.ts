@@ -1,6 +1,33 @@
 export declare class ChartModel {
+    chartName: string;
+    chartData: number[];
+    chartId: string;
+    chartGroup: string;
+    chartType: string;
+    chartHeight: number;
+    chartColors: string;
+    chartYAxisLabelsMinWidth: number;
+    chartYAxisLabelsText: string;
+    chartTitleText: string;
+    chartTitleAlign: string;
+    chartTitleMargin: number;
+    chartTitleOffsetX: number;
+    chartTitleOffsetY: number;
+    chartTitleFloating: boolean;
+    chartTitleStyleFontSize: string;
+    chartTitleStyleFontWeight: string;
+    chartTitleStyleFontColor: string;
     chartOptions: any;
     sortedData: [];
-    constructor(sortedData: []);
-    createChart(): {};
+    currentChartId: number;
+    constructor(_sortedData: [], _currentChartId: number);
+    private setDefaultOptions;
+    private head3Texts;
+    private head2Texts;
+    private head1Texts;
+    private head0Texts;
+    private chartTexts;
+    private createDefaultChartOptions;
+    private dataCorrector;
+    createChartOptions(): {};
 }
