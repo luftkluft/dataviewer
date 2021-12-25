@@ -3,42 +3,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ParserService = void 0;
 var ipcPServiceRenderer = require('electron').ipcRenderer;
 var csvParserService_1 = require("../csv_parser_service/csvParserService");
-var emptyData = [
-    {
-        series: [
-            {
-                name: ipcPServiceRenderer.sendSync('i18n', 'no_data'),
-                data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            },
-        ],
-        chart: {
-            id: 'no-data',
-            group: 'no-group',
-            type: 'line',
-            height: 160,
-        },
-        colors: ['#008FFB'],
-        yaxis: {
-            labels: {
-                minWidth: 40,
-                text: ipcPServiceRenderer.sendSync('i18n', 'empty_label'),
-            },
-        },
-        title: {
-            text: ipcPServiceRenderer.sendSync('i18n', 'empty_text'),
-            align: 'left',
-            margin: 10,
-            offsetX: 0,
-            offsetY: 0,
-            floating: false,
-            style: {
-                fontSize: '14px',
-                fontWeight: 'normal',
-                color: 'red',
-            },
-        },
-    },
-];
 var ParserService = (function () {
     function ParserService() {
         this.parseredData = [];
@@ -71,7 +35,7 @@ var ParserService = (function () {
                 return parseredData;
                 break;
             default:
-                return emptyData;
+                return [];
                 break;
         }
     };
@@ -79,7 +43,7 @@ var ParserService = (function () {
         try {
             var dataFromFile = this.getDataFromFile();
             if (dataFromFile == '' || dataFromFile == undefined) {
-                return emptyData;
+                return [];
             }
             else {
                 return this.doParsering(dataFromFile);
@@ -87,7 +51,7 @@ var ParserService = (function () {
         }
         catch (error) {
             console.log("parsering(): " + error);
-            return emptyData;
+            return [];
         }
     };
     ParserService.prototype.getParseredData = function () {

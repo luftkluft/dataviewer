@@ -3,43 +3,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ChartModel = void 0;
 var ipcChartModelRenderer = require('electron').ipcRenderer;
 var csvParams = ipcChartModelRenderer.sendSync('get_csv_params');
-var testChart = {
-    series: [
-        {
-            name: 'test chart',
-            data: [
-                30, 40, 35, -50, 49, 60, -70, 91, 125, 30, 40, 35, -50, 49, 60, -70,
-                91, 125, 30, 40, 35, -50, 49, 60, -70, 91, 125, 30, 40, 35, -50, 49,
-                60, -70, 91, 125,
-            ],
-        },
-    ],
-    chart: {
-        id: 'twt',
-        group: 'social',
-        type: 'line',
-        height: 160,
-    },
-    colors: ['#008F00'],
-    yaxis: {
-        labels: {
-            minWidth: 40,
-        },
-    },
-    title: {
-        text: 'test chart',
-        align: 'left',
-        margin: 10,
-        offsetX: 0,
-        offsetY: 0,
-        floating: false,
-        style: {
-            fontSize: '12px',
-            fontWeight: 'normal',
-            color: 'blue',
-        },
-    },
-};
 var ChartModel = (function () {
     function ChartModel(_sortedData, _currentChartId) {
         try {
@@ -53,14 +16,14 @@ var ChartModel = (function () {
     }
     ChartModel.prototype.setDefaultOptions = function () {
         this.chartName = 'chart name';
-        this.chartData = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        this.chartData = [];
         this.chartId = String(this.currentChartId);
         this.chartGroup = 'group';
         this.chartType = 'line';
         this.chartHeight = 160;
-        this.chartColors = '#008F00';
+        this.chartColors = '#151515';
         this.chartYAxisLabelsMinWidth = 40;
-        this.chartYAxisLabelsText = 'yaxis text';
+        this.chartYAxisLabelsText = ipcChartModelRenderer.sendSync('i18n', 'empty_text');
         this.chartTitleText = 'title text';
         this.chartTitleAlign = 'left';
         this.chartTitleMargin = 10;
@@ -69,31 +32,61 @@ var ChartModel = (function () {
         this.chartTitleFloating = false;
         this.chartTitleStyleFontSize = '14px';
         this.chartTitleStyleFontWeight = 'normal';
-        this.chartTitleStyleFontColor = '#008F00';
+        this.chartTitleStyleFontColor = '#151515';
     };
-    ChartModel.prototype.head3Texts = function () {
+    ChartModel.prototype.copyArray = function (sourceArray, targetArray) {
+        try {
+            for (var i = 0; i <= sourceArray.length; i++) {
+                targetArray[i] = sourceArray[i];
+            }
+            return targetArray;
+        }
+        catch (error) {
+            console.log("chartModel copyArray(): " + error);
+        }
     };
-    ChartModel.prototype.head2Texts = function () {
+    ChartModel.prototype.setChartData = function (options) {
+        try {
+            var sData = [];
+            sData = this.copyArray(this.sortedData, sData);
+            var headRows = csvParams.head_rows;
+            options.series[0].data = sData.splice(Number(headRows), this.sortedData.length - Number(headRows));
+            return options;
+        }
+        catch (error) {
+            console.log("chartModel setChartData(): " + error);
+        }
     };
-    ChartModel.prototype.head1Texts = function () {
+    ChartModel.prototype.setHead3Texts = function (options) {
+        try {
+            options.series[0].name = this.sortedData[0] + " - " + this.sortedData[1];
+            options.title.text = this.sortedData[0] + " - " + this.sortedData[1] + " - " + this.sortedData[2];
+            return options;
+        }
+        catch (error) {
+            console.log("chartModel setHead3Texts(): " + error);
+        }
     };
-    ChartModel.prototype.head0Texts = function () {
+    ChartModel.prototype.setHead2Texts = function () {
     };
-    ChartModel.prototype.chartTexts = function () {
+    ChartModel.prototype.setHead1Texts = function () {
+    };
+    ChartModel.prototype.setHead0Texts = function () {
+    };
+    ChartModel.prototype.setChartTexts = function (options) {
         try {
             var headRows = csvParams.head_rows;
             switch (headRows) {
                 case '3':
-                    this.head3Texts();
-                    break;
+                    return this.setHead3Texts(options);
                 case '2':
-                    this.head2Texts();
+                    this.setHead2Texts();
                     break;
                 case '1':
-                    this.head1Texts();
+                    this.setHead1Texts();
                     break;
                 default:
-                    this.head0Texts();
+                    this.setHead0Texts();
                     break;
             }
         }
@@ -138,14 +131,24 @@ var ChartModel = (function () {
         return defaultOptions;
     };
     ChartModel.prototype.dataCorrector = function () {
-        var options = this.createDefaultChartOptions();
-        return options;
+        try {
+            var options = this.createDefaultChartOptions();
+            if (this.sortedData.length == 0) {
+                return options;
+            }
+            else {
+                options = this.setChartTexts(options);
+                options = this.setChartData(options);
+                return options;
+            }
+        }
+        catch (error) {
+            console.log("ChartCervice dataCorrector(): " + error);
+        }
     };
     ChartModel.prototype.createChartOptions = function () {
-        var chart = this.dataCorrector();
-        console.log("createChart():");
-        console.dir(chart);
-        return chart;
+        var chartOptions = this.dataCorrector();
+        return chartOptions;
     };
     return ChartModel;
 }());

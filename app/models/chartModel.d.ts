@@ -18,16 +18,18 @@ export declare class ChartModel {
     chartTitleStyleFontWeight: string;
     chartTitleStyleFontColor: string;
     chartOptions: any;
-    sortedData: [];
+    sortedData: any;
     currentChartId: number;
     constructor(_sortedData: [], _currentChartId: number);
     private setDefaultOptions;
-    private head3Texts;
-    private head2Texts;
-    private head1Texts;
-    private head0Texts;
-    private chartTexts;
+    private copyArray;
+    private setChartData;
+    private setHead3Texts;
+    private setHead2Texts;
+    private setHead1Texts;
+    private setHead0Texts;
+    private setChartTexts;
     private createDefaultChartOptions;
     private dataCorrector;
-    createChartOptions(): {};
+    createChartOptions(): any;
 }

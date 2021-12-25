@@ -11,10 +11,7 @@ export class SortingService {
   sorting(sortAs: string = 'no_sorting'){
     switch (sortAs) {
       case 'no_sorting':
-        console.log(`case 'no_sorting':`)
-        console.dir(noSorting(this.parseredData))
         return noSorting(this.parseredData)
-        break
       case 'manual_sorting':
         return manualSorting(this.parseredData)
         break

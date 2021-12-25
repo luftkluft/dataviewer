@@ -1,13 +1,5 @@
 import { ChartModel } from '../../models/chartModel'
 
-// TODO
-// console.log(`[0][0]: ${result[0][0]}`)
-// console.log(`[1][0]: ${result[1][0]}`)
-// console.log(`[1][2]: ${result[1][2]}`)
-// result[0][0]: Адрес
-// result[1][0]: A0.0
-// result[1][2]: nasos 2 na linii 250 bar
-
 export class ChartService {
   sortedData: [] = []
 
@@ -35,19 +27,29 @@ export class ChartService {
   }
 
   private createChartsOptions = (sortedData: []) => {
-    const charts: {}[] = []
-    for (let i = 0; i < sortedData.length; i++) {
-      const options = this.getChartOptions(sortedData[i], i)
-      const chartObject = this.createChartObject(options)
-      charts.push(chartObject)
-      return charts
+    try {
+      const charts: {}[] = []
+      if (sortedData.length == 0) {
+        const options = this.getChartOptions(sortedData, 0)
+        const chartObject = this.createChartObject(options)
+        charts.push(chartObject)
+        return charts
+      } else {
+        //// for (let i = 0; i < sortedData.length; i++) {
+        for (let i = 0; i < 5; i++) {
+          const options = this.getChartOptions(sortedData[i], i)
+          const chartObject = this.createChartObject(options)
+          charts.push(chartObject)
+        }
+        return charts
+      }
+    } catch (error) {
+      console.log(`ChartService createChartsOptions: ${error}`)
     }
   }
   getChartsOptions() {
     try {
       const chartsOptions: any = this.createChartsOptions(this.sortedData)
-      console.log(`ChartServ getChartsOptions():`)
-      console.dir(chartsOptions)
       return chartsOptions
     } catch (error) {
       console.log(`getChartsOptions(): ${error}`)

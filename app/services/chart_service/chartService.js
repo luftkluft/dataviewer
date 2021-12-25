@@ -11,12 +11,25 @@ var ChartService = (function () {
             return chart;
         };
         this.createChartsOptions = function (sortedData) {
-            var charts = [];
-            for (var i = 0; i < sortedData.length; i++) {
-                var options = _this.getChartOptions(sortedData[i], i);
-                var chartObject = _this.createChartObject(options);
-                charts.push(chartObject);
-                return charts;
+            try {
+                var charts = [];
+                if (sortedData.length == 0) {
+                    var options = _this.getChartOptions(sortedData, 0);
+                    var chartObject = _this.createChartObject(options);
+                    charts.push(chartObject);
+                    return charts;
+                }
+                else {
+                    for (var i = 0; i < 5; i++) {
+                        var options = _this.getChartOptions(sortedData[i], i);
+                        var chartObject = _this.createChartObject(options);
+                        charts.push(chartObject);
+                    }
+                    return charts;
+                }
+            }
+            catch (error) {
+                console.log("ChartService createChartsOptions: " + error);
             }
         };
         this.sortedData = _sortedData;
@@ -38,8 +51,6 @@ var ChartService = (function () {
     ChartService.prototype.getChartsOptions = function () {
         try {
             var chartsOptions = this.createChartsOptions(this.sortedData);
-            console.log("ChartServ getChartsOptions():");
-            console.dir(chartsOptions);
             return chartsOptions;
         }
         catch (error) {

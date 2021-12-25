@@ -1,44 +1,43 @@
 const ipcChartModelRenderer = require('electron').ipcRenderer
 const csvParams = ipcChartModelRenderer.sendSync('get_csv_params')
-const testChart: {} = 
-  {
-    series: [
-      {
-        name: 'test chart',
-        data: [
-          30, 40, 35, -50, 49, 60, -70, 91, 125, 30, 40, 35, -50, 49, 60, -70,
-          91, 125, 30, 40, 35, -50, 49, 60, -70, 91, 125, 30, 40, 35, -50, 49,
-          60, -70, 91, 125,
-        ],
-      },
-    ],
-    chart: {
-      id: 'twt',
-      group: 'social',
-      type: 'line',
-      height: 160,
-    },
-    colors: ['#008F00'],
-    yaxis: {
-      labels: {
-        minWidth: 40,
-      },
-    },
-    title: {
-      text: 'test chart',
-      align: 'left',
-      margin: 10,
-      offsetX: 0,
-      offsetY: 0,
-      floating: false,
-      style: {
-        fontSize: '12px',
-        fontWeight: 'normal',
-        //fontFamily: undefined,
-        color: 'blue',
-      },
-    },
-  }
+// const testChart: {} = {
+//   series: [
+//     {
+//       name: 'test chart',
+//       data: [
+//         30, 40, 35, -50, 49, 60, -70, 91, 125, 30, 40, 35, -50, 49, 60, -70, 91,
+//         125, 30, 40, 35, -50, 49, 60, -70, 91, 125, 30, 40, 35, -50, 49, 60,
+//         -70, 91, 125,
+//       ],
+//     },
+//   ],
+//   chart: {
+//     id: 'twt',
+//     group: 'social',
+//     type: 'line',
+//     height: 160,
+//   },
+//   colors: ['#008F00'],
+//   yaxis: {
+//     labels: {
+//       minWidth: 40,
+//     },
+//   },
+//   title: {
+//     text: 'test chart',
+//     align: 'left',
+//     margin: 10,
+//     offsetX: 0,
+//     offsetY: 0,
+//     floating: false,
+//     style: {
+//       fontSize: '12px',
+//       fontWeight: 'normal',
+//       //fontFamily: undefined,
+//       color: 'blue',
+//     },
+//   },
+// }
 
 export class ChartModel {
   chartName: string
@@ -61,7 +60,7 @@ export class ChartModel {
   // chartTitleStyleFontFamily: xxx
   chartTitleStyleFontColor: string
   chartOptions: any
-  sortedData: []
+  sortedData: any
   currentChartId: number
 
   constructor(_sortedData: [], _currentChartId: number) {
@@ -72,19 +71,21 @@ export class ChartModel {
     } catch (error) {
       console.log(`class ChartModel constructor: ${error}`)
     }
-    
   }
 
   private setDefaultOptions() {
     this.chartName = 'chart name' // options.series[0].name
-    this.chartData = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0] // options.series[0].data
+    this.chartData = [] // options.series[0].data
     this.chartId = String(this.currentChartId) // options.chart.id
     this.chartGroup = 'group' // options.chart.group
     this.chartType = 'line' // options.chart.type
     this.chartHeight = 160 // options.chart.heigth
-    this.chartColors = '#008F00' // options.chart.colors
+    this.chartColors = '#151515' // options.chart.colors
     this.chartYAxisLabelsMinWidth = 40 // options.yaxis.labels.minWidth
-    this.chartYAxisLabelsText = 'yaxis text' // options.yaxis.labels.text
+    this.chartYAxisLabelsText = ipcChartModelRenderer.sendSync(
+      'i18n',
+      'empty_text'
+    ) // options.yaxis.labels.text
     this.chartTitleText = 'title text' // options.title.text
     this.chartTitleAlign = 'left' // options.title.align
     this.chartTitleMargin = 10 // options.title.margin
@@ -93,46 +94,73 @@ export class ChartModel {
     this.chartTitleFloating = false // options.title.floating
     this.chartTitleStyleFontSize = '14px' // options.title.style.fontSize
     this.chartTitleStyleFontWeight = 'normal' // options.title.style.fontWeigth
-    this.chartTitleStyleFontColor = '#008F00' // options.title.style.fontColor
+    this.chartTitleStyleFontColor = '#151515' // options.title.style.fontColor
   }
-  private head3Texts() {
+  private copyArray(sourceArray: [], targetArray: []) {
+    try {
+      for (let i = 0; i <= sourceArray.length; i++) {
+        targetArray[i] = sourceArray[i]
+      }
+      return targetArray
+    } catch (error) {
+      console.log(`chartModel copyArray(): ${error}`)
+    }
+  }
+  private setChartData(options: any) {
+    try {
+      let sData: any = []
+      sData = this.copyArray(this.sortedData, sData)
+      const headRows: string = csvParams.head_rows
+      options.series[0].data = sData.splice(
+        Number(headRows),
+        this.sortedData.length - Number(headRows)
+      )
+      return options
+    } catch (error) {
+      console.log(`chartModel setChartData(): ${error}`)
+    }
+  }
+  private setHead3Texts(options: any) {
+    try {
+      options.series[0].name = `${this.sortedData[0]} - ${this.sortedData[1]}`
+      options.title.text = `${this.sortedData[0]} - ${this.sortedData[1]} - ${this.sortedData[2]}`
+      return options
+    } catch (error) {
+      console.log(`chartModel setHead3Texts(): ${error}`)
+    }
+  }
+  private setHead2Texts() {
     //
   }
-  private head2Texts() {
+  private setHead1Texts() {
     //
   }
-  private head1Texts() {
+  private setHead0Texts() {
     //
   }
-  private head0Texts() {
-    //
-  }
-  private chartTexts() {
+  private setChartTexts(options: any) {
     try {
       const headRows: string = csvParams.head_rows
       switch (headRows) {
         case '3':
-          this.head3Texts()
-          break
+          return this.setHead3Texts(options)
         case '2':
-          this.head2Texts()
+          this.setHead2Texts()
           break
         case '1':
-          this.head1Texts()
+          this.setHead1Texts()
           break
 
         default:
-          this.head0Texts()
+          this.setHead0Texts()
           break
       }
     } catch (error) {
       console.log(`class ChartModel chartTexts(): ${error}`)
     }
-
   }
 
   private createDefaultChartOptions() {
-    // this.setDefaultOptions()
     const defaultOptions: {} = {
       series: [
         {
@@ -170,16 +198,24 @@ export class ChartModel {
     return defaultOptions
   }
 
-  private dataCorrector(){
-    let options = this.createDefaultChartOptions()
-    // TODO
-    return options
+  private dataCorrector() {
+    try {
+      let options: any = this.createDefaultChartOptions()
+      if (this.sortedData.length == 0) {
+        return options
+      } else {
+        options = this.setChartTexts(options)
+        options = this.setChartData(options)
+        //return testChart
+        return options
+      }
+    } catch (error) {
+      console.log(`ChartCervice dataCorrector(): ${error}`)
+    }
   }
   createChartOptions() {
-    const chart = this.dataCorrector()
-    console.log(`createChart():`)
-    console.dir(chart)
-    return chart
+    const chartOptions = this.dataCorrector()
+    return chartOptions
     //return testChart
   }
 }

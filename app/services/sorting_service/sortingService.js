@@ -12,10 +12,7 @@ var SortingService = (function () {
         if (sortAs === void 0) { sortAs = 'no_sorting'; }
         switch (sortAs) {
             case 'no_sorting':
-                console.log("case 'no_sorting':");
-                console.dir((0, noSorting_1.noSorting)(this.parseredData));
                 return (0, noSorting_1.noSorting)(this.parseredData);
-                break;
             case 'manual_sorting':
                 return (0, manualSorting_1.manualSorting)(this.parseredData);
                 break;
