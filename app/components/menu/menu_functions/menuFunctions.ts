@@ -36,13 +36,12 @@ export function csvParser() {
 }
 // =====
 export function noSorting() {
-  swalOptions.title = `noSorting()`
-  swalOptions.text = `Click`
-  Alert.fireToast(swalOptions)
+  app.emit('app_set_no_sorting')
 }
 // =====
-export function manualSorting() {
-  createChildWindow(
+export async function manualSorting() {
+  await app.emit('app_set_sorting_manual')
+  await createChildWindow(
     mainWindow,
     SORTING_MANUAL_EJS_PATH,
     I18n.t('sorting_manual')

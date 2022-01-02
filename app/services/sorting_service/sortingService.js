@@ -13,12 +13,10 @@ var SortingService = (function () {
         switch (sortAs) {
             case 'no_sorting':
                 return (0, noSorting_1.noSorting)(this.parseredData);
-            case 'manual_sorting':
+            case 'sorting_manual':
                 return (0, manualSorting_1.manualSorting)(this.parseredData);
-                break;
             default:
                 return (0, noSorting_1.noSorting)(this.parseredData);
-                break;
         }
     };
     return SortingService;

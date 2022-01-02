@@ -1,1 +1,1 @@
-export declare function manualSorting(data: any): any;
+export declare function manualSorting(parseredData: Array<(string)[]>): any;

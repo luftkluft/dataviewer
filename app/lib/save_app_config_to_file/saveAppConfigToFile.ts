@@ -25,8 +25,7 @@ export async function saveAppConfigToFile() {
     }
     global.app_config.app_mode = await process.env.NODE_ENV
     global.app_config.file_content = await ""
-    global.app_config.sorted_data = await []
-    global.app_config.sorted_params = await {}
+    global.app_config.sort_params = await {}
     const app_config = await global.app_config
     const newData = await JSON.stringify(app_config)
     await fs.writeFileSync(

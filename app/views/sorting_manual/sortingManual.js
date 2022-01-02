@@ -50,13 +50,29 @@ var testSortedData = [
 ];
 var ipcSortingRenderer = require('electron').ipcRenderer;
 var setSortingParamsButton = document.querySelector('.set-sorting-params-btn');
-var setSortingParams = function () {
-    var sortingParams = {};
-    ipcSortingRenderer.sendSync('set_sorted_data', sortingParams);
+var getSortParamsFromView = function () {
+    return ["0", "1", "2", "3"];
 };
+var setSortParamsViewArray = function () { return __awaiter(void 0, void 0, void 0, function () {
+    var viewArray;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                viewArray = getSortParamsFromView();
+                return [4, ipcSManualRenderer.send('set_sort_params_view_array', viewArray)];
+            case 1:
+                _a.sent();
+                return [4, ipcSManualRenderer.send('update_app')];
+            case 2:
+                _a.sent();
+                return [2];
+        }
+    });
+}); };
 setSortingParamsButton.addEventListener('click', function (event) {
     event.preventDefault();
-    setSortingParams();
+    console.log("etSortingParamsButton click");
+    setSortParamsViewArray();
 });
 var tableConstructor = function () {
     var headSize = csvParams.head_rows;
@@ -80,7 +96,6 @@ var tableConstructor = function () {
                         bodyTableHead = bodyTableHead + ("<th scope=\"col\">" + testSortedData[i][j] + "</th>");
                         if (j == headSize - 1) {
                             bodyTableHead = bodyTableHead + ("<th scope=\"col\">" + ipcSManualRenderer.sendSync('i18n', 'show') + "</th>");
-                            console.log("add choose column to head");
                         }
                     }
                 }
@@ -91,7 +106,6 @@ var tableConstructor = function () {
                             tempTableBody = "<tr><td>" + rowNumber + "</td>";
                         }
                         tempTableBody = tempTableBody + ("<td>" + testSortedData[i][j] + "</td>");
-                        console.log("Jhead= " + j);
                         if (j == headSize - 1) {
                             tempTableBody = tempTableBody + ("<td><input type=\"checkbox\" id=\"" + rowNumber + "\"></td></tr>");
                             bodyTableBody = bodyTableBody + tempTableBody;
@@ -109,25 +123,21 @@ var tableConstructor = function () {
         return "<h1>Sorting Table Error</h1>";
     }
 };
-(0, jquery_1.default)(document).ready(function () { return __awaiter(void 0, void 0, void 0, function () {
-    var divTableArea, rootTable;
-    return __generator(this, function (_a) {
-        divTableArea = document.createElement('div');
-        divTableArea.id = 'table-area';
-        rootTable = document.getElementById('root');
-        if (rootTable === null) {
-            console.log("rootArea is null!");
+(0, jquery_1.default)(document).ready(function () {
+    var divTableArea = document.createElement('div');
+    divTableArea.id = 'table-area';
+    var rootTable = document.getElementById('root');
+    if (rootTable === null) {
+        console.log("rootArea is null!");
+    }
+    else {
+        rootTable.appendChild(divTableArea);
+        try {
+            divTableArea.innerHTML = tableConstructor();
         }
-        else {
-            rootTable.appendChild(divTableArea);
-            try {
-                divTableArea.innerHTML = tableConstructor();
-            }
-            catch (error) {
-                console.log("Sorting table: " + error);
-            }
+        catch (error) {
+            console.log("Sorting table: " + error);
         }
-        return [2];
-    });
-}); });
+    }
+});
 //# sourceMappingURL=sortingManual.js.map

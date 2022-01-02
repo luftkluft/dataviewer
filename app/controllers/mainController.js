@@ -4,6 +4,7 @@ exports.MainController = void 0;
 var chartService_1 = require("../services/chart_service/chartService");
 var sortingService_1 = require("../services/sorting_service/sortingService");
 var parserService_1 = require("../services/parser_service/parserService");
+var ipcMCRenderer = require('electron').ipcRenderer;
 var MainController = (function () {
     function MainController() {
         this.parseredData = [];
@@ -12,7 +13,7 @@ var MainController = (function () {
         return new parserService_1.ParserService().getParseredData();
     };
     MainController.prototype.sortingData = function (_parserData) {
-        return new sortingService_1.SortingService(_parserData).sorting();
+        return new sortingService_1.SortingService(_parserData).sorting(ipcMCRenderer.sendSync('get_sorting'));
     };
     MainController.prototype.render = function () {
         this.parseredData = this.getParseredData();

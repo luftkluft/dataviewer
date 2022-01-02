@@ -1,7 +1,7 @@
 import $ from 'jquery'
 const ipcSManualRenderer = require('electron').ipcRenderer
 const csvParams = ipcSManualRenderer.sendSync('get_csv_params')
-const testSortedData: Array<(string | number)[]> = [
+const testSortedData: Array<(string)[]> = [
   ["Адрес", "Имя", "Комментарий", "0", "0", "0", "0", "0"],
   ["A1", "N1", "K1", "1", "1", "1", "1", "1"],
   ["A2", "N2", "K2", "2", "2", "2", "2", "2"],
@@ -11,14 +11,21 @@ const testSortedData: Array<(string | number)[]> = [
 const ipcSortingRenderer = require('electron').ipcRenderer
 const setSortingParamsButton: any = document.querySelector('.set-sorting-params-btn')
 
-const setSortingParams = () => {
-  let sortingParams: {} = {}
-  ipcSortingRenderer.sendSync('set_sorted_data', sortingParams)
+const getSortParamsFromView = () => {
+  // TODO
+  return ["0", "1", "2", "3"]
+}
+
+const setSortParamsViewArray = async () => {
+  const viewArray: (string)[] = getSortParamsFromView()
+  await ipcSManualRenderer.send('set_sort_params_view_array', viewArray)
+  await ipcSManualRenderer.send('update_app')
 }
 
 setSortingParamsButton.addEventListener('click', function (event: any) {
   event.preventDefault()
-  setSortingParams()
+  console.log(`etSortingParamsButton click`)
+  setSortParamsViewArray()
 })
 
 const tableConstructor = () => {
@@ -43,7 +50,6 @@ const tableConstructor = () => {
             bodyTableHead = bodyTableHead + `<th scope="col">${testSortedData[i][j]}</th>`
             if (j == headSize - 1) {
               bodyTableHead = bodyTableHead + `<th scope="col">${ipcSManualRenderer.sendSync('i18n', 'show')}</th>`
-              console.log(`add choose column to head`)
             }
           }
         } else {
@@ -53,7 +59,6 @@ const tableConstructor = () => {
               tempTableBody = `<tr><td>${rowNumber}</td>`
             }
             tempTableBody = tempTableBody + `<td>${testSortedData[i][j]}</td>`
-            console.log(`Jhead= ${j}`)
             if (j == headSize - 1) {
               tempTableBody = tempTableBody + `<td><input type="checkbox" id="${rowNumber}"></td></tr>`
               bodyTableBody = bodyTableBody + tempTableBody
@@ -71,7 +76,7 @@ const tableConstructor = () => {
   }
 }
 
-$(document).ready(async () => {
+$(document).ready(() => {
   const divTableArea: any = document.createElement('div')
   divTableArea.id = 'table-area'
   const rootTable = document.getElementById('root')

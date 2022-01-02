@@ -4,20 +4,18 @@ import { manualSorting } from '../../lib/manual_sorting/manualSorting'
 export class SortingService {
   parseredData: [] = []
 
-  constructor(_parseredData: []){
+  constructor(_parseredData: []) {
     this.parseredData = _parseredData
   }
 
-  sorting(sortAs: string = 'no_sorting'){
+  sorting(sortAs: string = 'no_sorting') {
     switch (sortAs) {
       case 'no_sorting':
         return noSorting(this.parseredData)
-      case 'manual_sorting':
+      case 'sorting_manual':
         return manualSorting(this.parseredData)
-        break
       default:
         return noSorting(this.parseredData)
-        break
     }
   }
 }

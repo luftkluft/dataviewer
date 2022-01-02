@@ -42,5 +42,6 @@
   "columns": "Number of columns",
   "set_csv_params": "Set csv params",
   "set_sorting_params": "Set sorting params",
-  "show": "Show"
+  "show": "Show",
+  "set_manual_sorting_options": "Set manual sorting options!"
 }

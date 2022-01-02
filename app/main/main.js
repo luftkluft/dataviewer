@@ -169,12 +169,32 @@ ipcMain.on('get_parser_status', function (event, arg) {
     event.returnValue = result;
 });
 ipcMain.on('set_sorted_data', function (event, arg) {
-    console.log("ipcMain.on('set_sorted_data'");
     global.app_config.sorted_data = arg;
 });
 ipcMain.on('get_sorted_data', function (event, arg) {
     var result = global.app_config.sorted_data;
-    console.log("ipcMain.on('get_sorted_data'");
     event.returnValue = result;
+});
+ipcMain.on('set_sort_params_view_array', function (event, arg) {
+    global.app_config.sort_params.view_array = arg;
+});
+ipcMain.on('get_sort_params_view_array', function (event, arg) {
+    var result = global.app_config.sort_params.view_array;
+    event.returnValue = result;
+});
+ipcMain.on('set_sorting', function (event, arg) {
+    global.app_config.sorting = arg;
+});
+ipcMain.on('get_sorting', function (event, arg) {
+    var result = global.app_config.sorting;
+    event.returnValue = result;
+});
+app.on('app_set_sorting_manual', function () {
+    global.app_config.sorting = 'sorting_manual';
+    app.emit('update_app');
+});
+app.on('app_set_no_sorting', function () {
+    global.app_config.sorting = 'no_sorting';
+    app.emit('update_app');
 });
 //# sourceMappingURL=main.js.map

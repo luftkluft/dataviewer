@@ -65,13 +65,23 @@ function csvParser() {
 }
 exports.csvParser = csvParser;
 function noSorting() {
-    swalOptions.title = "noSorting()";
-    swalOptions.text = "Click";
-    Alert.fireToast(swalOptions);
+    app.emit('app_set_no_sorting');
 }
 exports.noSorting = noSorting;
 function manualSorting() {
-    (0, createChildWindow_1.createChildWindow)(main_1.mainWindow, constants_1.SORTING_MANUAL_EJS_PATH, i18nService_1.I18n.t('sorting_manual'));
+    return __awaiter(this, void 0, void 0, function () {
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4, app.emit('app_set_sorting_manual')];
+                case 1:
+                    _a.sent();
+                    return [4, (0, createChildWindow_1.createChildWindow)(main_1.mainWindow, constants_1.SORTING_MANUAL_EJS_PATH, i18nService_1.I18n.t('sorting_manual'))];
+                case 2:
+                    _a.sent();
+                    return [2];
+            }
+        });
+    });
 }
 exports.manualSorting = manualSorting;
 function setRusLanguage() {

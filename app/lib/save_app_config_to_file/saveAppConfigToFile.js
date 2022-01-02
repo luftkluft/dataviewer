@@ -54,21 +54,21 @@ var appRoot = require('app-root-path');
 var alertService_1 = require("../../services/alert_service/alertService");
 function saveAppConfigToFile() {
     return __awaiter(this, void 0, void 0, function () {
-        var swOp, oldData, old_app_config, _a, _b, _c, _d, app_config_1, newData, error_1;
-        return __generator(this, function (_e) {
-            switch (_e.label) {
+        var swOp, oldData, old_app_config, _a, _b, _c, app_config_1, newData, error_1;
+        return __generator(this, function (_d) {
+            switch (_d.label) {
                 case 0: return [4, __assign(__assign({}, alertService_1.swalOptions), { showConfirmButton: true })];
                 case 1:
-                    swOp = _e.sent();
-                    _e.label = 2;
+                    swOp = _d.sent();
+                    _d.label = 2;
                 case 2:
-                    _e.trys.push([2, 12, , 13]);
+                    _d.trys.push([2, 11, , 12]);
                     return [4, fs.readFileSync(appRoot + constants_1.PATH_TO_APP_CONFIG + constants_1.APP_CONFIG_FILE_NAME, 'utf8')];
                 case 3:
-                    oldData = _e.sent();
+                    oldData = _d.sent();
                     return [4, JSON.parse(oldData)];
                 case 4:
-                    old_app_config = _e.sent();
+                    old_app_config = _d.sent();
                     if (old_app_config === undefined) {
                         swOp.title = "saveAppConfigToFile()";
                         swOp.text = "\u0421onfig app_config not found!";
@@ -77,25 +77,21 @@ function saveAppConfigToFile() {
                     _a = global.app_config;
                     return [4, process.env.NODE_ENV];
                 case 5:
-                    _a.app_mode = _e.sent();
+                    _a.app_mode = _d.sent();
                     _b = global.app_config;
                     return [4, ""];
                 case 6:
-                    _b.file_content = _e.sent();
+                    _b.file_content = _d.sent();
                     _c = global.app_config;
-                    return [4, []];
-                case 7:
-                    _c.sorted_data = _e.sent();
-                    _d = global.app_config;
                     return [4, {}];
-                case 8:
-                    _d.sorted_params = _e.sent();
+                case 7:
+                    _c.sort_params = _d.sent();
                     return [4, global.app_config];
-                case 9:
-                    app_config_1 = _e.sent();
+                case 8:
+                    app_config_1 = _d.sent();
                     return [4, JSON.stringify(app_config_1)];
-                case 10:
-                    newData = _e.sent();
+                case 9:
+                    newData = _d.sent();
                     return [4, fs.writeFileSync(appRoot + constants_1.PATH_TO_APP_CONFIG + constants_1.APP_CONFIG_FILE_NAME, newData, 'utf8', function (error) {
                             if (error) {
                                 swOp.title = "saveAppConfigToFile()";
@@ -103,16 +99,16 @@ function saveAppConfigToFile() {
                                 alertService_1.Alert.fireToast(swOp);
                             }
                         })];
+                case 10:
+                    _d.sent();
+                    return [3, 12];
                 case 11:
-                    _e.sent();
-                    return [3, 13];
-                case 12:
-                    error_1 = _e.sent();
+                    error_1 = _d.sent();
                     swOp.title = "saveAppConfigToFile()";
                     swOp.text = "\u0421onfig app_config not found! " + error_1;
                     alertService_1.Alert.fireToast(swOp);
-                    return [3, 13];
-                case 13: return [2];
+                    return [3, 12];
+                case 12: return [2];
             }
         });
     });

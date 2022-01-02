@@ -1,4 +1,9 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var jquery_1 = __importDefault(require("jquery"));
 var fs = require('fs');
 var ipcRenderer = require('electron').ipcRenderer;
 var form = document.querySelector('.form');
@@ -48,4 +53,19 @@ var chooseFile = function () {
 var showData = function () {
     ipcRenderer.sendSync('update_app');
 };
+(0, jquery_1.default)(document).ready(function () {
+    var sortingStatus = ipcRenderer.sendSync('get_sorting');
+    var viewArray = ipcRenderer.sendSync('get_sort_params_view_array');
+    var showDataButton = document.querySelector('.show-data-btn');
+    var memo = document.querySelector('.memo');
+    if (sortingStatus == 'sorting_manual') {
+        if (viewArray == undefined || viewArray.length == 0) {
+            showDataButton.disabled = true;
+            memo.value = ipcRenderer.sendSync('i18n', 'set_manual_sorting_options');
+        }
+        else {
+            showDataButton.disabled = false;
+        }
+    }
+});
 //# sourceMappingURL=openFile.js.map

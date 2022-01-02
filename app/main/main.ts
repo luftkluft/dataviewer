@@ -142,12 +142,38 @@ ipcMain.on('get_parser_status', (event: any, arg: any) => {
 })
 
 ipcMain.on('set_sorted_data', (event: any, arg: any) => {
-  console.log(`ipcMain.on('set_sorted_data'`)
   global.app_config.sorted_data = arg
 })
 
 ipcMain.on('get_sorted_data', (event: any, arg: any) => {
   const result = global.app_config.sorted_data
-  console.log(`ipcMain.on('get_sorted_data'`)
   event.returnValue = result
+})
+
+ipcMain.on('set_sort_params_view_array', (event: any, arg: any) => {
+  global.app_config.sort_params.view_array = arg
+})
+
+ipcMain.on('get_sort_params_view_array', (event: any, arg: any) => {
+  const result = global.app_config.sort_params.view_array
+  event.returnValue = result
+})
+
+ipcMain.on('set_sorting', (event: any, arg: any) => {
+  global.app_config.sorting = arg
+})
+
+ipcMain.on('get_sorting', (event: any, arg: any) => {
+  const result = global.app_config.sorting
+  event.returnValue = result
+})
+
+app.on('app_set_sorting_manual', () => {
+  global.app_config.sorting = 'sorting_manual'
+  app.emit('update_app')
+})
+
+app.on('app_set_no_sorting', () => {
+  global.app_config.sorting = 'no_sorting'
+  app.emit('update_app')
 })
