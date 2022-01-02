@@ -1,4 +1,8 @@
 "use strict";
+var __makeTemplateObject = (this && this.__makeTemplateObject) || function (cooked, raw) {
+    if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
+    return cooked;
+};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -40,18 +44,33 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var jquery_1 = __importDefault(require("jquery"));
+var parserService_1 = require("../../services/parser_service/parserService");
 var ipcSManualRenderer = require('electron').ipcRenderer;
 var csvParams = ipcSManualRenderer.sendSync('get_csv_params');
-var testSortedData = [
-    ["Адрес", "Имя", "Комментарий", "0", "0", "0", "0", "0"],
-    ["A1", "N1", "K1", "1", "1", "1", "1", "1"],
-    ["A2", "N2", "K2", "2", "2", "2", "2", "2"],
-    ["A3", "N3", "K3", "3", "3", "3", "3", "3"]
-];
 var ipcSortingRenderer = require('electron').ipcRenderer;
 var setSortingParamsButton = document.querySelector('.set-sorting-params-btn');
 var getSortParamsFromView = function () {
-    return ["0", "1", "2", "3"];
+    var viewArray = [];
+    try {
+        var table = document.querySelector('.table');
+        var markedCheckbox = document.getElementsByName('ibox');
+        for (var _i = 0, markedCheckbox_1 = markedCheckbox; _i < markedCheckbox_1.length; _i++) {
+            var checkbox = markedCheckbox_1[_i];
+            if (checkbox.checked) {
+                console.log("check:");
+                console.log(checkbox.id);
+                viewArray.push(String(checkbox.id));
+            }
+        }
+        if (viewArray.length > 0) {
+            viewArray.unshift('0');
+        }
+        console.log(templateObject_1 || (templateObject_1 = __makeTemplateObject(["viewArray: ", ""], ["viewArray: ", ""])), viewArray);
+    }
+    catch (error) {
+        console.log("getSortParamsFromView(): " + error);
+    }
+    return viewArray;
 };
 var setSortParamsViewArray = function () { return __awaiter(void 0, void 0, void 0, function () {
     var viewArray;
@@ -71,11 +90,23 @@ var setSortParamsViewArray = function () { return __awaiter(void 0, void 0, void
 }); };
 setSortingParamsButton.addEventListener('click', function (event) {
     event.preventDefault();
-    console.log("etSortingParamsButton click");
     setSortParamsViewArray();
 });
+var getTableData = function () {
+    try {
+        var parseredData = new parserService_1.ParserService().getParseredData();
+        return parseredData;
+    }
+    catch (error) {
+        console.log("getTableData(): " + error);
+    }
+};
 var tableConstructor = function () {
+    var tableData = getTableData();
     var headSize = csvParams.head_rows;
+    if (tableData == undefined || tableData.length == 0) {
+        return "<h1>" + ipcSManualRenderer.sendSync('i18n', 'nothing_to_sort') + "</h1>";
+    }
     try {
         var sortingTable = "";
         var beginTableHead = "<table class=\"table table-striped\">\n<thead>\n<tr>";
@@ -86,14 +117,14 @@ var tableConstructor = function () {
         var tempTableBody = "";
         var endTableBody = "</tbody>\n</table>";
         var rowNumber = 0;
-        for (var i = 0; i < testSortedData.length; i++) {
-            for (var j = 0; j < testSortedData[i].length; j++) {
+        for (var i = 0; i < tableData.length; i++) {
+            for (var j = 0; j < tableData[i].length; j++) {
                 if (i == 0) {
                     if (j < headSize) {
                         if (j == 0) {
                             bodyTableHead = "<th scope=\"col\">#</th>";
                         }
-                        bodyTableHead = bodyTableHead + ("<th scope=\"col\">" + testSortedData[i][j] + "</th>");
+                        bodyTableHead = bodyTableHead + ("<th scope=\"col\">" + tableData[i][j] + "</th>");
                         if (j == headSize - 1) {
                             bodyTableHead = bodyTableHead + ("<th scope=\"col\">" + ipcSManualRenderer.sendSync('i18n', 'show') + "</th>");
                         }
@@ -105,9 +136,9 @@ var tableConstructor = function () {
                             rowNumber = rowNumber + 1;
                             tempTableBody = "<tr><td>" + rowNumber + "</td>";
                         }
-                        tempTableBody = tempTableBody + ("<td>" + testSortedData[i][j] + "</td>");
+                        tempTableBody = tempTableBody + ("<td>" + tableData[i][j] + "</td>");
                         if (j == headSize - 1) {
-                            tempTableBody = tempTableBody + ("<td><input type=\"checkbox\" id=\"" + rowNumber + "\"></td></tr>");
+                            tempTableBody = tempTableBody + ("<td><input type=\"checkbox\" id=\"" + rowNumber + "\" name=\"ibox\"></td></tr>");
                             bodyTableBody = bodyTableBody + tempTableBody;
                             tempTableBody = "";
                         }
@@ -140,4 +171,5 @@ var tableConstructor = function () {
         }
     }
 });
+var templateObject_1;
 //# sourceMappingURL=sortingManual.js.map

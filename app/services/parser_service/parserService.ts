@@ -30,10 +30,8 @@ export class ParserService {
       case 'parser_csv':
         const parseredData = new CsvParserService(dataFromFile).csvParsering()
         return parseredData
-        break
       default:
         return []
-        break
     }
   }
 

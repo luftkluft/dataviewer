@@ -43,5 +43,6 @@
   "set_csv_params": "Задать параметры csv",
   "set_sorting_params": "Задать параметры сортировки",
   "show": "Показать",
-  "set_manual_sorting_options": "Задайте параметры ручной сортировки!"
+  "set_manual_sorting_options": "После загрузки файла задайте параметры ручной сортировки!",
+  "nothing_to_sort": "Нечего сортировать!"
 }

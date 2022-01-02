@@ -1,19 +1,30 @@
 import $ from 'jquery'
+import {ParserService} from '../../services/parser_service/parserService'
 const ipcSManualRenderer = require('electron').ipcRenderer
 const csvParams = ipcSManualRenderer.sendSync('get_csv_params')
-const testSortedData: Array<(string)[]> = [
-  ["Адрес", "Имя", "Комментарий", "0", "0", "0", "0", "0"],
-  ["A1", "N1", "K1", "1", "1", "1", "1", "1"],
-  ["A2", "N2", "K2", "2", "2", "2", "2", "2"],
-  ["A3", "N3", "K3", "3", "3", "3", "3", "3"]
-]
-
 const ipcSortingRenderer = require('electron').ipcRenderer
 const setSortingParamsButton: any = document.querySelector('.set-sorting-params-btn')
 
 const getSortParamsFromView = () => {
-  // TODO
-  return ["0", "1", "2", "3"]
+  let viewArray: (string)[] = []
+  try {
+    const table: any = document.querySelector('.table')
+    const markedCheckbox: any = document.getElementsByName('ibox')
+    for (let checkbox of markedCheckbox) {
+      if (checkbox.checked) {
+        console.log(`check:`)
+        console.log(checkbox.id)
+        viewArray.push(String(checkbox.id))
+      }
+    }
+    if (viewArray.length > 0){
+      viewArray.unshift('0')
+    }
+    console.log`viewArray: ${viewArray}`
+  } catch (error) {
+    console.log(`getSortParamsFromView(): ${error}`)
+  }
+  return viewArray
 }
 
 const setSortParamsViewArray = async () => {
@@ -24,12 +35,24 @@ const setSortParamsViewArray = async () => {
 
 setSortingParamsButton.addEventListener('click', function (event: any) {
   event.preventDefault()
-  console.log(`etSortingParamsButton click`)
   setSortParamsViewArray()
 })
 
+const getTableData = () =>{
+  try {
+    const parseredData = new ParserService().getParseredData()
+    return parseredData
+  } catch (error) {
+    console.log(`getTableData(): ${error}`)
+  }
+}
+
 const tableConstructor = () => {
+  const tableData = getTableData()
   const headSize = csvParams.head_rows
+  if (tableData == undefined || tableData.length == 0){
+    return `<h1>${ipcSManualRenderer.sendSync('i18n', 'nothing_to_sort')}</h1>`
+  }
   try {
     let sortingTable: string = ``
     const beginTableHead: string = `<table class="table table-striped">\n<thead>\n<tr>`
@@ -40,14 +63,14 @@ const tableConstructor = () => {
     let tempTableBody: string = ``
     const endTableBody = `</tbody>\n</table>`
     let rowNumber: number = 0
-    for (let i = 0; i < testSortedData.length; i++) {
-      for (let j = 0; j < testSortedData[i].length; j++) {
+    for (let i = 0; i < tableData.length; i++) {
+      for (let j = 0; j < tableData[i].length; j++) {
         if (i == 0) {
           if (j < headSize) {
             if (j == 0) {
               bodyTableHead = `<th scope="col">#</th>`
             }
-            bodyTableHead = bodyTableHead + `<th scope="col">${testSortedData[i][j]}</th>`
+            bodyTableHead = bodyTableHead + `<th scope="col">${tableData[i][j]}</th>`
             if (j == headSize - 1) {
               bodyTableHead = bodyTableHead + `<th scope="col">${ipcSManualRenderer.sendSync('i18n', 'show')}</th>`
             }
@@ -58,9 +81,9 @@ const tableConstructor = () => {
               rowNumber = rowNumber + 1
               tempTableBody = `<tr><td>${rowNumber}</td>`
             }
-            tempTableBody = tempTableBody + `<td>${testSortedData[i][j]}</td>`
+            tempTableBody = tempTableBody + `<td>${tableData[i][j]}</td>`
             if (j == headSize - 1) {
-              tempTableBody = tempTableBody + `<td><input type="checkbox" id="${rowNumber}"></td></tr>`
+              tempTableBody = tempTableBody + `<td><input type="checkbox" id="${rowNumber}" name="ibox"></td></tr>`
               bodyTableBody = bodyTableBody + tempTableBody
               tempTableBody = ``
             }

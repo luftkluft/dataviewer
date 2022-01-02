@@ -33,10 +33,8 @@ var ParserService = (function () {
             case 'parser_csv':
                 var parseredData = new csvParserService_1.CsvParserService(dataFromFile).csvParsering();
                 return parseredData;
-                break;
             default:
                 return [];
-                break;
         }
     };
     ParserService.prototype.parsering = function () {
