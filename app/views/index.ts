@@ -1,4 +1,4 @@
-const $ = require('jquery')
+import $ from 'jquery'
 const ApexCharts = require('apexcharts')
 import { MainController } from '../controllers/mainController'
 const Sortable = require('sortablejs')

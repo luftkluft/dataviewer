@@ -40,5 +40,7 @@
   "delemiter": "Разделитель",
   "rows": "Число строк",
   "columns": "Число колонок",
-  "set_csv_params": "Задать параметры csv"
+  "set_csv_params": "Задать параметры csv",
+  "set_sorting_params": "Задать параметры сортировки",
+  "show": "Показать"
 }

@@ -20,7 +20,7 @@ var ChartService = (function () {
                     return charts;
                 }
                 else {
-                    for (var i = 0; i < 5; i++) {
+                    for (var i = 0; i < sortedData.length; i++) {
                         var options = _this.getChartOptions(sortedData[i], i);
                         var chartObject = _this.createChartObject(options);
                         charts.push(chartObject);

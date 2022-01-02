@@ -35,14 +35,17 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-var $ = require('jquery');
+var jquery_1 = __importDefault(require("jquery"));
 var ApexCharts = require('apexcharts');
 var mainController_1 = require("../controllers/mainController");
 var Sortable = require('sortablejs');
 var mainController = new mainController_1.MainController();
 var chartsOptions = mainController.render();
-$(document).ready(function () { return __awaiter(void 0, void 0, void 0, function () {
+(0, jquery_1.default)(document).ready(function () { return __awaiter(void 0, void 0, void 0, function () {
     var divChartsArea, rootArea, i, _a, _b, i, error_1, el, sortable;
     return __generator(this, function (_c) {
         switch (_c.label) {

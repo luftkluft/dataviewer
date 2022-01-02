@@ -6,8 +6,8 @@ var BrowserWindow = require('electron').BrowserWindow;
 var appRoot = require('app-root-path');
 var createChildWindow = function (parentWindow, ejsPath, windowTitle) {
     var childWindow = new BrowserWindow({
-        width: 600,
-        height: 400,
+        width: 750,
+        height: 550,
         title: windowTitle,
         parent: parentWindow,
         icon: appRoot + constants_1.MAIN_ICON_PATH + constants_1.MAIN_SMAII_ICON_NAME,

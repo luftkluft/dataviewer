@@ -1,3 +1,3 @@
-export function manualSorting(data: any){
+export function manualSorting(data: any) {
   return data
 }

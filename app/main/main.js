@@ -168,4 +168,13 @@ ipcMain.on('get_parser_status', function (event, arg) {
     var result = global.app_config.parser;
     event.returnValue = result;
 });
+ipcMain.on('set_sorted_data', function (event, arg) {
+    console.log("ipcMain.on('set_sorted_data'");
+    global.app_config.sorted_data = arg;
+});
+ipcMain.on('get_sorted_data', function (event, arg) {
+    var result = global.app_config.sorted_data;
+    console.log("ipcMain.on('get_sorted_data'");
+    event.returnValue = result;
+});
 //# sourceMappingURL=main.js.map

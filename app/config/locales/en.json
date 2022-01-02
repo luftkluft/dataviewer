@@ -40,5 +40,7 @@
   "delemiter": "Delemiter",
   "rows": "Number of rows",
   "columns": "Number of columns",
-  "set_csv_params": "Set csv params"
+  "set_csv_params": "Set csv params",
+  "set_sorting_params": "Set sorting params",
+  "show": "Show"
 }

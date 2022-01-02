@@ -8,8 +8,8 @@ const appRoot = require('app-root-path')
 
 export const createChildWindow = (parentWindow: any, ejsPath: string, windowTitle: string) => {
   let childWindow = new BrowserWindow({
-    width: 600,
-    height: 400,
+    width: 750,
+    height: 550,
     title: windowTitle,
     parent: parentWindow,
     icon: appRoot + MAIN_ICON_PATH + MAIN_SMAII_ICON_NAME,

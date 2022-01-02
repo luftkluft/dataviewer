@@ -35,8 +35,7 @@ export class ChartService {
         charts.push(chartObject)
         return charts
       } else {
-        //// for (let i = 0; i < sortedData.length; i++) {
-        for (let i = 0; i < 5; i++) {
+        for (let i = 0; i < sortedData.length; i++) {
           const options = this.getChartOptions(sortedData[i], i)
           const chartObject = this.createChartObject(options)
           charts.push(chartObject)
