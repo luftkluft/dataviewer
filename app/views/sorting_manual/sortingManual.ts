@@ -12,15 +12,12 @@ const getSortParamsFromView = () => {
     const markedCheckbox: any = document.getElementsByName('ibox')
     for (let checkbox of markedCheckbox) {
       if (checkbox.checked) {
-        console.log(`check:`)
-        console.log(checkbox.id)
         viewArray.push(String(checkbox.id))
       }
     }
     if (viewArray.length > 0){
       viewArray.unshift('0')
     }
-    console.log`viewArray: ${viewArray}`
   } catch (error) {
     console.log(`getSortParamsFromView(): ${error}`)
   }

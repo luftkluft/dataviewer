@@ -1,8 +1,4 @@
 "use strict";
-var __makeTemplateObject = (this && this.__makeTemplateObject) || function (cooked, raw) {
-    if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
-    return cooked;
-};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -57,15 +53,12 @@ var getSortParamsFromView = function () {
         for (var _i = 0, markedCheckbox_1 = markedCheckbox; _i < markedCheckbox_1.length; _i++) {
             var checkbox = markedCheckbox_1[_i];
             if (checkbox.checked) {
-                console.log("check:");
-                console.log(checkbox.id);
                 viewArray.push(String(checkbox.id));
             }
         }
         if (viewArray.length > 0) {
             viewArray.unshift('0');
         }
-        console.log(templateObject_1 || (templateObject_1 = __makeTemplateObject(["viewArray: ", ""], ["viewArray: ", ""])), viewArray);
     }
     catch (error) {
         console.log("getSortParamsFromView(): " + error);
@@ -171,5 +164,4 @@ var tableConstructor = function () {
         }
     }
 });
-var templateObject_1;
 //# sourceMappingURL=sortingManual.js.map

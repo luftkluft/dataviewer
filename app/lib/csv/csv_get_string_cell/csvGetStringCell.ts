@@ -7,7 +7,7 @@ export const csvGetStringCell = (
   let result: string = ''
   try {
     const csvParams = ipcCsvGSCRenderer.sendSync('get_csv_params')
-    for (let i = startPosition; i < dataFromFile.length; i++) {
+    for (let i = startPosition; i < dataFromFile.length -1; i++) {
       if (
         dataFromFile[i] == csvParams.end_row ||
         dataFromFile[i] == '\r' ||

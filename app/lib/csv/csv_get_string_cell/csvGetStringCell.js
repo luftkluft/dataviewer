@@ -7,7 +7,7 @@ var csvGetStringCell = function (dataFromFile, startPosition) {
     var result = '';
     try {
         var csvParams_1 = ipcCsvGSCRenderer.sendSync('get_csv_params');
-        for (var i = startPosition; i < dataFromFile.length; i++) {
+        for (var i = startPosition; i < dataFromFile.length - 1; i++) {
             if (dataFromFile[i] == csvParams_1.end_row ||
                 dataFromFile[i] == '\r' ||
                 dataFromFile[i] == '\n') {
