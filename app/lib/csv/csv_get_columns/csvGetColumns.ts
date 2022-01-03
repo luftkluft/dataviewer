@@ -5,6 +5,7 @@ import { csvGetStringCell } from '../csv_get_string_cell/csvGetStringCell'
 
 const doFirstColumn = (columnsArray: Array<(string)[]>) => {
   try {
+    columnsArray[0].pop() // TODO: das ist bugfix
     switch (csvParams.head_rows) {
       case "3":
         columnsArray[0][0] = csvParams.first_column_name

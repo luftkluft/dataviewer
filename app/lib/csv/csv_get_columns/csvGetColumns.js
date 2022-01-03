@@ -7,6 +7,7 @@ var csvColumnCounting_1 = require("../csv_column_counting/csvColumnCounting");
 var csvGetStringCell_1 = require("../csv_get_string_cell/csvGetStringCell");
 var doFirstColumn = function (columnsArray) {
     try {
+        columnsArray[0].pop();
         switch (csvParams.head_rows) {
             case "3":
                 columnsArray[0][0] = csvParams.first_column_name;
