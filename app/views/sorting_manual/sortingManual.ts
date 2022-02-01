@@ -1,5 +1,5 @@
 import $ from 'jquery'
-import {ParserService} from '../../services/parser_service/parserService'
+import { ParserService } from '../../services/parser_service/parserService'
 const ipcSManualRenderer = require('electron').ipcRenderer
 const csvParams = ipcSManualRenderer.sendSync('get_csv_params')
 const ipcSortingRenderer = require('electron').ipcRenderer
@@ -15,7 +15,7 @@ const getSortParamsFromView = () => {
         viewArray.push(String(checkbox.id))
       }
     }
-    if (viewArray.length > 0){
+    if (viewArray.length > 0) {
       viewArray.unshift('0')
     }
   } catch (error) {
@@ -35,7 +35,7 @@ setSortingParamsButton.addEventListener('click', function (event: any) {
   setSortParamsViewArray()
 })
 
-const getTableData = () =>{
+const getTableData = () => {
   try {
     const parseredData = new ParserService().getParseredData()
     return parseredData
@@ -46,8 +46,10 @@ const getTableData = () =>{
 
 const tableConstructor = () => {
   const tableData = getTableData()
+  const divTableInfo: any = document.getElementById('table-info')
   const headSize = csvParams.head_rows
-  if (tableData == undefined || tableData.length == 0){
+  if (tableData == undefined || tableData.length == 0) {
+    divTableInfo.innerHTML = ``
     return `<h1>${ipcSManualRenderer.sendSync('i18n', 'nothing_to_sort')}</h1>`
   }
   try {
@@ -89,6 +91,7 @@ const tableConstructor = () => {
       }
     }
     sortingTable = beginTableHead + bodyTableHead + endTableHead + beginTableBody + bodyTableBody + endTableBody
+    divTableInfo.innerHTML = `${ipcSManualRenderer.sendSync('i18n', 'end_table_creation')}`
     return sortingTable
   } catch (error) {
     console.log(`tableConstructor(): ${error}`)

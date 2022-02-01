@@ -44,5 +44,7 @@
   "set_sorting_params": "Set sorting params",
   "show": "Show",
   "set_manual_sorting_options": "After uploading the file, set the manual sorting options!",
-  "nothing_to_sort": "Nothing to sort!"
+  "nothing_to_sort": "Nothing to sort!",
+  "start_table_creation": "The table is being built, please wait... it's a long time... ",
+  "end_table_creation": "The table has been created. Select rows for plotting."
 }
