@@ -41,7 +41,7 @@
   "rows": "Number of rows",
   "columns": "Number of columns",
   "set_csv_params": "Set csv params",
-  "set_sorting_params": "Set sorting params",
+  "set_sorting_params": "Build selected graphs ",
   "show": "Show",
   "set_manual_sorting_options": "After uploading the file, set the manual sorting options!",
   "nothing_to_sort": "Nothing to sort!",

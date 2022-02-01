@@ -100,6 +100,7 @@ var tableConstructor = function () {
     var headSize = csvParams.head_rows;
     if (tableData == undefined || tableData.length == 0) {
         divTableInfo.innerHTML = "";
+        setSortingParamsButton.disabled = true;
         return "<h1>" + ipcSManualRenderer.sendSync('i18n', 'nothing_to_sort') + "</h1>";
     }
     try {
@@ -143,6 +144,7 @@ var tableConstructor = function () {
         }
         sortingTable = beginTableHead + bodyTableHead + endTableHead + beginTableBody + bodyTableBody + endTableBody;
         divTableInfo.innerHTML = "" + ipcSManualRenderer.sendSync('i18n', 'end_table_creation');
+        setSortingParamsButton.disabled = false;
         return sortingTable;
     }
     catch (error) {
