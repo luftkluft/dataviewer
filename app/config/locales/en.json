@@ -7,6 +7,8 @@
   "parser": "Parser",
   "csv": "csv",
   "parser_csv": "Parser csv",
+  "log": "log",
+  "parser_log": "Parser log",
 
   "sorting": "Sorting",
   "no_sorting": "No sorting",
@@ -46,5 +48,10 @@
   "set_manual_sorting_options": "After uploading the file, set the manual sorting options!",
   "nothing_to_sort": "Nothing to sort!",
   "start_table_creation": "The table is being built, please wait... it's a long time... ",
-  "end_table_creation": "The table has been created. Select rows for plotting."
+  "end_table_creation": "The table has been created. Select rows for plotting.",
+
+  "log_file": "Log file",
+  "variable_list_file": "Variable list file",
+  "csv_file_path": "Csv file path",
+  "make_csv_file": "Make csv file"
 }

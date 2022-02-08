@@ -31,6 +31,10 @@ function menuTemplate() {
                     label: i18nService_1.I18n.t('csv'),
                     click: menuFunctions_1.csvParser,
                 },
+                {
+                    label: i18nService_1.I18n.t('log'),
+                    click: menuFunctions_1.logParser,
+                },
             ],
         },
         {

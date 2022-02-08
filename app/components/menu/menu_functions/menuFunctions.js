@@ -36,7 +36,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.changeAppMode = exports.codeGithub = exports.about = exports.setEnLanguage = exports.setRusLanguage = exports.manualSorting = exports.noSorting = exports.csvParser = exports.fileExit = exports.fileOpen = void 0;
+exports.changeAppMode = exports.codeGithub = exports.about = exports.setEnLanguage = exports.setRusLanguage = exports.manualSorting = exports.noSorting = exports.logParser = exports.csvParser = exports.fileExit = exports.fileOpen = void 0;
 var constants_1 = require("../../../constants/constants");
 var setCurrentLocale_1 = require("../../../lib/set_current_locale/setCurrentLocale");
 var i18nService_1 = require("../../../services/i18n_service/i18nService");
@@ -64,6 +64,10 @@ function csvParser() {
     (0, createChildWindow_1.createChildWindow)(main_1.mainWindow, constants_1.PARSER_CSV_EJS_PATH, i18nService_1.I18n.t('parser_csv'));
 }
 exports.csvParser = csvParser;
+function logParser() {
+    (0, createChildWindow_1.createChildWindow)(main_1.mainWindow, constants_1.PARSER_LOG_EJS_PATH, i18nService_1.I18n.t('parser_log'));
+}
+exports.logParser = logParser;
 function noSorting() {
     app.emit('app_set_no_sorting');
 }

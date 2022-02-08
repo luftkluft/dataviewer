@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="../../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./parser_log.css">
+  <script src="../../../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="../../../node_modules/jquery/dist/jquery.min.js"></script>
+  <link rel="shortcut icon" href="<%= shortcutIcon %>">
+</head>
+
+<body>
+  <form class='parser-form'>
+    <div>
+      <div>
+        <label>
+          <%= I18n.t('log_file') %>:
+        </label>
+      </div>
+      <div>
+        <input type='text' class='choose-log-file-field' />
+        <button type='button' class='choose-log-file-btn' onclick="chooseLogFile()">...</button>
+      </div>
+    </div>
+    <div>
+      <div>
+        <label>
+          <%= I18n.t('variable_list_file') %>:
+        </label>
+      </div>
+      <div>
+        <input type='text' class='choose-variable-list-file-field' />
+        <button type='button' class='choose-variable-list-file-btn' onclick="chooseVariableListFile()">...</button>
+      </div>
+      <div>
+        <label>
+          <%= I18n.t('csv_file_path') %>:
+        </label>
+      </div>
+      <div>
+        <input type='text' class='csv-file-path-field' />
+        <button type='button' class='csv-file-path-btn' onclick="chooseCsvFilePath()">...</button>
+      </div>
+    </div>
+    <div>
+      <button type='submit' class='make-csv-file-btn'>
+        <%= I18n.t('make_csv_file') %>
+      </button>
+    </div>
+  </form>
+  <script>const exports = { "__esModule": true }</script>
+  <script src="./parserLOG.js"></script>
+</body>
+
+</html>

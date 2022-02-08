@@ -5,6 +5,7 @@ import {
   PARSER_CSV_EJS_PATH,
   SORTING_MANUAL_EJS_PATH,
   OPEN_FILE_EJS_PATH,
+  PARSER_LOG_EJS_PATH
 } from '../../../constants/constants'
 import { setCurrentLocale } from '../../../lib/set_current_locale/setCurrentLocale'
 import { I18n } from '../../../services/i18n_service/i18nService'
@@ -33,6 +34,10 @@ export function fileExit() {
 // =====
 export function csvParser() {
   createChildWindow(mainWindow, PARSER_CSV_EJS_PATH, I18n.t('parser_csv'))
+}
+// =====
+export function logParser() {
+  createChildWindow(mainWindow, PARSER_LOG_EJS_PATH, I18n.t('parser_log'))
 }
 // =====
 export function noSorting() {

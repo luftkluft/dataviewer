@@ -1,6 +1,7 @@
 export declare function fileOpen(): void;
 export declare function fileExit(): void;
 export declare function csvParser(): void;
+export declare function logParser(): void;
 export declare function noSorting(): void;
 export declare function manualSorting(): Promise<void>;
 export declare function setRusLanguage(): Promise<void>;

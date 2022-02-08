@@ -4,6 +4,7 @@ import {
   fileOpen,
   fileExit,
   csvParser,
+  logParser,
   noSorting,
   manualSorting,
   setRusLanguage,
@@ -40,6 +41,10 @@ export function menuTemplate() {
         {
           label: I18n.t('csv'),
           click: csvParser,
+        },
+        {
+          label: I18n.t('log'),
+          click: logParser,
         },
       ],
     },

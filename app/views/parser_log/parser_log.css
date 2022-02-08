@@ -1,0 +1,43 @@
+body {
+  margin: 10px;
+}
+
+.glyphicon-move {
+  cursor: move;
+  cursor: -webkit-grabbing;
+}
+
+.parser-form {
+  display: inline-block;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10px;
+  text-align: left;
+  padding: 15px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: #d4d4d4;
+  border-radius: 5px;
+}
+
+.make-csv-file-btn {
+  margin-top: 15px;
+}
+
+.choose-log-file-field {
+  width: 95%;
+}
+
+.choose-variable-list-file-field {
+  width: 95%;
+}
+
+.csv-file-path-field {
+  width: 95%;
+}
+
+label {
+  float: left;
+  padding-right: 10px;
+}
