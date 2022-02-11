@@ -214,6 +214,46 @@ ipcMain.on('last_csv_file_path', function (event, arg) {
     var result = global.app_config.last_csv_file_path;
     event.returnValue = result;
 });
+ipcMain.on('open-pattern-file-dialog', function (event) {
+    dialog
+        .showOpenDialog({ properties: ['openFile'] })
+        .then(function (response) {
+        if (!response.canceled) {
+            var result = response.filePaths[0];
+            global.app_config.pattern_file_name = basename(result);
+            global.app_config.pattern_file_path = dirname(result) + "/";
+            global.app_config.last_opened_pattern_file = result;
+            event.returnValue = result;
+        }
+        else {
+            event.returnValue = 'no_file_selected';
+        }
+    });
+});
+ipcMain.on('last_opened_pattern_file', function (event, arg) {
+    var result = global.app_config.last_opened_pattern_file;
+    event.returnValue = result;
+});
+ipcMain.on('open-error-file-dialog', function (event) {
+    dialog
+        .showOpenDialog({ properties: ['openFile'] })
+        .then(function (response) {
+        if (!response.canceled) {
+            var result = response.filePaths[0];
+            global.app_config.error_file_name = basename(result);
+            global.app_config.error_file_path = dirname(result) + "/";
+            global.app_config.last_opened_error_file = result;
+            event.returnValue = result;
+        }
+        else {
+            event.returnValue = 'no_file_selected';
+        }
+    });
+});
+ipcMain.on('last_opened_error_file', function (event, arg) {
+    var result = global.app_config.last_opened_error_file;
+    event.returnValue = result;
+});
 ipcMain.on('get_log_params', function (event, arg) {
     var result = global.app_config.log_params;
     event.returnValue = result;
