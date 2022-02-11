@@ -175,6 +175,26 @@ ipcMain.on('last_opened_log_file', function (event, arg) {
     var result = global.app_config.last_opened_log_file;
     event.returnValue = result;
 });
+ipcMain.on('open-variable-list-file-dialog', function (event) {
+    dialog
+        .showOpenDialog({ properties: ['openFile'] })
+        .then(function (response) {
+        if (!response.canceled) {
+            var result = response.filePaths[0];
+            global.app_config.variable_list_file_name = basename(result);
+            global.app_config.variable_list_file_path = dirname(result) + "/";
+            global.app_config.last_opened_variable_list_file = result;
+            event.returnValue = result;
+        }
+        else {
+            event.returnValue = 'no_file_selected';
+        }
+    });
+});
+ipcMain.on('last_opened_variable_list_file', function (event, arg) {
+    var result = global.app_config.last_opened_variable_list_file;
+    event.returnValue = result;
+});
 ipcMain.on('open-file', function (event, arg) {
     exports.mainWindow.setTitle((0, appInfo_1.appInfo)(global));
 });

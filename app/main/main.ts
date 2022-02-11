@@ -145,6 +145,27 @@ ipcMain.on('last_opened_log_file', (event: any, arg: any) => {
   event.returnValue = result
 })
 
+ipcMain.on('open-variable-list-file-dialog', function (event: any) {
+  dialog
+    .showOpenDialog({ properties: ['openFile'] })
+    .then(function (response: any) {
+      if (!response.canceled) {
+        const result = response.filePaths[0]
+        global.app_config.variable_list_file_name = basename(result)
+        global.app_config.variable_list_file_path = `${dirname(result)}/`
+        global.app_config.last_opened_variable_list_file = result
+        event.returnValue = result
+      } else {
+        event.returnValue = 'no_file_selected'
+      }
+    })
+})
+
+ipcMain.on('last_opened_variable_list_file', (event: any, arg: any) => {
+  const result = global.app_config.last_opened_variable_list_file
+  event.returnValue = result
+})
+
 ipcMain.on('open-file', (event: any, arg: any) => {
   mainWindow.setTitle(appInfo(global))
 })

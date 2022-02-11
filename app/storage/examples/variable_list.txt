@@ -1,0 +1,32 @@
+	A0.0	Z2	nasos 2 na linii 250 bar
+	A0.1	Z2R	nasos 2 na linii 200 bar
+	A0.2	Z1	nasos 1 na linii 250 bar
+	A0.3	Z1R	nasos 1 na linii 200 bar
+	A0.4	J	soedinenie nasosa 1 - nasosa 2
+	A0.5	Z5	wspomogatelxnyj nasos 5 na linii
+	A0.6	V1	akkumulqtornaq batareq 1 na linii
+	A0.7	V2	akkumulqtornaq batareq 2 na linii
+			
+	A1.0	E1	nazad puanson
+	A1.1	E2	snqtie prodwiveniq puansona
+	A1.2	E3	wkl.akkumulqtorow dlq prodwiv.puansona
+	A1.3	M	wpered puanson - pressowanie
+	A1.4	F	dekompressiq 0
+	A1.5	D	zakrytx napolnitelxnyj klapan
+	A1.6	H1	zakrytx kontejner
+	A1.7	H2	otkrytx kontejner
+
+	DB10 DW10 poziciya pusnsona
+	DB10 DW11 poziciya kontejnera
+	DB10 DW12 poziciya nozha
+	DB10 DW13 poziciya zagr 1
+	DB10 DW14 poziciya zagr 2
+	DB10 DW15 davlenie gc
+	DB10 DW16 davlenie prizhima kontejnera
+	DB10 DW17 poziciya nk
+	DB10 DW90 rashod RSV7
+	DB10 DW91 rashod RSV5
+	DB10 DW92 rashod RSV6
+	DB10 DW163 vyhodnaya skorost petli os
+	DB10 DW165 rashod nasosa 2
+	DB10 DW166 rashod nasosa 1
