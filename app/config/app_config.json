@@ -15,7 +15,8 @@
   "variable_list_file_path": "/media/storage1pc/Projects/lab/Electron/dataviewer/app/storage/examples/",
   "variable_list_file_name": "variable_list.txt",
   "last_opened_variable_list_file": "/media/storage1pc/Projects/lab/Electron/dataviewer/app/storage/examples/variable_list.txt",
-  "csv_file_path": "",
+  "csv_file_path": "/media/storage1pc/Projects/lab/Electron/dataviewer/app/storage/",
+  "last_csv_file_path": "/media/storage1pc/Projects/lab/Electron/dataviewer/app/storage/examples",
   "csv_params": {
     "head_rows": "3",
     "first_column_name": "Время",

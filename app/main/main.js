@@ -195,6 +195,25 @@ ipcMain.on('last_opened_variable_list_file', function (event, arg) {
     var result = global.app_config.last_opened_variable_list_file;
     event.returnValue = result;
 });
+ipcMain.on('open-csv-file-path-dialog', function (event) {
+    dialog
+        .showOpenDialog({ properties: ['openDirectory'] })
+        .then(function (response) {
+        if (!response.canceled) {
+            var result = response.filePaths[0];
+            global.app_config.csv_file_path = dirname(result) + "/";
+            global.app_config.last_csv_file_path = result;
+            event.returnValue = result;
+        }
+        else {
+            event.returnValue = 'no_file_selected';
+        }
+    });
+});
+ipcMain.on('last_csv_file_path', function (event, arg) {
+    var result = global.app_config.last_csv_file_path;
+    event.returnValue = result;
+});
 ipcMain.on('open-file', function (event, arg) {
     exports.mainWindow.setTitle((0, appInfo_1.appInfo)(global));
 });

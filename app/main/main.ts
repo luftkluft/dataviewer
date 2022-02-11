@@ -166,6 +166,26 @@ ipcMain.on('last_opened_variable_list_file', (event: any, arg: any) => {
   event.returnValue = result
 })
 
+ipcMain.on('open-csv-file-path-dialog', function (event: any) {
+  dialog
+    .showOpenDialog({ properties: ['openDirectory'] })
+    .then(function (response: any) {
+      if (!response.canceled) {
+        const result = response.filePaths[0]
+        global.app_config.csv_file_path = `${dirname(result)}/`
+        global.app_config.last_csv_file_path = result
+        event.returnValue = result
+      } else {
+        event.returnValue = 'no_file_selected'
+      }
+    })
+})
+
+ipcMain.on('last_csv_file_path', (event: any, arg: any) => {
+  const result = global.app_config.last_csv_file_path
+  event.returnValue = result
+})
+
 ipcMain.on('open-file', (event: any, arg: any) => {
   mainWindow.setTitle(appInfo(global))
 })
