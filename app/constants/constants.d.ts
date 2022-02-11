@@ -7,6 +7,7 @@ export declare const APP_ENTER_INDEX_EJS_PATH = "/app/views/index.ejs";
 export declare const PARSER_CSV_EJS_PATH = "/app/views/parser_csv/parser_csv.ejs";
 export declare const PARSER_LOG_EJS_PATH = "/app/views/parser_log/parser_log.ejs";
 export declare const OPEN_FILE_EJS_PATH = "/app/views/open_file/open_file.ejs";
+export declare const DIAGNOSTICS_EJS_PATH = "/app/views/diagnostics/diagnostics.ejs";
 export declare const SORTING_MANUAL_EJS_PATH = "/app/views/sorting_manual/sorting_manual.ejs";
 export declare const BAD_STRING = "#####";
 export declare const DEFAULT_LOCALE = "en-US";

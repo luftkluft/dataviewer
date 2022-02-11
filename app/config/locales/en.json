@@ -2,6 +2,8 @@
   "hello": "Hello",
   "file": "File",
   "open": "Open",
+  "diagnostics": "Diagnostics",
+  "make_diagnostics": "Make diagnostics",
   "exit": "Exit",
 
   "parser": "Parser",
@@ -53,5 +55,8 @@
   "log_file": "Log file",
   "variable_list_file": "Variable list file",
   "csv_file_path": "Csv file path",
-  "make_csv_file": "Make csv file"
+  "make_csv_file": "Make csv file",
+
+  "pattern_file": "Pattern file",
+  "error_file": "Error file"
 }

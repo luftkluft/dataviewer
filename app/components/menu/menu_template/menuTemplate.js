@@ -16,6 +16,10 @@ function menuTemplate() {
                     click: menuFunctions_1.fileOpen,
                 },
                 {
+                    label: i18nService_1.I18n.t('make_diagnostics'),
+                    click: menuFunctions_1.makeDiagnostics,
+                },
+                {
                     type: 'separator',
                 },
                 {

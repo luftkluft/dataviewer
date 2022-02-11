@@ -7,6 +7,7 @@ export const APP_ENTER_INDEX_EJS_PATH = '/app/views/index.ejs'
 export const PARSER_CSV_EJS_PATH = '/app/views/parser_csv/parser_csv.ejs'
 export const PARSER_LOG_EJS_PATH = '/app/views/parser_log/parser_log.ejs'
 export const OPEN_FILE_EJS_PATH = '/app/views/open_file/open_file.ejs'
+export const DIAGNOSTICS_EJS_PATH = '/app/views/diagnostics/diagnostics.ejs'
 export const SORTING_MANUAL_EJS_PATH =
   '/app/views/sorting_manual/sorting_manual.ejs'
 export const BAD_STRING = '#####'

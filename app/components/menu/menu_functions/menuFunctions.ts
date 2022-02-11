@@ -5,7 +5,8 @@ import {
   PARSER_CSV_EJS_PATH,
   SORTING_MANUAL_EJS_PATH,
   OPEN_FILE_EJS_PATH,
-  PARSER_LOG_EJS_PATH
+  PARSER_LOG_EJS_PATH,
+  DIAGNOSTICS_EJS_PATH
 } from '../../../constants/constants'
 import { setCurrentLocale } from '../../../lib/set_current_locale/setCurrentLocale'
 import { I18n } from '../../../services/i18n_service/i18nService'
@@ -27,6 +28,9 @@ let swalOptions = {
 
 export function fileOpen() {
   createChildWindow(mainWindow, OPEN_FILE_EJS_PATH, I18n.t('file'))
+}
+export function makeDiagnostics() {
+  createChildWindow(mainWindow, DIAGNOSTICS_EJS_PATH, I18n.t('diagnostics'))
 }
 export function fileExit() {
   app.emit('app_exit')

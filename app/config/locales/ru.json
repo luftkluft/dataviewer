@@ -2,6 +2,8 @@
   "hello": "Привет",
   "file": "Файл",
   "open": "Открыть",
+  "diagnostics": "Диагностика",
+  "make_diagnostics": "Диагностировать",
   "exit": "Выход",
 
   "parser": "Парсер",
@@ -53,5 +55,8 @@
   "log_file": "Файл логирования",
   "variable_list_file": "Файл списка переменных",
   "csv_file_path": "Путь к создаваемому csv файлу",
-  "make_csv_file": "Создать csv файл"
+  "make_csv_file": "Создать csv файл",
+
+  "pattern_file": "Файл образцовый",
+  "error_file": "Файл с ошибкой"
 }

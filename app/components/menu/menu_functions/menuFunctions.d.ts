@@ -1,4 +1,5 @@
 export declare function fileOpen(): void;
+export declare function makeDiagnostics(): void;
 export declare function fileExit(): void;
 export declare function csvParser(): void;
 export declare function logParser(): void;

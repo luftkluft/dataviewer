@@ -2,6 +2,7 @@ import { EN_LOCALE, RU_LOCALE } from '../../../constants/constants'
 import { I18n } from '../../../services/i18n_service/i18nService'
 import {
   fileOpen,
+  makeDiagnostics,
   fileExit,
   csvParser,
   logParser,
@@ -24,6 +25,10 @@ export function menuTemplate() {
         {
           label: I18n.t('open'),
           click: fileOpen,
+        },
+        {
+          label: I18n.t('make_diagnostics'),
+          click: makeDiagnostics,
         },
         {
           type: 'separator',
