@@ -21,6 +21,20 @@ body {
   border-radius: 5px;
 }
 
+textarea.memo {
+  height: 100%;
+  width: 100%;
+  outline: none;
+  padding: 4px;
+  margin-top: 10px;
+  background-color: #d4d4d4;
+  border: none;
+  color: #1b1811;
+  font-size: 10pt;
+  /* overflow-y: scroll; */
+  overflow: scroll;
+}
+
 .make-csv-file-btn {
   margin-top: 15px;
 }

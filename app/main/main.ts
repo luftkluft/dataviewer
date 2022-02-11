@@ -124,6 +124,27 @@ ipcMain.on('open-file-dialog', function (event: any) {
     })
 })
 
+ipcMain.on('open-log-file-dialog', function (event: any) {
+  dialog
+    .showOpenDialog({ properties: ['openFile'] })
+    .then(function (response: any) {
+      if (!response.canceled) {
+        const result = response.filePaths[0]
+        global.app_config.log_file_name = basename(result)
+        global.app_config.log_file_path = `${dirname(result)}/`
+        global.app_config.last_opened_log_file = result
+        event.returnValue = result
+      } else {
+        event.returnValue = 'no_file_selected'
+      }
+    })
+})
+
+ipcMain.on('last_opened_log_file', (event: any, arg: any) => {
+  const result = global.app_config.last_opened_log_file
+  event.returnValue = result
+})
+
 ipcMain.on('open-file', (event: any, arg: any) => {
   mainWindow.setTitle(appInfo(global))
 })
