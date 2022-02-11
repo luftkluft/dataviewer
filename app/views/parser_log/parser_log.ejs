@@ -45,6 +45,44 @@
         <button type='button' class='csv-file-path-btn' onclick="chooseCsvFilePath()">...</button>
       </div>
     </div>
+    <div class="field">
+      <label>
+        <%= I18n.t('end_row') %>:
+      </label>
+      <input type='text' class='end-row-field' list="end-row" />
+      <datalist id="end-row">
+        <option value="\n">
+        <option value="\r">
+      </datalist>
+    </div>
+    <div class="field">
+      <label>
+        <%= I18n.t('delemiter') %>:
+      </label>
+      <input type='text' class='delemiter-field' list="delemiter" />
+      <datalist id="delemiter">
+        <option value="'">
+        <option value=":">
+      </datalist>
+    </div>
+    <div class="field">
+      <label>
+        <%= I18n.t('rows') %>:
+      </label>
+      <input type='text' class='rows-field' list="rows" />
+      <datalist id="rows">
+        <option value="0">
+      </datalist>
+    </div>
+    <div class="field">
+      <label>
+        <%= I18n.t('columns') %>:
+      </label>
+      <input type='text' class='columns-field' list="columns" />
+      <datalist id="columns">
+        <option value="0">
+      </datalist>
+    </div>
     <div>
       <button type='submit' class='make-csv-file-btn'>
         <%= I18n.t('make_csv_file') %>
@@ -52,7 +90,7 @@
     </div>
   </form>
   <div class="content">
-    <textarea id="memo" class="memo" rows="12" cols="20"></textarea>
+    <textarea id="memo" class="memo" rows="5" cols="20"></textarea>
   </div>
   <script>const exports = { "__esModule": true }</script>
   <script src="./parserLOG.js"></script>

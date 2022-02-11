@@ -13,6 +13,50 @@ const fileStat = (stat: any) => {
   return `birthtime: ${stat.birthtime}\nmtime: ${stat.mtime}\nctime: ${stat.ctime}\nsize: ${stat.size}`
 }
 
+const logParams = ipcLogRenderer.sendSync('get_log_params')
+const endRowField = formLog.querySelector('.end-row-field')
+
+switch (logParams.end_row) {
+  case '\n':
+    endRowField.value = '\\n'
+    break
+  case '\r':
+    endRowField.value = '\\r'
+    break
+  default:
+    endRowField.value = csvParams.end_row
+    break
+}
+
+const delemiter = formLog.querySelector('.delemiter-field')
+delemiter.value = logParams.delemiter
+
+const rows = formLog.querySelector('.rows-field')
+rows.value = logParams.rows
+
+const columns = formLog.querySelector('.columns-field')
+columns.value = logParams.columns
+
+const setLogParams = () => {
+  switch (endRowField.value) {
+    case '\\n':
+      logParams.end_row = '\n'
+      break
+    case '\\r':
+      logParams.end_row = '\r'
+      break
+
+    default:
+      logParams.end_row = endRowField.value
+      break
+  }
+
+  logParams.delemiter = delemiter.value
+  logParams.rows = rows.value
+  logParams.columns = columns.value
+  ipcLogRenderer.send('set_log_params', logParams)
+}
+
 const chooseLogFile = () => {
   const path = ipcLogRenderer.sendSync('open-log-file-dialog')
   const memo: any = document.getElementById('memo')
@@ -80,4 +124,11 @@ const setMakeCsvButtonStatus = () => {
 
 $(document).ready(() => {
   setMakeCsvButtonStatus()
+})
+
+formLog.addEventListener('submit', function (event: any) {
+  event.preventDefault()
+  const memo: any = document.getElementById('memo')
+  memo.value = `click submit`
+  setLogParams()
 })

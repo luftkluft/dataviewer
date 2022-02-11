@@ -186,6 +186,16 @@ ipcMain.on('last_csv_file_path', (event: any, arg: any) => {
   event.returnValue = result
 })
 
+ipcMain.on('get_log_params', (event: any, arg: any) => {
+  const result = global.app_config.log_params
+  event.returnValue = result
+})
+
+ipcMain.on('set_log_params', (event: any, arg: any) => {
+  global.app_config.log_params = arg
+  // app.emit('update_app')
+})
+
 ipcMain.on('open-file', (event: any, arg: any) => {
   mainWindow.setTitle(appInfo(global))
 })

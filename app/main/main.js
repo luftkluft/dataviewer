@@ -214,6 +214,13 @@ ipcMain.on('last_csv_file_path', function (event, arg) {
     var result = global.app_config.last_csv_file_path;
     event.returnValue = result;
 });
+ipcMain.on('get_log_params', function (event, arg) {
+    var result = global.app_config.log_params;
+    event.returnValue = result;
+});
+ipcMain.on('set_log_params', function (event, arg) {
+    global.app_config.log_params = arg;
+});
 ipcMain.on('open-file', function (event, arg) {
     exports.mainWindow.setTitle((0, appInfo_1.appInfo)(global));
 });

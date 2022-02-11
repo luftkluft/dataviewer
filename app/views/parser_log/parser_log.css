@@ -21,6 +21,13 @@ body {
   border-radius: 5px;
 }
 
+.field {
+  clear: both;
+  text-align: right;
+  line-height: 25px;
+  margin-top: 5px;
+}
+
 textarea.memo {
   height: 100%;
   width: 100%;

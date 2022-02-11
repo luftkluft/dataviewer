@@ -16,6 +16,42 @@ csvFilePathField.value = ipcLogRenderer.sendSync('last_csv_file_path');
 var fileStat = function (stat) {
     return "birthtime: " + stat.birthtime + "\nmtime: " + stat.mtime + "\nctime: " + stat.ctime + "\nsize: " + stat.size;
 };
+var logParams = ipcLogRenderer.sendSync('get_log_params');
+var endRowField = formLog.querySelector('.end-row-field');
+switch (logParams.end_row) {
+    case '\n':
+        endRowField.value = '\\n';
+        break;
+    case '\r':
+        endRowField.value = '\\r';
+        break;
+    default:
+        endRowField.value = csvParams.end_row;
+        break;
+}
+var delemiter = formLog.querySelector('.delemiter-field');
+delemiter.value = logParams.delemiter;
+var rows = formLog.querySelector('.rows-field');
+rows.value = logParams.rows;
+var columns = formLog.querySelector('.columns-field');
+columns.value = logParams.columns;
+var setLogParams = function () {
+    switch (endRowField.value) {
+        case '\\n':
+            logParams.end_row = '\n';
+            break;
+        case '\\r':
+            logParams.end_row = '\r';
+            break;
+        default:
+            logParams.end_row = endRowField.value;
+            break;
+    }
+    logParams.delemiter = delemiter.value;
+    logParams.rows = rows.value;
+    logParams.columns = columns.value;
+    ipcLogRenderer.send('set_log_params', logParams);
+};
 var chooseLogFile = function () {
     var path = ipcLogRenderer.sendSync('open-log-file-dialog');
     var memo = document.getElementById('memo');
@@ -86,5 +122,11 @@ var setMakeCsvButtonStatus = function () {
 };
 (0, jquery_1.default)(document).ready(function () {
     setMakeCsvButtonStatus();
+});
+formLog.addEventListener('submit', function (event) {
+    event.preventDefault();
+    var memo = document.getElementById('memo');
+    memo.value = "click submit";
+    setLogParams();
 });
 //# sourceMappingURL=parserLOG.js.map
