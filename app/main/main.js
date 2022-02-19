@@ -139,6 +139,13 @@ ipcMain.on('set_csv_params', function (event, arg) {
     global.app_config.csv_params = arg;
     app.emit('update_app');
 });
+ipcMain.on('get_deep_test', function (event, arg) {
+    var result = global.app_config.deep_test;
+    event.returnValue = result;
+});
+ipcMain.on('set_deep_test', function (event, arg) {
+    global.app_config.deep_test = arg;
+});
 ipcMain.on('open-file-dialog', function (event) {
     dialog
         .showOpenDialog({ properties: ['openFile'] })

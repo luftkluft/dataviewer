@@ -37,6 +37,24 @@
       </div>
     </div>
     <div>
+      <div>
+        <label>
+          <%= I18n.t('deep') %>:
+        </label>
+      </div>
+      <div>
+        <input type='text' class='deep-field' list="deep" onchange="changeDeep()"/>
+        <datalist id="deep">
+          <option value="1">
+          <option value="2">
+          <option value="3">
+          <option value="4">
+          <option value="5">
+          <option value="6">
+        </datalist>
+      </div>
+    </div>
+    <div>
       <button type='submit' class='make-diagnostics-btn'>
         <%= I18n.t('make_diagnostics') %>
       </button>

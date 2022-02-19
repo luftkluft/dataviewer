@@ -11,6 +11,8 @@ var patternFileField = formDiagn.querySelector('.choose-pattern-file-field');
 patternFileField.value = ipcDiagnRenderer.sendSync('last_opened_pattern_file');
 var errorFileField = formDiagn.querySelector('.choose-error-file-field');
 errorFileField.value = ipcDiagnRenderer.sendSync('last_opened_error_file');
+var deepField = formDiagn.querySelector('.deep-field');
+deepField.value = ipcDiagnRenderer.sendSync('get_deep_test');
 var fileStat = function (stat) {
     return "birthtime: " + stat.birthtime + "\nmtime: " + stat.mtime + "\nctime: " + stat.ctime + "\nsize: " + stat.size;
 };
@@ -55,17 +57,26 @@ var chooseErrorFile = function () {
 formDiagn.addEventListener('submit', function (event) {
     event.preventDefault();
     var memo = document.getElementById('memo');
+    setDeepConfig();
     memo.value = "click submit";
 });
 var setMakeDiagnosticsButtonStatus = function () {
     var makeDiagnosticButton = document.querySelector('.make-diagnostics-btn');
     if (patternFileField.value == undefined || patternFileField.value.length == 0
-        || errorFileField.value == undefined || errorFileField.value.length == 0) {
+        || errorFileField.value == undefined || errorFileField.value.length == 0
+        || deepField.value == undefined || deepField.value <= 0) {
         makeDiagnosticButton.disabled = true;
     }
     else {
         makeDiagnosticButton.disabled = false;
     }
+};
+var changeDeep = function () {
+    setDeepConfig();
+    setMakeDiagnosticsButtonStatus();
+};
+var setDeepConfig = function () {
+    ipcDiagnRenderer.send('set_deep_test', deepField.value);
 };
 (0, jquery_1.default)(document).ready(function () {
     setMakeDiagnosticsButtonStatus();

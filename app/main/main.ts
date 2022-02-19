@@ -108,6 +108,15 @@ ipcMain.on('set_csv_params', (event: any, arg: any) => {
   app.emit('update_app')
 })
 
+ipcMain.on('get_deep_test', (event: any, arg: any) => {
+  const result = global.app_config.deep_test
+  event.returnValue = result
+})
+
+ipcMain.on('set_deep_test', (event: any, arg: any) => {
+  global.app_config.deep_test = arg
+})
+
 ipcMain.on('open-file-dialog', function (event: any) {
   dialog
     .showOpenDialog({ properties: ['openFile'] })

@@ -47,6 +47,13 @@ textarea.memo {
   width: 95%;
 }
 
+.deep-field {
+  clear: both;
+  text-align: right;
+  line-height: 25px;
+  margin-top: 5px;
+}
+
 label {
   float: left;
   padding-right: 10px;

@@ -58,5 +58,6 @@
   "make_csv_file": "Make csv file",
 
   "pattern_file": "Pattern file",
-  "error_file": "Error file"
+  "error_file": "Error file",
+  "deep": "Test deep"
 }
