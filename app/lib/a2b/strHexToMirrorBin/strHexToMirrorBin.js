@@ -26,48 +26,48 @@ var strHexToMirrorBin = function (sHex) {
                 sReturn += "1000";
                 break;
             case '2':
-                sReturn += "0010";
-                break;
-            case '3':
-                sReturn += "0011";
-                break;
-            case '4':
                 sReturn += "0100";
                 break;
+            case '3':
+                sReturn += "1100";
+                break;
+            case '4':
+                sReturn += "0010";
+                break;
             case '5':
-                sReturn += "0101";
+                sReturn += "1010";
                 break;
             case '6':
                 sReturn += "0110";
                 break;
             case '7':
-                sReturn += "0111";
+                sReturn += "1110";
                 break;
             case '8':
-                sReturn += "1000";
+                sReturn += "0001";
                 break;
             case '9':
                 sReturn += "1001";
                 break;
             case 'A':
             case 'a':
-                sReturn += "1010";
+                sReturn += "0101";
                 break;
             case 'B':
             case 'b':
-                sReturn += "1011";
+                sReturn += "1101";
                 break;
             case 'C':
             case 'c':
-                sReturn += "1100";
+                sReturn += "0011";
                 break;
             case 'D':
             case 'd':
-                sReturn += "1101";
+                sReturn += "1011";
                 break;
             case 'E':
             case 'e':
-                sReturn += "1110";
+                sReturn += "0111";
                 break;
             case 'F':
             case 'f':
@@ -75,7 +75,7 @@ var strHexToMirrorBin = function (sHex) {
                 break;
             default:
                 {
-                    swOp.title = "strHexToBin()";
+                    swOp.title = "strHexToMirrorBin()";
                     swOp.text = "Invalid character! Error! ";
                     alertService_1.Alert.fireToast(swOp);
                     return "";
@@ -84,7 +84,7 @@ var strHexToMirrorBin = function (sHex) {
         i++;
     }
     if (!i) {
-        swOp.title = "strHexToBin()";
+        swOp.title = "strHexToMirrorBin()";
         swOp.text = "Empty line! Error! ";
         alertService_1.Alert.fireToast(swOp);
         return "";
