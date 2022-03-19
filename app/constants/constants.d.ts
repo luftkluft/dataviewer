@@ -19,3 +19,4 @@ export declare const APP_CONFIG_FILE_NAME = "app_config.json";
 export declare const PATH_TO_LOCALES = "/app/config/locales/";
 export declare const PATH_TO_APP_CONFIG = "/app/config/";
 export declare const PATH_TO_JSON_DB = "/app/db/";
+export declare const PATH_TO_TEST_FILES = "/test/test_files/";

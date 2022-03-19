@@ -1,1 +1,1 @@
-export declare function getLineCountFromFile(): number;
+export declare function getLineCountFromFile(filePath?: string, fileName?: string): number;
