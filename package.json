@@ -7,7 +7,7 @@
   "homepage": "https://github.com/luftkluft/dataviewer",
   "scripts": {
     "eslint": "eslint --cache --ext .js,.jsx,.ts,.tsx",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "start": "electron .",
     "watch": "tsc -p . -w",
     "electron:linux": "electron-builder --linux",
@@ -46,8 +46,20 @@
       "allowToChangeInstallationDirectory": true
     }
   },
+  "jest": {
+    "collectCoverage": true,
+    "preset": "ts-jest",
+    "testEnvironment": "node",
+    "transform": {
+      "node_modules/variables/.+\\.(j|t)sx?$": "ts-jest"
+    },
+    "transformIgnorePatterns": [
+      "node_modules/(?!variables/.*)"
+    ]
+  },
   "devDependencies": {
     "@types/electron": "1.6.10",
+    "@types/jest": "27.4.1",
     "@types/jquery": "3.5.8",
     "@types/node": "14.17.29",
     "@typescript-eslint/eslint-plugin": "5.1.0",
@@ -55,7 +67,9 @@
     "electron": "13.5.2",
     "electron-builder": "22.11.1",
     "eslint": "8.1.0",
+    "jest": "27.5.1",
     "prettier": "2.4.1",
+    "ts-jest": "27.1.3",
     "typescript": "4.4.4"
   },
   "dependencies": {
