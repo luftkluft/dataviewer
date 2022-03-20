@@ -20,4 +20,4 @@ export declare const PATH_TO_LOCALES = "/app/config/locales/";
 export declare const PATH_TO_APP_CONFIG = "/app/config/";
 export declare const PATH_TO_JSON_DB = "/app/db/";
 export declare const PATH_TO_TEST_FILES = "/test/test_files/";
-export declare const PATH_TO_ERROR_MEMORY = "/storage/memory/";
+export declare const PATH_TO_ERROR_MEMORY = "/app/storage/memory/";

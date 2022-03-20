@@ -23,5 +23,5 @@ exports.PATH_TO_LOCALES = '/app/config/locales/';
 exports.PATH_TO_APP_CONFIG = '/app/config/';
 exports.PATH_TO_JSON_DB = '/app/db/';
 exports.PATH_TO_TEST_FILES = '/test/test_files/';
-exports.PATH_TO_ERROR_MEMORY = '/storage/memory/';
+exports.PATH_TO_ERROR_MEMORY = '/app/storage/memory/';
 //# sourceMappingURL=constants.js.map
