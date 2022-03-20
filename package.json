@@ -79,9 +79,9 @@
     "csv": "5.5.3",
     "dotenv": "10.0.0",
     "electron-alert": "0.1.19",
-    "electron-db": "0.15.7",
     "electron-ejs": "1.2.1",
     "jquery": "3.6.0",
+    "simple-json-db": "2.0.0",
     "sortablejs": "1.14.0"
   }
 }

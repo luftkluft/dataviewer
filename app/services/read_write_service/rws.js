@@ -7,6 +7,7 @@ var getLineByNumberFromFile_1 = require("../../lib/read_func/getLineByNumberFrom
 var readDataLineFromLog_1 = require("../../lib/read_func/readDataLineFromLog/readDataLineFromLog");
 var readLines_1 = require("../../lib/read_func/readLines/readLines");
 var readTimeFromLog_1 = require("../../lib/read_func/readTimeFromLog/readTimeFromLog");
+var writeErrorToMemoryData_1 = require("../../lib/read_func/writeErrorToMemoryData/writeErrorToMemoryData");
 var RWS = (function () {
     function RWS() {
     }
@@ -31,6 +32,11 @@ var RWS = (function () {
     RWS.readTimeFromLog = function (sLogLine) {
         if (sLogLine === void 0) { sLogLine = ''; }
         return (0, readTimeFromLog_1.readTimeFromLog)(sLogLine);
+    };
+    RWS.writeErrorToMemoryData = function (sErrorKey, sErrorMessage) {
+        if (sErrorKey === void 0) { sErrorKey = 'defaultErrorKey'; }
+        if (sErrorMessage === void 0) { sErrorMessage = 'defaultErrorMessage'; }
+        return (0, writeErrorToMemoryData_1.writeErrorToMemoryData)(sErrorKey, sErrorMessage);
     };
     return RWS;
 }());

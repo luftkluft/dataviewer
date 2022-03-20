@@ -1,1 +1,1 @@
-export declare function readLinesArray(filePath?: string, fileName?: string): string[];
+export declare function readLinesArray(filePath?: string, fileName?: string): any;
