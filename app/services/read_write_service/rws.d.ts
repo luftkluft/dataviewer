@@ -6,4 +6,5 @@ export declare class RWS {
     static readLinesArray(sFilePath: string, sFileName: string): any;
     static readTimeFromLog(sLogLine?: string): string;
     static writeErrorToMemoryData(sErrorKey?: string, sErrorMessage?: string): any;
+    static readErrorFromMemoryData(sErrorKey?: string): any;
 }

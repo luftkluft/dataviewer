@@ -8,6 +8,7 @@ var readDataLineFromLog_1 = require("../../lib/read_func/readDataLineFromLog/rea
 var readLines_1 = require("../../lib/read_func/readLines/readLines");
 var readTimeFromLog_1 = require("../../lib/read_func/readTimeFromLog/readTimeFromLog");
 var writeErrorToMemoryData_1 = require("../../lib/read_func/writeErrorToMemoryData/writeErrorToMemoryData");
+var readErrorFromMemoryData_1 = require("../../lib/read_func/readErrorFromMemoryData/readErrorFromMemoryData");
 var RWS = (function () {
     function RWS() {
     }
@@ -37,6 +38,10 @@ var RWS = (function () {
         if (sErrorKey === void 0) { sErrorKey = 'defaultErrorKey'; }
         if (sErrorMessage === void 0) { sErrorMessage = 'defaultErrorMessage'; }
         return (0, writeErrorToMemoryData_1.writeErrorToMemoryData)(sErrorKey, sErrorMessage);
+    };
+    RWS.readErrorFromMemoryData = function (sErrorKey) {
+        if (sErrorKey === void 0) { sErrorKey = 'defaultErrorKey'; }
+        return (0, readErrorFromMemoryData_1.readErrorFromMemoryData)(sErrorKey);
     };
     return RWS;
 }());

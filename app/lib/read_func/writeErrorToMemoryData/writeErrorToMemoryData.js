@@ -11,9 +11,6 @@ var db = new JSONdb(file);
 function writeErrorToMemoryData(sErrorKey, sErrorMessage) {
     if (sErrorKey === void 0) { sErrorKey = 'defaultErrorKey'; }
     if (sErrorMessage === void 0) { sErrorMessage = 'defaultErrorMessage'; }
-    if (!fs.existsSync(file)) {
-        var db_1 = new JSONdb(file);
-    }
     db.set(sErrorKey, sErrorMessage);
     if (db.get(sErrorKey)) {
         return db.get(sErrorKey);

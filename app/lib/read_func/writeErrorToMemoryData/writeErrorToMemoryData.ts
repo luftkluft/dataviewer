@@ -6,11 +6,8 @@ const file = errorsMemoryPath + 'errors.json'
 const JSONdb = require('simple-json-db')
 const db = new JSONdb(file)
 
-
 export function writeErrorToMemoryData(sErrorKey: string = 'defaultErrorKey', sErrorMessage: string = 'defaultErrorMessage') {
-  if (!fs.existsSync(file)) {
-    const db = new JSONdb(file)
-  }
+
   db.set(sErrorKey, sErrorMessage)
   if (db.get(sErrorKey)) {
     return db.get(sErrorKey)

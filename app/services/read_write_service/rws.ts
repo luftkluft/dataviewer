@@ -5,6 +5,7 @@ import { readDataLineFromLog } from '../../lib/read_func/readDataLineFromLog/rea
 import { readLinesArray } from '../../lib/read_func/readLines/readLines'
 import { readTimeFromLog } from '../../lib/read_func/readTimeFromLog/readTimeFromLog'
 import { writeErrorToMemoryData } from '../../lib/read_func/writeErrorToMemoryData/writeErrorToMemoryData'
+import { readErrorFromMemoryData } from '../../lib/read_func/readErrorFromMemoryData/readErrorFromMemoryData'
 
 export class RWS {
   static getLineCountFromFile(sFilePath: string, sFileName: string) {
@@ -27,5 +28,8 @@ export class RWS {
   }
   static writeErrorToMemoryData(sErrorKey: string = 'defaultErrorKey', sErrorMessage: string = 'defaultErrorMessage') {
     return writeErrorToMemoryData(sErrorKey, sErrorMessage)
+  }
+  static readErrorFromMemoryData(sErrorKey: string = 'defaultErrorKey') {
+    return readErrorFromMemoryData(sErrorKey)
   }
 }
