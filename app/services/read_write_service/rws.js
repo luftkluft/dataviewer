@@ -4,6 +4,7 @@ exports.RWS = void 0;
 var getLineCountFromFile_1 = require("../../lib/read_func/getLineCountFromFile/getLineCountFromFile");
 var getLastLinesFromFile_1 = require("../../lib/read_func/getLastLinesFromFile/getLastLinesFromFile");
 var getLineByNumberFromFile_1 = require("../../lib/read_func/getLineByNumberFromFile/getLineByNumberFromFile");
+var readDataLineFromLog_1 = require("../../lib/read_func/readDataLineFromLog/readDataLineFromLog");
 var RWS = (function () {
     function RWS() {
     }
@@ -17,6 +18,10 @@ var RWS = (function () {
     RWS.getLineByNumberFromFile = function (sFilePath, sFileName, lineNumber) {
         if (lineNumber === void 0) { lineNumber = 1; }
         return (0, getLineByNumberFromFile_1.getLineByNumberFromFile)(sFilePath, sFileName, lineNumber);
+    };
+    RWS.readDataLineFromLog = function (sLogLine) {
+        if (sLogLine === void 0) { sLogLine = ''; }
+        return (0, readDataLineFromLog_1.readDataLineFromLog)(sLogLine);
     };
     return RWS;
 }());
