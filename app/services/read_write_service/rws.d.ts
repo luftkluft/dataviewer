@@ -4,4 +4,5 @@ export declare class RWS {
     static getLineByNumberFromFile(sFilePath: string, sFileName: string, lineNumber?: number): string;
     static readDataLineFromLog(sLogLine?: string): string;
     static readLinesArray(sFilePath: string, sFileName: string): string[];
+    static readTimeFromLog(sLogLine?: string): string;
 }

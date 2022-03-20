@@ -3,6 +3,7 @@ import { getLastLinesFromFile } from '../../lib/read_func/getLastLinesFromFile/g
 import { getLineByNumberFromFile } from '../../lib/read_func/getLineByNumberFromFile/getLineByNumberFromFile'
 import { readDataLineFromLog } from '../../lib/read_func/readDataLineFromLog/readDataLineFromLog'
 import { readLinesArray } from '../../lib/read_func/readLines/readLines'
+import { readTimeFromLog } from '../../lib/read_func/readTimeFromLog/readTimeFromLog'
 
 export class RWS {
   static getLineCountFromFile(sFilePath: string, sFileName: string) {
@@ -19,5 +20,8 @@ export class RWS {
   }
   static readLinesArray(sFilePath: string, sFileName: string) {
     return readLinesArray(sFilePath, sFileName)
+  }
+  static readTimeFromLog(sLogLine: string = '') {
+    return readTimeFromLog(sLogLine)
   }
 }
