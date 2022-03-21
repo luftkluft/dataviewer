@@ -1,10 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.MS = void 0;
-var MS = (function () {
-    function MS() {
+exports.MakeService = void 0;
+var MakeService = (function () {
+    function MakeService() {
     }
-    return MS;
+    return MakeService;
 }());
-exports.MS = MS;
+exports.MakeService = MakeService;
 //# sourceMappingURL=makeService.js.map

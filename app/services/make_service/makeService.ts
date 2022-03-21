@@ -1,3 +1,3 @@
-export class MS {
+export class MakeService {
   // TODO
 }

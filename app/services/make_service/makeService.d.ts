@@ -1,2 +1,2 @@
-export declare class MS {
+export declare class MakeService {
 }

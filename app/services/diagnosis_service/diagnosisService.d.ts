@@ -1,2 +1,2 @@
-export declare class DS {
+export declare class DiagnosisService {
 }

@@ -1,3 +1,3 @@
-export class DS {
+export class DiagnosisService {
   // TODO
 }

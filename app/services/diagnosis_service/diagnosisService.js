@@ -1,10 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.DS = void 0;
-var DS = (function () {
-    function DS() {
+exports.DiagnosisService = void 0;
+var DiagnosisService = (function () {
+    function DiagnosisService() {
     }
-    return DS;
+    return DiagnosisService;
 }());
-exports.DS = DS;
+exports.DiagnosisService = DiagnosisService;
 //# sourceMappingURL=diagnosisService.js.map
