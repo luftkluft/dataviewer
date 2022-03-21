@@ -1,1 +1,1 @@
-export declare const csvColumnCounting: (dataFromFile: string) => any;
+export declare const csvColumnCounting: (dataFromFile: string) => number | undefined;

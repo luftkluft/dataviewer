@@ -1,1 +1,1 @@
-export declare function getLineByNumberFromFile(filePath?: string, fileName?: string, lineNumber?: number): any;
+export declare function getLineByNumberFromFile(filePath?: string, fileName?: string, lineNumber?: number): string;
