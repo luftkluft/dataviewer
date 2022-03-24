@@ -46,6 +46,7 @@ var menuTemplate_1 = require("../components/menu/menu_template/menuTemplate");
 var restartAppService_1 = require("../services/restart_app_service/restartAppService");
 var closeChildWindows_1 = require("../lib/close_child_windows/closeChildWindows");
 var appInfo_1 = require("../lib/app_info/appInfo");
+var diagnosisService_1 = require("../services/diagnosis_service/diagnosisService");
 var _a = require('electron'), app = _a.app, BrowserWindow = _a.BrowserWindow, Menu = _a.Menu;
 var ipcMain = require('electron').ipcMain;
 var appRoot = require('app-root-path');
@@ -300,6 +301,10 @@ ipcMain.on('set_sorting', function (event, arg) {
 });
 ipcMain.on('get_sorting', function (event, arg) {
     var result = global.app_config.sorting;
+    event.returnValue = result;
+});
+ipcMain.on('run_test', function (event, arg) {
+    var result = diagnosisService_1.DiagnosisService.testing();
     event.returnValue = result;
 });
 app.on('app_set_sorting_manual', function () {

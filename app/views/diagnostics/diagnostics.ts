@@ -53,7 +53,7 @@ formDiagn.addEventListener('submit', function (event: any) {
   event.preventDefault()
   const memo: any = document.getElementById('memo')
   setDeepConfig()
-  memo.value = `click submit`
+  memo.value = runTesting()
 })
 
 const setMakeDiagnosticsButtonStatus = () => {
@@ -74,6 +74,10 @@ const changeDeep = () => {
 
 const setDeepConfig = () => {
   ipcDiagnRenderer.send('set_deep_test', deepField.value)
+}
+
+const runTesting = () => {
+  return ipcDiagnRenderer.sendSync('run_test')
 }
 
 $(document).ready(() => {

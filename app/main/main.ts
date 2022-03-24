@@ -12,6 +12,7 @@ import { menuTemplate } from '../components/menu/menu_template/menuTemplate'
 import { RestartAppService } from '../services/restart_app_service/restartAppService'
 import { closeChildWindows } from '../lib/close_child_windows/closeChildWindows'
 import { appInfo } from '../lib/app_info/appInfo'
+import { DiagnosisService } from '../services/diagnosis_service/diagnosisService'
 
 const { app, BrowserWindow, Menu } = require('electron')
 const { ipcMain } = require('electron')
@@ -288,6 +289,11 @@ ipcMain.on('set_sorting', (event: any, arg: any) => {
 
 ipcMain.on('get_sorting', (event: any, arg: any) => {
   const result = global.app_config.sorting
+  event.returnValue = result
+})
+
+ipcMain.on('run_test', (event: any, arg: any) => {
+  const result = DiagnosisService.testing()
   event.returnValue = result
 })
 

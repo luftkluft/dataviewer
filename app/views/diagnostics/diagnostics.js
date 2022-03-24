@@ -58,7 +58,7 @@ formDiagn.addEventListener('submit', function (event) {
     event.preventDefault();
     var memo = document.getElementById('memo');
     setDeepConfig();
-    memo.value = "click submit";
+    memo.value = runTesting();
 });
 var setMakeDiagnosticsButtonStatus = function () {
     var makeDiagnosticButton = document.querySelector('.make-diagnostics-btn');
@@ -77,6 +77,9 @@ var changeDeep = function () {
 };
 var setDeepConfig = function () {
     ipcDiagnRenderer.send('set_deep_test', deepField.value);
+};
+var runTesting = function () {
+    return ipcDiagnRenderer.sendSync('run_test');
 };
 (0, jquery_1.default)(document).ready(function () {
     setMakeDiagnosticsButtonStatus();

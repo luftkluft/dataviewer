@@ -1,3 +1,6 @@
+import { testing } from '../../lib/diagnosis_func/testing/testing'
 export class DiagnosisService {
-  // TODO
+  static testing() {
+    return testing()
+  }
 }
