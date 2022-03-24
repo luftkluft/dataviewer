@@ -40,7 +40,6 @@ export function testing() {
     // TODO
     sResult += `===== Диагностика завершена =====`
     return sResult
-
   } catch (error) {
     return error
   }
