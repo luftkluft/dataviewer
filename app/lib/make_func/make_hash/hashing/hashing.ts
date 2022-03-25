@@ -10,7 +10,7 @@ export function hashing(sLines: string = '', deep: number = 1) {
   const linesArray: string[] = sLines.split(endLine)
 
   if (linesArray.length <= (deep + 1)) {
-    return '';
+    return ''
   }
 
   let i: number = 0
