@@ -1,10 +1,4 @@
-import { swalOptions, Alert } from '../../../services/alert_service/alertService'
-
 export const strHexToMirrorBin = (sHex: string) => {
-  let swOp = {
-    ...swalOptions,
-    showConfirmButton: true,
-  }
   let i: number = 0
   let sReturn: string = ""
   while (sHex[i]) {
@@ -65,18 +59,12 @@ export const strHexToMirrorBin = (sHex: string) => {
         break;
       default:
         {
-          swOp.title = `strHexToMirrorBin()`
-          swOp.text = `Invalid character! Error! `
-          Alert.fireToast(swOp)
           return ""
         }
     }
     i++
   }
   if (!i) {
-    swOp.title = `strHexToMirrorBin()`
-    swOp.text = `Empty line! Error! `
-    Alert.fireToast(swOp)
     return ""
   }
   return sReturn

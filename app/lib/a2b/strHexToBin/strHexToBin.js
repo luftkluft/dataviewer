@@ -1,20 +1,7 @@
 "use strict";
-var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.strHexToBin = void 0;
-var alertService_1 = require("../../../services/alert_service/alertService");
 var strHexToBin = function (sHex) {
-    var swOp = __assign(__assign({}, alertService_1.swalOptions), { showConfirmButton: true });
     var i = 0;
     var sReturn = "";
     while (sHex[i]) {
@@ -75,18 +62,12 @@ var strHexToBin = function (sHex) {
                 break;
             default:
                 {
-                    swOp.title = "strHexToBin()";
-                    swOp.text = "Invalid character! Error! ";
-                    alertService_1.Alert.fireToast(swOp);
                     return "";
                 }
         }
         i++;
     }
     if (!i) {
-        swOp.title = "strHexToBin()";
-        swOp.text = "Empty line! Error! ";
-        alertService_1.Alert.fireToast(swOp);
         return "";
     }
     return sReturn;
