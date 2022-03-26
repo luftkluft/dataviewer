@@ -1,6 +1,6 @@
 const fs = require('fs')
 
-export function getLineByNumberFromFile(filePath: string = 'emptyPath', fileName: string = 'emptyName', lineNumber: number = 1) {
+export function getLineByNumberFromFile(filePath: string, fileName: string, lineNumber: number) {
   const file = filePath + fileName
   const endLine = '\n'
 
