@@ -1,4 +1,4 @@
-export function headerInfo(sVariableListLines: string = '', separator: string){
+export function headerInfo(sVariableListLines: string, separator: string){
   // TODO
   let sReturn: string = ""
   let sHeaderInfo: string = ""

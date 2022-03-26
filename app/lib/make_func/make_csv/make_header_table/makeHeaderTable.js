@@ -6,7 +6,6 @@ var headerColumnDivider_1 = require("../../make_parser/header_column_divider/hea
 var deleteSeparator_1 = require("../../make_parser/delete_separator/deleteSeparator");
 function makeHeaderTable(variablesListFile, separator) {
     if (variablesListFile === void 0) { variablesListFile = ''; }
-    if (separator === void 0) { separator = "\'"; }
     var sVariableListLines = "";
     var sDeviderLines = "";
     var sReturn = "";

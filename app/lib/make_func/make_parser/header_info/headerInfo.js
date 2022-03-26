@@ -2,7 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.headerInfo = void 0;
 function headerInfo(sVariableListLines, separator) {
-    if (sVariableListLines === void 0) { sVariableListLines = ''; }
     var sReturn = "";
     var sHeaderInfo = "";
     var charCount = 0;

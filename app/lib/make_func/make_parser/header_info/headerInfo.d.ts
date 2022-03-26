@@ -1,1 +1,1 @@
-export declare function headerInfo(sVariableListLines: string | undefined, separator: string): string;
+export declare function headerInfo(sVariableListLines: string, separator: string): string;
