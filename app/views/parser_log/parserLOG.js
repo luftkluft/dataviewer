@@ -125,6 +125,8 @@ var setMakeCsvButtonStatus = function () {
 });
 formLog.addEventListener('submit', function (event) {
     event.preventDefault();
+    var memo = document.getElementById('memo');
+    memo.value = "click submit";
     setLogParams();
 });
 //# sourceMappingURL=parserLOG.js.map

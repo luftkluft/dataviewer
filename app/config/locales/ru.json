@@ -44,7 +44,7 @@
   "delemiter": "Разделитель",
   "rows": "Число строк",
   "columns": "Число колонок",
-  "set_csv_params": "Задать параметры csv",
+  "set_csv_params": "Задать параметры csv визуализации",
   "set_sorting_params": "Построить выбранные графики",
   "show": "Показать",
   "set_manual_sorting_options": "После загрузки файла задайте параметры ручной сортировки!",
@@ -55,7 +55,7 @@
   "log_file": "Файл логирования",
   "variable_list_file": "Файл списка переменных",
   "csv_file_path": "Путь к создаваемому csv файлу",
-  "make_csv_file": "Создать csv файл",
+  "make_csv_file": "Создать csv файл из log файла",
 
   "pattern_file": "Файл образцовый",
   "error_file": "Файл с ошибкой",
