@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.headerColumnDivider = void 0;
-function headerColumnDivider(sVariableListLines) {
+function headerColumnDivider(sVariableListLines, separator) {
     if (sVariableListLines === void 0) { sVariableListLines = ''; }
     var sReturn = "";
     var sHeaderInfo = "";
@@ -33,7 +33,7 @@ function headerColumnDivider(sVariableListLines) {
                 wordCount++;
                 isWordCounted = false;
                 if (wordCount < columnInLine && isWritingChars)
-                    sReturn += "'";
+                    sReturn += separator;
             }
         if (sVariableListLines[j] == ' ')
             if (!charCount)
@@ -49,7 +49,7 @@ function headerColumnDivider(sVariableListLines) {
             if (charCount)
                 if (sVariableListLines[j] != '\t') {
                     if (sVariableListLines[j] == '\n') {
-                        sReturn += "'";
+                        sReturn += separator;
                     }
                     else {
                         sReturn += sVariableListLines[j];

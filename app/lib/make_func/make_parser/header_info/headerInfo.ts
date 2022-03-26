@@ -1,4 +1,4 @@
-export function headerInfo(sVariableListLines: string = ''){
+export function headerInfo(sVariableListLines: string = '', separator: string){
   // TODO
   let sReturn: string = ""
   let sHeaderInfo: string = ""
@@ -38,7 +38,7 @@ export function headerInfo(sVariableListLines: string = ''){
         wordCount++
         isWordCounted = false
         if (wordCount < columnInLine && isWritingChars)
-          sReturn += "'"
+          sReturn += separator
       }
     if (sVariableListLines[j] == ' ')
       if (!charCount)
@@ -57,7 +57,7 @@ export function headerInfo(sVariableListLines: string = ''){
         {
           if (sVariableListLines[j] == '\n')
           {
-            sReturn += "'"
+            sReturn += separator
           }
           else
           {
