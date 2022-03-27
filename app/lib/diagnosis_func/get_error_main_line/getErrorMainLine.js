@@ -3,7 +3,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.getErrorMainLine = void 0;
 var fs = require('fs');
 var hashing_1 = require("../../make_func/make_hash/hashing/hashing");
-var rws_1 = require("../../../services/read_write_service/rws");
 var getErrorLog = function (sLastOpenedErrorFile) {
     if (sLastOpenedErrorFile === void 0) { sLastOpenedErrorFile = ''; }
     try {
@@ -61,7 +60,6 @@ function getErrorMainLine(sLastOpenedErrorFile, deep) {
         sResult = getBodyErrorLog(sErrorLog);
         sResult = (0, hashing_1.hashing)(sResult, deep);
         sResult = getLastLogLine(sResult);
-        sResult = rws_1.RWS.readDataLineFromLog(sResult);
         return sResult;
     }
     catch (error) {

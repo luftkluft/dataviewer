@@ -54,7 +54,6 @@ export function getErrorMainLine(sLastOpenedErrorFile: string = '', deep: number
     sResult = getBodyErrorLog(sErrorLog)
     sResult = hashing(sResult, deep)
     sResult = getLastLogLine(sResult)
-    sResult = RWS.readDataLineFromLog(sResult)
     return sResult
   } catch (error) {
     return ''
