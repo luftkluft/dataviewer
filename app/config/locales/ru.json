@@ -6,11 +6,11 @@
   "make_diagnostics": "Диагностировать",
   "exit": "Выход",
 
-  "parser": "Парсер",
+  "parser": "Создать",
   "csv": "визуализация csv",
-  "parser_csv": "Парсер csv",
+  "parser_csv": "Создать",
   "log": "создать csv из log",
-  "parser_log": "Парсер log",
+  "parser_log": "Создать csv из log",
 
   "sorting": "Сортировка",
   "no_sorting": "Без сортировки",

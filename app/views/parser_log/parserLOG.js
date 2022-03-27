@@ -98,15 +98,7 @@ var chooseCsvFilePath = function () {
     }
     else {
         csvFilePathField.value = path;
-        fs.stat(path, function (err, stat) {
-            if (err) {
-                memo.value = err;
-            }
-            else {
-                memo.value = fileStat(stat);
-                setMakeCsvButtonStatus();
-            }
-        });
+        setMakeCsvButtonStatus();
     }
 };
 var setMakeCsvButtonStatus = function () {

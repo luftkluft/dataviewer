@@ -6,11 +6,11 @@
   "make_diagnostics": "Make diagnostics",
   "exit": "Exit",
 
-  "parser": "Parser",
+  "parser": "Create",
   "csv": "view by csv",
-  "parser_csv": "Parser csv",
+  "parser_csv": "Create",
   "log": "create csv from log",
-  "parser_log": "Parser log",
+  "parser_log": "Сreate csv from log",
 
   "sorting": "Sorting",
   "no_sorting": "No sorting",

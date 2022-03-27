@@ -1,1 +1,1 @@
-export declare function makeCSVFileFromLog(logFile: string, variablesListFile: string, csvFileSavePath: string, logParams: any): string;
+export declare function makeCSVFileFromLog(logFile: string, variablesListFile: string, csvFileSavePath: string, logParams: any): unknown;

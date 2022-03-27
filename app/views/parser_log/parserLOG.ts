@@ -100,14 +100,7 @@ const chooseCsvFilePath = () => {
     memo.value = ipcLogRenderer.sendSync('i18n', path)
   } else {
     csvFilePathField.value = path
-    fs.stat(path, function (err: any, stat: any) {
-      if (err) {
-        memo.value = err
-      } else {
-        memo.value = fileStat(stat)
-        setMakeCsvButtonStatus()
-      }
-    })
+    setMakeCsvButtonStatus()
   }
 }
 

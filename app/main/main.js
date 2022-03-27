@@ -209,10 +209,10 @@ ipcMain.on('open-csv-file-path-dialog', function (event) {
         .showOpenDialog({ properties: ['openDirectory'] })
         .then(function (response) {
         if (!response.canceled) {
-            var result = response.filePaths[0];
-            global.app_config.csv_file_path = dirname(result) + "/";
-            global.app_config.last_csv_file_path = result;
-            event.returnValue = result;
+            var csvPath = response.filePaths[0] + "/";
+            global.app_config.csv_file_path = csvPath;
+            global.app_config.last_csv_file_path = csvPath;
+            event.returnValue = csvPath;
         }
         else {
             event.returnValue = 'no_file_selected';
