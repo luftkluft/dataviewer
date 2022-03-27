@@ -1,6 +1,7 @@
 let fs = require('fs')
-
 const { dialog } = require('electron')
+import { makeHeaderTable } from '../../make_csv/make_header_table/makeHeaderTable'
+import { makeBodyTable } from '../../make_csv/make_body_table/makeBodyTable'
 
 const createFileName = () => {
   let current = new Date()
@@ -12,8 +13,8 @@ const createFileName = () => {
 
 export function makeCSVFileFromLog(logFile: string, variablesListFile: string, csvFileSavePath: string, logParams: any) {
   try {
-    let sData: string = 'test string'
-    let sResult: string = 'test result'
+    let sData: string = ''
+    let sResult: string = ''
     let fileName: string = createFileName()
     let savePath: string = csvFileSavePath
     let file: string = savePath + fileName
@@ -25,6 +26,11 @@ export function makeCSVFileFromLog(logFile: string, variablesListFile: string, c
         { name: 'CSV', extensions: ['csv'] },
       ]
     }
+
+    sResult += 'Создание шапки файла\n'
+    sData += makeHeaderTable(variablesListFile, logParams.delemiter)
+    sResult += 'Создание тела файла\n'
+    sData += makeBodyTable(logFile, variablesListFile, logParams.delemiter)
 
     dialog.showSaveDialog(null, options).then((result: any) => {
       // console.log('Second Response: ', result)
@@ -40,6 +46,7 @@ export function makeCSVFileFromLog(logFile: string, variablesListFile: string, c
       // console.warn('failed/rejected with', args)
       return args
     })
+    sResult += `Файл ${file} создан.`
     return sResult
   } catch (error) {
     return error
