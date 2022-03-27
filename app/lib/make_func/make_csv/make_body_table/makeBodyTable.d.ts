@@ -1,1 +1,1 @@
-export declare function makeBodyTable(logFile: string | undefined, variablesListFile: string, separator: string): string;
+export declare function makeBodyTable(logFile: string, variablesListFile: string, separator: string): string;

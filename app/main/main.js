@@ -47,6 +47,7 @@ var restartAppService_1 = require("../services/restart_app_service/restartAppSer
 var closeChildWindows_1 = require("../lib/close_child_windows/closeChildWindows");
 var appInfo_1 = require("../lib/app_info/appInfo");
 var diagnosisService_1 = require("../services/diagnosis_service/diagnosisService");
+var makeService_1 = require("../services/make_service/makeService");
 var _a = require('electron'), app = _a.app, BrowserWindow = _a.BrowserWindow, Menu = _a.Menu;
 var ipcMain = require('electron').ipcMain;
 var appRoot = require('app-root-path');
@@ -305,6 +306,14 @@ ipcMain.on('get_sorting', function (event, arg) {
 });
 ipcMain.on('run_test', function (event, arg) {
     var result = diagnosisService_1.DiagnosisService.testing();
+    event.returnValue = result;
+});
+ipcMain.on('make_csv_from_log', function (event, arg) {
+    var logFile = global.app_config.last_opened_pattern_file;
+    var variablesListFile = global.app_config.last_opened_variable_list_file;
+    var csvFileSavePath = global.app_config.last_csv_file_path;
+    var logParams = global.app_config.log_params;
+    var result = makeService_1.MakeService.makeCSVfromLog(logFile, variablesListFile, csvFileSavePath, logParams);
     event.returnValue = result;
 });
 app.on('app_set_sorting_manual', function () {

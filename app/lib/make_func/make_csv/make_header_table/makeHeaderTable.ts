@@ -2,7 +2,7 @@ let fs = require('fs')
 import { headerColumnDivider } from '../../make_parser/header_column_divider/headerColumnDivider'
 import { deleteSeparator } from '../../make_parser/delete_separator/deleteSeparator'
 
-export function makeHeaderTable(variablesListFile: string = '', separator: string) {
+export function makeHeaderTable(variablesListFile: string, separator: string) {
   let sVariableListLines: string = ""
   let sDeviderLines: string = ""
   let sReturn: string = ""

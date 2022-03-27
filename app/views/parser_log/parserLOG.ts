@@ -128,7 +128,11 @@ $(document).ready(() => {
 
 formLog.addEventListener('submit', function (event: any) {
   event.preventDefault()
-  const memo: any = document.getElementById('memo')
-  memo.value = `click submit`
   setLogParams()
+  const memo: any = document.getElementById('memo')
+  memo.value = makeCSVfromLog()
 })
+
+const makeCSVfromLog = () => {
+  return ipcLogRenderer.sendSync('make_csv_from_log')
+}

@@ -13,6 +13,7 @@ import { RestartAppService } from '../services/restart_app_service/restartAppSer
 import { closeChildWindows } from '../lib/close_child_windows/closeChildWindows'
 import { appInfo } from '../lib/app_info/appInfo'
 import { DiagnosisService } from '../services/diagnosis_service/diagnosisService'
+import { MakeService } from '../services/make_service/makeService'
 
 const { app, BrowserWindow, Menu } = require('electron')
 const { ipcMain } = require('electron')
@@ -294,6 +295,15 @@ ipcMain.on('get_sorting', (event: any, arg: any) => {
 
 ipcMain.on('run_test', (event: any, arg: any) => {
   const result = DiagnosisService.testing()
+  event.returnValue = result
+})
+
+ipcMain.on('make_csv_from_log', (event: any, arg: any) => {
+  const logFile: string = global.app_config.last_opened_pattern_file
+  const variablesListFile: string = global.app_config.last_opened_variable_list_file
+  const csvFileSavePath: string = global.app_config.last_csv_file_path
+  const logParams: any = global.app_config.log_params
+  const result = MakeService.makeCSVfromLog(logFile, variablesListFile, csvFileSavePath, logParams)
   event.returnValue = result
 })
 

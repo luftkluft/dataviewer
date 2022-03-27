@@ -125,8 +125,11 @@ var setMakeCsvButtonStatus = function () {
 });
 formLog.addEventListener('submit', function (event) {
     event.preventDefault();
-    var memo = document.getElementById('memo');
-    memo.value = "click submit";
     setLogParams();
+    var memo = document.getElementById('memo');
+    memo.value = makeCSVfromLog();
 });
+var makeCSVfromLog = function () {
+    return ipcLogRenderer.sendSync('make_csv_from_log');
+};
 //# sourceMappingURL=parserLOG.js.map

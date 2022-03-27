@@ -1,1 +1,1 @@
-export declare function makeHeaderTable(variablesListFile: string | undefined, separator: string): string;
+export declare function makeHeaderTable(variablesListFile: string, separator: string): string;

@@ -5,7 +5,7 @@ import { RWS } from '../../../../services/read_write_service/rws'
 import { strHexToBinFromSiemens } from '../../../a2b/strHexToBinFromSiemens/strHexToBinFromSiemens'
 import { headerInfo } from '../../make_parser/header_info/headerInfo'
 
-export function makeBodyTable(logFile: string = '', variablesListFile: string, separator: string) {
+export function makeBodyTable(logFile: string, variablesListFile: string, separator: string) {
   let sVariableListLines: string = ""
   let sLogLines: string = ""
   let sDataLine: string = ""

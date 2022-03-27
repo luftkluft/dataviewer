@@ -7,9 +7,9 @@
   "exit": "Exit",
 
   "parser": "Parser",
-  "csv": "csv",
+  "csv": "view by csv",
   "parser_csv": "Parser csv",
-  "log": "log",
+  "log": "create csv from log",
   "parser_log": "Parser log",
 
   "sorting": "Sorting",

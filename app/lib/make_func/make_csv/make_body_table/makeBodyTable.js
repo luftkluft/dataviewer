@@ -7,7 +7,6 @@ var rws_1 = require("../../../../services/read_write_service/rws");
 var strHexToBinFromSiemens_1 = require("../../../a2b/strHexToBinFromSiemens/strHexToBinFromSiemens");
 var headerInfo_1 = require("../../make_parser/header_info/headerInfo");
 function makeBodyTable(logFile, variablesListFile, separator) {
-    if (logFile === void 0) { logFile = ''; }
     var sVariableListLines = "";
     var sLogLines = "";
     var sDataLine = "";
