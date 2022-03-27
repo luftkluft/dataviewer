@@ -52,8 +52,6 @@ function logToHash(logFile, variablesListFile, csvFileSavePath, logParams, deep)
         sData = (0, hashing_1.hashing)((0, makeBodyTable_1.makeBodyTable)(logFile, variablesListFile, logParams.delemiter), deep);
         sData = compressHashBody(sData, deep);
         sHash += sData;
-        console.log('###############');
-        console.log(sHash);
         return sHash;
     }
     catch (error) {

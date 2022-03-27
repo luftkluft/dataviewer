@@ -52,8 +52,6 @@ export function logToHash(logFile: string, variablesListFile: string, csvFileSav
     sData = hashing(makeBodyTable(logFile, variablesListFile, logParams.delemiter), deep)
     sData = compressHashBody(sData, deep)
     sHash += sData
-    console.log('###############')
-    console.log(sHash)
     return sHash
   } catch (error) {
     return error
