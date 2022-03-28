@@ -1,6 +1,7 @@
 import { getAddressByPositionFromLines } from '../../make_func/make_parser/get_address_by_position_from_lines/getAddressByPositionFromLines'
 import { getNameByPositionFromLines } from '../../make_func/make_parser/get_name_by_position_from_lines/getNameByPositionFromLines'
 import { getCommentByPositionFromLines } from '../../make_func/make_parser/get_comment_by_position_from_lines/getCommentByPositionFromLines'
+import { RWS } from '../../../services/read_write_service/rws'
 
 const matchLines100 = () => {
   const sHint: string = `Неисправностей не обнаружено.
@@ -55,6 +56,8 @@ export function hint(hashDataLog: string, maxMatchLine: string, errorMainLine: s
     match = charMatch / charCount * 100
     match = Math.floor(match * 100) / 100
     sHint = `Совпадение ${match.toString()}%\n`
+    sHint += `Метка времени: ${RWS.readTimeFromLog(maxMatchLine)} / ${RWS.readTimeFromLog(errorMainLine)}\n`
+    sHint += `Исходник: ${RWS.readDataLineFromLog(maxMatchLine)}\nОшибка: ${RWS.readDataLineFromLog(errorMainLine)}\n`
 
     if (match == 100) {
       sHint += matchLines100()

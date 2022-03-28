@@ -49,7 +49,8 @@ function logToHash(logFile, variablesListFile, csvFileSavePath, logParams, deep)
         var savePath = csvFileSavePath;
         var file = savePath + fileName;
         sHash += (0, makeHeaderTable_1.makeHeaderTable)(variablesListFile, logParams.delemiter);
-        sData = (0, hashing_1.hashing)((0, makeBodyTable_1.makeBodyTable)(logFile, variablesListFile, logParams.delemiter), deep);
+        sData = (0, makeBodyTable_1.makeBodyTable)(logFile, variablesListFile, logParams.delemiter);
+        sData = (0, hashing_1.hashing)(sData, deep);
         sData = compressHashBody(sData, deep);
         sHash += sData;
         return sHash;

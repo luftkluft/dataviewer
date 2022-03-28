@@ -4,6 +4,7 @@ exports.hint = void 0;
 var getAddressByPositionFromLines_1 = require("../../make_func/make_parser/get_address_by_position_from_lines/getAddressByPositionFromLines");
 var getNameByPositionFromLines_1 = require("../../make_func/make_parser/get_name_by_position_from_lines/getNameByPositionFromLines");
 var getCommentByPositionFromLines_1 = require("../../make_func/make_parser/get_comment_by_position_from_lines/getCommentByPositionFromLines");
+var rws_1 = require("../../../services/read_write_service/rws");
 var matchLines100 = function () {
     var sHint = "\u041D\u0435\u0438\u0441\u043F\u0440\u0430\u0432\u043D\u043E\u0441\u0442\u0435\u0439 \u043D\u0435 \u043E\u0431\u043D\u0430\u0440\u0443\u0436\u0435\u043D\u043E.\n\u041F\u0440\u043E\u0432\u0435\u0440\u044C\u0442\u0435 \u0430\u0432\u0442\u043E\u043C\u0430\u0442\u044B \u0437\u0430\u0449\u0438\u0442\u044B \u0438\u0441\u043F\u043E\u043B\u043D\u0438\u0442\u0435\u043B\u044C\u043D\u044B\u0445 \u043C\u0435\u0445\u0430\u043D\u0438\u0437\u043C\u043E\u0432.\n\u041F\u0440\u043E\u0432\u0435\u0440\u044C\u0442\u0435 \u043F\u0440\u043E\u043C\u0435\u0436\u0443\u0442\u043E\u0447\u043D\u044B\u0435 \u0440\u0435\u043B\u0435 \u0438 \u043F\u0440\u0435\u0434\u043E\u0445\u0440\u0430\u043D\u0438\u0442\u0435\u043B\u0438 \u0438\u0441\u043F\u043E\u043B\u043D\u0438\u0442\u0435\u043B\u044C\u043D\u044B\u0445 \u043C\u0435\u0445\u0430\u043D\u0438\u0437\u043C\u043E\u0432.\n\u041F\u0440\u043E\u0432\u0435\u0440\u044C\u0442\u0435 \u043D\u0430\u043B\u0438\u0447\u0438\u0435 \u0441\u0436\u0430\u0442\u043E\u0433\u043E \u0432\u043E\u0437\u0434\u0443\u0445\u0430.\n\u0415\u0441\u043B\u0438 \u044D\u0442\u043E \u043D\u0430\u0447\u0430\u043B\u043E \u0446\u0438\u043A\u043B\u0430, \u0442\u043E \u043C\u043E\u0436\u0435\u0442 \u043E\u0441\u0442\u0430\u043B\u043E\u0441\u044C \u043F\u0440\u043E\u0441\u0442\u043E \u043D\u0430\u0436\u0430\u0442\u044C \u043A\u043D\u043E\u043F\u043A\u0443 \u041F\u0443\u0441\u043A?";
     return sHint;
@@ -48,6 +49,8 @@ function hint(hashDataLog, maxMatchLine, errorMainLine) {
         match = charMatch / charCount * 100;
         match = Math.floor(match * 100) / 100;
         sHint = "\u0421\u043E\u0432\u043F\u0430\u0434\u0435\u043D\u0438\u0435 " + match.toString() + "%\n";
+        sHint += "\u041C\u0435\u0442\u043A\u0430 \u0432\u0440\u0435\u043C\u0435\u043D\u0438: " + rws_1.RWS.readTimeFromLog(maxMatchLine) + " / " + rws_1.RWS.readTimeFromLog(errorMainLine) + "\n";
+        sHint += "\u0418\u0441\u0445\u043E\u0434\u043D\u0438\u043A: " + rws_1.RWS.readDataLineFromLog(maxMatchLine) + "\n\u041E\u0448\u0438\u0431\u043A\u0430: " + rws_1.RWS.readDataLineFromLog(errorMainLine) + "\n";
         if (match == 100) {
             sHint += matchLines100();
         }

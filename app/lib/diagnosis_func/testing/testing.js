@@ -42,7 +42,7 @@ function testing() {
         else {
             return "\u041E\u0448\u0438\u0431\u043A\u0430 \u0445\u0435\u0448\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u044F \u043B\u043E\u0433\u0430 \u0434\u0430\u043D\u044B\u0445!";
         }
-        errorMainLine = (0, getErrorMainLine_1.getErrorMainLine)(errorFile, deep);
+        errorMainLine = (0, getErrorMainLine_1.getErrorMainLine)(errorFile, variablesListFile, logParams.delemiter, deep);
         if (errorMainLine.length) {
             sResult += "\u0425\u0435\u0448\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435 \u043B\u043E\u0433\u0430 \u043E\u0448\u0438\u0431\u043A\u0438 - ok\n";
         }

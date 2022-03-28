@@ -21,14 +21,14 @@ const compressHashBody = (sHashBody: string, deep: number) => {
     let sLinesArray: string[] = []
     sLinesArray = sHashBody.split(endLine)
     let i: number = 0
-    
+
     for (i = 0; i < sLinesArray.length - deep; i++) {
-      if ( RWS.readDataLineFromLog(sLinesArray[i]) == currentLine) {
+      if (RWS.readDataLineFromLog(sLinesArray[i]) == currentLine) {
         continue
       }
       else {
         if (RWS.readDataLineFromLog(sLinesArray[i]).length) {
-          compressBody +=  RWS.readTimeFromLog(sLinesArray[i]) + RWS.readDataLineFromLog(sLinesArray[i])
+          compressBody += RWS.readTimeFromLog(sLinesArray[i]) + RWS.readDataLineFromLog(sLinesArray[i])
           compressBody += '\n'
           currentLine = RWS.readDataLineFromLog(sLinesArray[i])
         }
@@ -49,7 +49,8 @@ export function logToHash(logFile: string, variablesListFile: string, csvFileSav
     let savePath: string = csvFileSavePath
     let file: string = savePath + fileName
     sHash += makeHeaderTable(variablesListFile, logParams.delemiter)
-    sData = hashing(makeBodyTable(logFile, variablesListFile, logParams.delemiter), deep)
+    sData = makeBodyTable(logFile, variablesListFile, logParams.delemiter)
+    sData = hashing(sData, deep)
     sData = compressHashBody(sData, deep)
     sHash += sData
     return sHash

@@ -58,7 +58,7 @@ export function testing() {
       return `Ошибка хеширования лога даных!`
     }
 
-    errorMainLine = getErrorMainLine(errorFile, deep)
+    errorMainLine = getErrorMainLine(errorFile, variablesListFile, logParams.delemiter, deep)
     if (errorMainLine.length) {
       sResult += `Хеширование лога ошибки - ok\n`
     } else {
