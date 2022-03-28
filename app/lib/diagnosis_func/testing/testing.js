@@ -6,6 +6,7 @@ var logToHash_1 = require("../../make_func/make_hash/log_to_hash/logToHash");
 var getErrorMainLine_1 = require("../../diagnosis_func/get_error_main_line/getErrorMainLine");
 var getMaxMatchLine_1 = require("../../diagnosis_func/get_max_match_line/getMaxMatchLine");
 var hint_1 = require("../../diagnosis_func/hint/hint");
+var findReadySolution_1 = require("../../make_func/find_ready_solution/findReadySolution");
 function testing() {
     var sResult = '';
     var deep = 0;
@@ -63,10 +64,39 @@ function testing() {
         sHint = (0, hint_1.hint)(hashDataLog, maxMatchLine, errorMainLine);
         if (sHint.length) {
             sResult += sHint;
-            sResult += "\n===== \u0414\u0438\u0430\u0433\u043D\u043E\u0441\u0442\u0438\u043A\u0430 \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043D\u0430 =====";
+            sResult += "\n===== \u0414\u0438\u0430\u0433\u043D\u043E\u0441\u0442\u0438\u043A\u0430 \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043D\u0430 =====\n";
         }
         else {
             return "\u041E\u0448\u0438\u0431\u043A\u0430 \u0434\u0438\u0430\u0433\u043Do\u0441\u0442\u0438\u043A\u0438!";
+        }
+        var solutionResult = '';
+        solutionResult = (0, findReadySolution_1.findReadySolution)(errorMainLine);
+        if (solutionResult.length > 0) {
+            sResult += "\u0420\u0435\u0448\u0435\u043D\u0438\u0435: " + (0, findReadySolution_1.findReadySolution)(errorMainLine) + "\n";
+            sResult += "===============================\n";
+        }
+        else {
+            try {
+                var options = {
+                    type: 'question',
+                    buttons: ['Да', 'Нет'],
+                    title: 'Сохранение ошибки в базу даных',
+                    message: 'Желаете сохранить даные о неисправности?',
+                    detail: sResult,
+                };
+                var response = dialog.showMessageBoxSync(null, options);
+                if (response == 0) {
+                    sResult += "\u0413\u043E\u0442\u043E\u0432\u044B\u0445 \u0440\u0435\u0448\u0435\u043D\u0438\u0439 \u043D\u0435 \u043D\u0430\u0439\u0434\u0435\u043D\u043E.\n";
+                    sResult += "\u0422\u0435\u043A\u0443\u0449\u0430\u044F \u043D\u0435\u0438\u0441\u043F\u0440\u0430\u0432\u043D\u043E\u0441\u0442\u044C \u0441\u043E\u0445\u0440\u0430\u043D\u0435\u043D\u0430.\n";
+                }
+                else {
+                    sResult += "\u0413\u043E\u0442\u043E\u0432\u044B\u0445 \u0440\u0435\u0448\u0435\u043D\u0438\u0439 \u043D\u0435 \u043D\u0430\u0439\u0434\u0435\u043D\u043E.\n";
+                    sResult += "\u0421\u043E\u0445\u0440\u0430\u043D\u0435\u043D\u0438\u0435 \u043E\u0442\u043C\u0435\u043D\u0435\u043D\u043E.\n";
+                }
+            }
+            catch (error) {
+                return error;
+            }
         }
         return sResult;
     }

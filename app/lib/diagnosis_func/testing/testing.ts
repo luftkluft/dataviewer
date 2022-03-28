@@ -3,6 +3,7 @@ import { logToHash } from '../../make_func/make_hash/log_to_hash/logToHash'
 import { getErrorMainLine } from '../../diagnosis_func/get_error_main_line/getErrorMainLine'
 import { getMaxMatchLine } from '../../diagnosis_func/get_max_match_line/getMaxMatchLine'
 import { hint } from '../../diagnosis_func/hint/hint'
+import { findReadySolution } from '../../make_func/find_ready_solution/findReadySolution'
 
 export function testing() {
   //   try {
@@ -78,9 +79,38 @@ export function testing() {
     sHint = hint(hashDataLog, maxMatchLine, errorMainLine)
     if (sHint.length) {
       sResult += sHint
-      sResult += `\n===== Диагностика завершена =====`
+      sResult += `\n===== Диагностика завершена =====\n`
     } else {
       return `Ошибка диагнoстики!`
+    }
+    let solutionResult: string = ''
+    solutionResult = findReadySolution(errorMainLine)
+    if (solutionResult.length > 0) {
+      sResult += `Решение: ${findReadySolution(errorMainLine)}\n`
+      sResult += `===============================\n`
+    } else {
+      try {
+        const options = {
+          type: 'question',
+          buttons: ['Да', 'Нет'],
+          //defaultId: 2,
+          title: 'Сохранение ошибки в базу даных',
+          message: 'Желаете сохранить даные о неисправности?',
+          detail: sResult,
+        };
+        const response = dialog.showMessageBoxSync(null, options);
+        if (response == 0) {
+          //return 'yes'
+          sResult += `Готовых решений не найдено.\n`
+          sResult += `Текущая неисправность сохранена.\n`
+        } else {
+          // return 'no'
+          sResult += `Готовых решений не найдено.\n`
+          sResult += `Сохранение отменено.\n`
+        }
+      } catch (error) {
+        return error
+      }
     }
     return sResult
   } catch (error) {
