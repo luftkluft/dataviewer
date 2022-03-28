@@ -1,6 +1,6 @@
-import { getAddressByPosition } from '../../make_func/make_parser/get_address_by_position/getAddressByPosition'
-import { getNameByPosition } from '../../make_func/make_parser/get_name_by_position/getNameByPosition'
-import { getCommentByPosition } from '../../make_func/make_parser/get_comment_by_position/getCommentByPosition'
+import { getAddressByPositionFromLines } from '../../make_func/make_parser/get_address_by_position_from_lines/getAddressByPositionFromLines'
+import { getNameByPositionFromLines } from '../../make_func/make_parser/get_name_by_position_from_lines/getNameByPositionFromLines'
+import { getCommentByPositionFromLines } from '../../make_func/make_parser/get_comment_by_position_from_lines/getCommentByPositionFromLines'
 
 const matchLines100 = () => {
   const sHint: string = `Неисправностей не обнаружено.
@@ -11,27 +11,27 @@ const matchLines100 = () => {
   return sHint
 }
 
-const hintsWord = (file: string, sSource: string, sError: string, charCount: number) => {
+const hintsWord = (hashDataLog: string, sSource: string, sError: string, charCount: number) => {
   let sHint: string = '\n'
-  sHint += `Адрес: ${getAddressByPosition(file, charCount)}\n`
-  sHint += `Имя: ${getNameByPosition(file, charCount)}\n`
-  sHint += `Комментарий: ${getCommentByPosition(file, charCount)}\n`
+  sHint += `Адрес: ${getAddressByPositionFromLines(hashDataLog, charCount)}\n`
+  sHint += `Имя: ${getNameByPositionFromLines(hashDataLog, charCount)}\n`
+  sHint += `Комментарий: ${getCommentByPositionFromLines(hashDataLog, charCount)}\n`
   sHint += `Значение в образцовой циклограмме: ${sSource}\n`
   sHint += `Значение в аварийном логе: ${sError}\n`
   return sHint
 }
 
-const hintsBit = (file: string, maxMatchLineI: string, errorLogLineI: string, charCount: number) => {
+const hintsBit = (hashDataLog: string, maxMatchLineI: string, errorLogLineI: string, charCount: number) => {
   let sHint: string = '\n'
-  sHint += `Адрес: ${getAddressByPosition(file, charCount)}\n`
-  sHint += `Имя: ${getNameByPosition(file, charCount)}\n`
-  sHint += `Комментарий: ${getCommentByPosition(file, charCount)}\n`
+  sHint += `Адрес: ${getAddressByPositionFromLines(hashDataLog, charCount)}\n`
+  sHint += `Имя: ${getNameByPositionFromLines(hashDataLog, charCount)}\n`
+  sHint += `Комментарий: ${getCommentByPositionFromLines(hashDataLog, charCount)}\n`
   sHint += `Значение в образцовой циклограмме: ${maxMatchLineI}\n`
   sHint += `Значение в аварийном логе: ${errorLogLineI}\n`
   return sHint
 }
 
-export function hint(file: string, maxMatchLine: string, errorMainLine: string) {
+export function hint(hashDataLog: string, maxMatchLine: string, errorMainLine: string) {
   try {
     let sHint: string = ''
     let match: number = 0
@@ -81,14 +81,14 @@ export function hint(file: string, maxMatchLine: string, errorMainLine: string) 
                 continue
               }
               else {
-                sHint += hintsWord(file, maxMatchLine.substr(i + 1, 6), errorMainLine.substr(i + 1, 6), charCount)
+                sHint += hintsWord(hashDataLog, maxMatchLine.substr(i + 1, 6), errorMainLine.substr(i + 1, 6), charCount)
                 continue
               }
             }
           if (maxMatchLine[i] != errorMainLine[i])
             if (maxMatchLine[i - 1] == '\'' && maxMatchLine[i + 1] == '\'') // если бит
             {
-              sHint += hintsBit(file, maxMatchLine[i], errorMainLine[i], charCount)
+              sHint += hintsBit(hashDataLog, maxMatchLine[i], errorMainLine[i], charCount)
             }
         }
       }
@@ -97,6 +97,6 @@ export function hint(file: string, maxMatchLine: string, errorMainLine: string) 
 
     return sHint
   } catch (error) {
-    return error
+    return ''
   }
 }

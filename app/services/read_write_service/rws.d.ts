@@ -7,4 +7,5 @@ export declare class RWS {
     static readTimeFromLog(sLogLine?: string): string;
     static writeErrorToMemoryData(sErrorKey?: string, sErrorMessage?: string): any;
     static readErrorFromMemoryData(sErrorKey?: string): any;
+    static getLineByNumberFromLines(sLines: string, lineNumber: number): string;
 }

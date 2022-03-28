@@ -1,1 +1,1 @@
-export declare function hint(file: string, maxMatchLine: string, errorMainLine: string): unknown;
+export declare function hint(hashDataLog: string, maxMatchLine: string, errorMainLine: string): string;

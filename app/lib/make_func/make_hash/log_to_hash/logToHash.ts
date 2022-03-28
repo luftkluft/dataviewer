@@ -54,6 +54,6 @@ export function logToHash(logFile: string, variablesListFile: string, csvFileSav
     sHash += sData
     return sHash
   } catch (error) {
-    return error
+    return ''
   }
 }

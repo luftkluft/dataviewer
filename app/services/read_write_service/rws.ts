@@ -6,6 +6,7 @@ import { readLinesArray } from '../../lib/read_func/readLines/readLines'
 import { readTimeFromLog } from '../../lib/read_func/readTimeFromLog/readTimeFromLog'
 import { writeErrorToMemoryData } from '../../lib/read_func/writeErrorToMemoryData/writeErrorToMemoryData'
 import { readErrorFromMemoryData } from '../../lib/read_func/readErrorFromMemoryData/readErrorFromMemoryData'
+import {getLineByNumberFromLines} from '../../lib/read_func/getLineByNumberFromLines/getLineByNumberFromLines'
 
 export class RWS {
   static getLineCountFromFile(sFilePath: string, sFileName: string) {
@@ -31,5 +32,8 @@ export class RWS {
   }
   static readErrorFromMemoryData(sErrorKey: string = 'defaultErrorKey') {
     return readErrorFromMemoryData(sErrorKey)
+  }
+  static getLineByNumberFromLines(sLines: string, lineNumber: number) {
+    return getLineByNumberFromLines(sLines, lineNumber)
   }
 }

@@ -55,7 +55,7 @@ function logToHash(logFile, variablesListFile, csvFileSavePath, logParams, deep)
         return sHash;
     }
     catch (error) {
-        return error;
+        return '';
     }
 }
 exports.logToHash = logToHash;
