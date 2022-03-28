@@ -41,7 +41,10 @@ export function testing() {
     sResult = '===== Запуск диагностики =====\n'
     try {
       if (deep >= minDeep || deep <= maxDeep) {
-        // continue testing
+        sResult += new Date().toDateString() + '\n'
+        sResult += `Исходный файл: ${logFile}\n`
+        sResult += `Файл ошибок: ${errorFile}\n`
+        sResult += `Файл списка переменных: ${variablesListFile}\n`
       } else {
         sResult = `Глубина анализа может быть в интервале от ${minDeep} до ${maxDeep}, проверьте введённое значение!`
         return sResult
