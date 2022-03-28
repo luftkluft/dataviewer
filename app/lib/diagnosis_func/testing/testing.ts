@@ -4,6 +4,8 @@ import { getErrorMainLine } from '../../diagnosis_func/get_error_main_line/getEr
 import { getMaxMatchLine } from '../../diagnosis_func/get_max_match_line/getMaxMatchLine'
 import { hint } from '../../diagnosis_func/hint/hint'
 import { findReadySolution } from '../../make_func/find_ready_solution/findReadySolution'
+import { saveSolution } from '../../make_func/save_solution/saveSolution'
+import { RWS } from '../../../services/read_write_service/rws'
 const prompt = require('electron-prompt')
 
 export function testing() {
@@ -87,7 +89,7 @@ export function testing() {
     let solutionResult: string = ''
     solutionResult = findReadySolution(errorMainLine)
     if (solutionResult.length > 0) {
-      sResult += `Решение: ${findReadySolution(errorMainLine)}\n`
+      sResult += `Решение: ${findReadySolution(RWS.readDataLineFromLog(errorMainLine))}\n`
       sResult += `===============================\n`
     } else {
       try {
@@ -106,7 +108,7 @@ export function testing() {
           prompt({
             title: 'Сохранение неисправности в базу даных',
             label: 'Введите краткое описание неисправности:',
-            value: `${new Date().toDateString()}`,
+            value: `${new Date().toDateString()}...`,
             inputAttrs: {
               type: 'text'
             },
@@ -117,12 +119,12 @@ export function testing() {
                 // sResult += `Описание не проведено.\n`
               } else {
                 sNote = String(r)
-                console.log('n: ' + sNote)
+                // console.log('n: ' + sNote)
+                saveSolution(RWS.readDataLineFromLog(errorMainLine), sNote)
               }
             })
             .catch(console.error)
           sResult += `Готовых решений не найдено.\n`
-          sResult += `Текущая неисправность сохранена.\n`
         } else {
           // return 'no'
           sResult += `Готовых решений не найдено.\n`
