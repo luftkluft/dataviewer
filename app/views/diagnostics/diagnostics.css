@@ -47,6 +47,10 @@ textarea.memo {
   width: 95%;
 }
 
+.choose-variable-list-file-field {
+  width: 95%;
+}
+
 .deep-field {
   clear: both;
   text-align: right;

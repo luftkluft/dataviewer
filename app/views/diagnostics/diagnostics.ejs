@@ -39,6 +39,17 @@
     <div>
       <div>
         <label>
+          <%= I18n.t('variable_list_file') %>:
+        </label>
+      </div>
+      <div>
+        <input type='text' class='choose-variable-list-file-field' />
+        <button type='button' class='choose-variable-list-file-btn' onclick="chooseVariableListFile()">...</button>
+      </div>
+    </div>
+    <div>
+      <div>
+        <label>
           <%= I18n.t('deep') %>:
         </label>
       </div>
@@ -61,7 +72,7 @@
     </div>
   </form>
   <div class="content">
-    <textarea id="memo" class="memo" rows="13" cols="20"></textarea>
+    <textarea id="memo" class="memo" rows="10" cols="20"></textarea>
   </div>
   <script>const exports = { "__esModule": true }</script>
   <script src="./diagnostics.js"></script>
