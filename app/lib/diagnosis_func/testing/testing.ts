@@ -4,6 +4,7 @@ import { getErrorMainLine } from '../../diagnosis_func/get_error_main_line/getEr
 import { getMaxMatchLine } from '../../diagnosis_func/get_max_match_line/getMaxMatchLine'
 import { hint } from '../../diagnosis_func/hint/hint'
 import { findReadySolution } from '../../make_func/find_ready_solution/findReadySolution'
+const prompt = require('electron-prompt')
 
 export function testing() {
   //   try {
@@ -98,9 +99,28 @@ export function testing() {
           message: 'Желаете сохранить даные о неисправности?',
           detail: sResult,
         };
-        const response = dialog.showMessageBoxSync(null, options);
+        const response = dialog.showMessageBoxSync(null, options)
+        let sNote: string = ''
         if (response == 0) {
           //return 'yes'
+          prompt({
+            title: 'Сохранение неисправности в базу даных',
+            label: 'Введите краткое описание неисправности:',
+            value: `${new Date().toDateString()}`,
+            inputAttrs: {
+              type: 'text'
+            },
+            type: 'input'
+          })
+            .then((r: any) => {
+              if (r === null) {
+                // sResult += `Описание не проведено.\n`
+              } else {
+                sNote = String(r)
+                console.log('n: ' + sNote)
+              }
+            })
+            .catch(console.error)
           sResult += `Готовых решений не найдено.\n`
           sResult += `Текущая неисправность сохранена.\n`
         } else {

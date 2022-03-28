@@ -80,6 +80,7 @@
     "dotenv": "10.0.0",
     "electron-alert": "0.1.19",
     "electron-ejs": "1.2.1",
+    "electron-prompt": "^1.7.0",
     "jquery": "3.6.0",
     "simple-json-db": "2.0.0",
     "sortablejs": "1.14.0"

@@ -7,6 +7,7 @@ var getErrorMainLine_1 = require("../../diagnosis_func/get_error_main_line/getEr
 var getMaxMatchLine_1 = require("../../diagnosis_func/get_max_match_line/getMaxMatchLine");
 var hint_1 = require("../../diagnosis_func/hint/hint");
 var findReadySolution_1 = require("../../make_func/find_ready_solution/findReadySolution");
+var prompt = require('electron-prompt');
 function testing() {
     var sResult = '';
     var deep = 0;
@@ -85,7 +86,26 @@ function testing() {
                     detail: sResult,
                 };
                 var response = dialog.showMessageBoxSync(null, options);
+                var sNote_1 = '';
                 if (response == 0) {
+                    prompt({
+                        title: 'Сохранение неисправности в базу даных',
+                        label: 'Введите краткое описание неисправности:',
+                        value: "" + new Date().toDateString(),
+                        inputAttrs: {
+                            type: 'text'
+                        },
+                        type: 'input'
+                    })
+                        .then(function (r) {
+                        if (r === null) {
+                        }
+                        else {
+                            sNote_1 = String(r);
+                            console.log('n: ' + sNote_1);
+                        }
+                    })
+                        .catch(console.error);
                     sResult += "\u0413\u043E\u0442\u043E\u0432\u044B\u0445 \u0440\u0435\u0448\u0435\u043D\u0438\u0439 \u043D\u0435 \u043D\u0430\u0439\u0434\u0435\u043D\u043E.\n";
                     sResult += "\u0422\u0435\u043A\u0443\u0449\u0430\u044F \u043D\u0435\u0438\u0441\u043F\u0440\u0430\u0432\u043D\u043E\u0441\u0442\u044C \u0441\u043E\u0445\u0440\u0430\u043D\u0435\u043D\u0430.\n";
                 }
