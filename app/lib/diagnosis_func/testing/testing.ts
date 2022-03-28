@@ -80,7 +80,7 @@ export function testing() {
       sResult += sHint
       sResult += `\n===== Диагностика завершена =====`
     } else {
-      return `Ошибка диагнстики!`
+      return `Ошибка диагнoстики!`
     }
     return sResult
   } catch (error) {
