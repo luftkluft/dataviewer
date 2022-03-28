@@ -50,7 +50,10 @@ function hint(hashDataLog, maxMatchLine, errorMainLine) {
         match = Math.floor(match * 100) / 100;
         sHint = "\u0421\u043E\u0432\u043F\u0430\u0434\u0435\u043D\u0438\u0435 " + match.toString() + "%\n";
         sHint += "\u041C\u0435\u0442\u043A\u0430 \u0432\u0440\u0435\u043C\u0435\u043D\u0438: " + rws_1.RWS.readTimeFromLog(maxMatchLine) + " / " + rws_1.RWS.readTimeFromLog(errorMainLine) + "\n";
-        sHint += "\u0418\u0441\u0445\u043E\u0434\u043D\u0438\u043A: " + rws_1.RWS.readDataLineFromLog(maxMatchLine) + "\n\u041E\u0448\u0438\u0431\u043A\u0430: " + rws_1.RWS.readDataLineFromLog(errorMainLine) + "\n";
+        if (maxMatchLine.length != errorMainLine.length) {
+            sHint += "\u0420\u0430\u0437\u043D\u0430\u044F \u0434\u043B\u0438\u043D\u0430 \u043A\u043E\u043D\u0442\u0440\u043E\u043B\u044C\u043D\u044B\u0445 \u0441\u0442\u0440\u043E\u043A - \u0432\u0435\u0440\u043E\u044F\u0442\u043D\u044B \u043E\u0448\u0438\u0431\u043A\u0438 \u0434\u0438\u0430\u0433\u043D\u043E\u0441\u0442\u0438\u043A\u0438!!!\n";
+            sHint += "\u0418\u0441\u0445\u043E\u0434\u043D\u0438\u043A: " + maxMatchLine + "\n\u041E\u0448\u0438\u0431\u043A\u0430: " + errorMainLine + "\n";
+        }
         if (match == 100) {
             sHint += matchLines100();
         }

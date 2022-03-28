@@ -1,6 +1,10 @@
-const formatTime = (sTime: string = '') => {
+const formatTime = (sTime: string, timeDelemitor: string = ':') => {
   let i: number = 0
   let sReturn: string = ''
+
+  if(sTime[1] == timeDelemitor){
+    sTime = '0' + sTime
+  }
 
   while (sTime[i]) {
     if (sTime[i] == "'" || sTime[i] == ",") // код 39 = " ' " разделитель столбцов
@@ -8,6 +12,7 @@ const formatTime = (sTime: string = '') => {
       return sReturn
     }
     if (sTime[i] == " ") {
+      sReturn += '0'
       i++
       continue
     }

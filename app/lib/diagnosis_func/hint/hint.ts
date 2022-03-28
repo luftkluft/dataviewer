@@ -57,8 +57,10 @@ export function hint(hashDataLog: string, maxMatchLine: string, errorMainLine: s
     match = Math.floor(match * 100) / 100
     sHint = `Совпадение ${match.toString()}%\n`
     sHint += `Метка времени: ${RWS.readTimeFromLog(maxMatchLine)} / ${RWS.readTimeFromLog(errorMainLine)}\n`
-    sHint += `Исходник: ${RWS.readDataLineFromLog(maxMatchLine)}\nОшибка: ${RWS.readDataLineFromLog(errorMainLine)}\n`
-
+    if (maxMatchLine.length != errorMainLine.length) {
+      sHint += `Разная длина контрольных строк - вероятны ошибки диагностики!!!\n`
+      sHint += `Исходник: ${maxMatchLine}\nОшибка: ${errorMainLine}\n`
+    }
     if (match == 100) {
       sHint += matchLines100()
     }
