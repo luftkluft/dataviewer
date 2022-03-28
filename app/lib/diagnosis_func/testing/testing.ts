@@ -9,24 +9,6 @@ import { RWS } from '../../../services/read_write_service/rws'
 const prompt = require('electron-prompt')
 
 export function testing() {
-  //   try {
-  //     const options = {
-  //       type: 'question',
-  //       buttons: ['Yes, please', 'No, thanks'],
-  //       //defaultId: 2,
-  //       title: 'Question',
-  //       message: 'Do you want to do this?',
-  //       detail: 'It does not really matter',
-  //     };
-  //     const response = dialog.showMessageBoxSync(null, options);
-  //     if (response == 0) {
-  //       return 'yes'
-  //     } else {
-  //       return 'no'
-  //     }
-  //   } catch (error) {
-  //     return error
-  //   }
   let sResult: string = ''
   let deep: number = 0
   const minDeep: number = 1
@@ -116,7 +98,7 @@ export function testing() {
           })
             .then((r: any) => {
               if (r === null) {
-                // sResult += `Описание не проведено.\n`
+                // TODO
               } else {
                 sNote = String(r)
                 // console.log('n: ' + sNote)
