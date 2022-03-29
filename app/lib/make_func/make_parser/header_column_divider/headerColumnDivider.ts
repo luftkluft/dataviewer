@@ -13,10 +13,14 @@ export function headerColumnDivider(sVariableListLines: string = '', separator: 
   let j: number = 0
   for (j = 0; j < sVariableListLines.length; j++) {
     // заполнение матрицы формирования csv таблицы
-    if (sVariableListLines[j] == '#')
-      viewLine--;
+    if(sVariableListLines[j] == separator){
+      continue
+    }
+    if (sVariableListLines[j] == '#'){
+      viewLine--
+    }
     if (sVariableListLines[j] == '\n') {
-      viewLine++;
+      viewLine++
       if (charCount) {
         sHeaderInfo += String(viewLine)
         lineCount++
