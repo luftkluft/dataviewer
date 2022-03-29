@@ -37,6 +37,12 @@ function makeCSVFileFromLog(logFile, variablesListFile, csvFileSavePath, logPara
                         return error;
                     }
                 });
+                dialog.showMessageBoxSync(null, {
+                    type: 'info',
+                    buttons: ['Ok'],
+                    title: 'Создание csv файла',
+                    message: "\u0424\u0430\u0439\u043B " + result.filePath + " \u0441\u043E\u0437\u0434\u0430\u043D."
+                });
             }
         }).catch(function () {
             var args = [];
@@ -45,8 +51,7 @@ function makeCSVFileFromLog(logFile, variablesListFile, csvFileSavePath, logPara
             }
             return args;
         });
-        sResult += "\u0424\u0430\u0439\u043B " + file + " \u0441\u043E\u0437\u0434\u0430\u043D.";
-        return sResult;
+        return '';
     }
     catch (error) {
         return error;

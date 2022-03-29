@@ -41,13 +41,18 @@ export function makeCSVFileFromLog(logFile: string, variablesListFile: string, c
             return error
           }
         })
+        dialog.showMessageBoxSync(null, {
+          type: 'info',
+          buttons: ['Ok'],
+          title: 'Создание csv файла',
+          message: `Файл ${result.filePath} создан.`
+        })
       }
     }).catch((...args: any) => {
       // console.warn('failed/rejected with', args)
       return args
     })
-    sResult += `Файл ${file} создан.`
-    return sResult
+    return ''
   } catch (error) {
     return error
   }
