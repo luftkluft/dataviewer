@@ -32,25 +32,32 @@ function headerColumnDivider(sVariableListLines, separator) {
             isWritingChars = false;
             continue;
         }
-        if (sVariableListLines[j] == ' ' || sVariableListLines[j] == '\t')
+        if (sVariableListLines[j] == ' ' || sVariableListLines[j] == '\t') {
             if (isWordCounted) {
                 wordCount++;
                 isWordCounted = false;
-                if (wordCount < columnInLine && isWritingChars)
+                if (wordCount < columnInLine && isWritingChars) {
                     sReturn += separator;
+                }
             }
-        if (sVariableListLines[j] == ' ')
-            if (!charCount)
+        }
+        if (sVariableListLines[j] == ' ') {
+            if (!charCount) {
                 continue;
-        if (sVariableListLines[j] != ' ')
-            if (sVariableListLines[j] != '#')
-                if (sVariableListLines[j] != '\n')
+            }
+        }
+        if (sVariableListLines[j] != ' ') {
+            if (sVariableListLines[j] != '#') {
+                if (sVariableListLines[j] != '\n') {
                     if (sVariableListLines[j] != '\t') {
                         isWordCounted = true;
                         charCount++;
                     }
-        if (isWritingChars)
-            if (charCount)
+                }
+            }
+        }
+        if (isWritingChars) {
+            if (charCount) {
                 if (sVariableListLines[j] != '\t') {
                     if (sVariableListLines[j] == '\n') {
                         sReturn += separator;
@@ -59,6 +66,8 @@ function headerColumnDivider(sVariableListLines, separator) {
                         sReturn += sVariableListLines[j];
                     }
                 }
+            }
+        }
         if (sVariableListLines[j] == '\n') {
             isWritingChars = true;
             isWordCounted = false;

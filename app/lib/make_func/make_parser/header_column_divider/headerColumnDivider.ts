@@ -13,10 +13,10 @@ export function headerColumnDivider(sVariableListLines: string = '', separator: 
   let j: number = 0
   for (j = 0; j < sVariableListLines.length; j++) {
     // заполнение матрицы формирования csv таблицы
-    if(sVariableListLines[j] == separator){
+    if (sVariableListLines[j] == separator) {
       continue
     }
-    if (sVariableListLines[j] == '#'){
+    if (sVariableListLines[j] == '#') {
       viewLine--
     }
     if (sVariableListLines[j] == '\n') {
@@ -32,25 +32,32 @@ export function headerColumnDivider(sVariableListLines: string = '', separator: 
       isWritingChars = false
       continue
     }
-    if (sVariableListLines[j] == ' ' || sVariableListLines[j] == '\t')
+    if (sVariableListLines[j] == ' ' || sVariableListLines[j] == '\t') {
       if (isWordCounted) {
         wordCount++
         isWordCounted = false
-        if (wordCount < columnInLine && isWritingChars)
+        if (wordCount < columnInLine && isWritingChars) {
           sReturn += separator
+        }
       }
-    if (sVariableListLines[j] == ' ')
-      if (!charCount)
+    }
+    if (sVariableListLines[j] == ' ') {
+      if (!charCount) {
         continue
-    if (sVariableListLines[j] != ' ')
-      if (sVariableListLines[j] != '#')
-        if (sVariableListLines[j] != '\n')
+      }
+    }
+    if (sVariableListLines[j] != ' ') {
+      if (sVariableListLines[j] != '#') {
+        if (sVariableListLines[j] != '\n') {
           if (sVariableListLines[j] != '\t') {
             isWordCounted = true
             charCount++
           }
-    if (isWritingChars)
-      if (charCount)
+        }
+      }
+    }
+    if (isWritingChars) {
+      if (charCount) {
         if (sVariableListLines[j] != '\t') {
           if (sVariableListLines[j] == '\n') {
             sReturn += separator
@@ -59,6 +66,8 @@ export function headerColumnDivider(sVariableListLines: string = '', separator: 
             sReturn += sVariableListLines[j]
           }
         }
+      }
+    }
     if (sVariableListLines[j] == '\n') {
       isWritingChars = true
       isWordCounted = false
