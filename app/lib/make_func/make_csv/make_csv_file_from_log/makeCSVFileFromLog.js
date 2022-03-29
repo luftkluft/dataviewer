@@ -15,7 +15,6 @@ var createFileName = function () {
 function makeCSVFileFromLog(logFile, variablesListFile, csvFileSavePath, logParams) {
     try {
         var sData_1 = '';
-        var sResult = '';
         var fileName = createFileName();
         var savePath = csvFileSavePath;
         var file = savePath + fileName;
@@ -26,9 +25,7 @@ function makeCSVFileFromLog(logFile, variablesListFile, csvFileSavePath, logPara
                 { name: 'CSV', extensions: ['csv'] },
             ]
         };
-        sResult += 'Создание шапки файла\n';
         sData_1 += (0, makeHeaderTable_1.makeHeaderTable)(variablesListFile, logParams.delemiter);
-        sResult += 'Создание тела файла\n';
         sData_1 += (0, makeBodyTable_1.makeBodyTable)(logFile, variablesListFile, logParams.delemiter);
         dialog.showSaveDialog(null, options).then(function (result) {
             if (result.filePath && !result.canceled) {

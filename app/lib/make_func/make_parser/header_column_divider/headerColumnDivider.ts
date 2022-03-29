@@ -1,3 +1,16 @@
+const checkSeparator = (sLines: string, separator: string) => {
+  let sResult: string = ''
+  let i: number = 0
+  for (i = 0; i < sLines.length; i++) {
+    if (sLines[i - 1] == separator && sLines[i] == separator) {
+      continue
+    }
+    sResult += sLines[i]
+  }
+  sResult += separator
+  return sResult
+}
+
 export function headerColumnDivider(sVariableListLines: string = '', separator: string) {
   // TODO
   let sReturn: string = ""
@@ -75,6 +88,6 @@ export function headerColumnDivider(sVariableListLines: string = '', separator: 
       wordCount = 0
     }
   }
-  sReturn += separator
+  sReturn = checkSeparator(sReturn, separator)
   return sReturn
 }

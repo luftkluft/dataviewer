@@ -9,6 +9,9 @@ function makeHeaderTable(variablesListFile, separator) {
     var sDeviderLines = "";
     var sReturn = "";
     var columnInLine = 3;
+    var addressCount = 0;
+    var nameCount = 0;
+    var commentCount = 0;
     if (fs.existsSync(variablesListFile)) {
         sVariableListLines = fs.readFileSync(variablesListFile, 'utf8');
     }
@@ -41,6 +44,15 @@ function makeHeaderTable(variablesListFile, separator) {
                 sReturn += sDeviderLines[j];
             }
             if (sDeviderLines[j] == separator) {
+                if (count == 1) {
+                    addressCount++;
+                }
+                if (count == 2) {
+                    nameCount++;
+                }
+                if (count == 3) {
+                    commentCount++;
+                }
                 count++;
                 if (count >= 4) {
                     count = 1;
@@ -48,7 +60,12 @@ function makeHeaderTable(variablesListFile, separator) {
             }
         }
     }
-    return sReturn;
+    if (addressCount == nameCount && addressCount == commentCount) {
+        return sReturn;
+    }
+    else {
+        return "Bad header " + addressCount + ":" + nameCount + ":" + commentCount + "! Check variable list!";
+    }
 }
 exports.makeHeaderTable = makeHeaderTable;
 //# sourceMappingURL=makeHeaderTable.js.map

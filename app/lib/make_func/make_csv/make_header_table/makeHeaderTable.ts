@@ -8,6 +8,10 @@ export function makeHeaderTable(variablesListFile: string, separator: string) {
   let sReturn: string = ""
   const columnInLine: number = 3
 
+  let addressCount: number = 0
+  let nameCount: number = 0
+  let commentCount: number = 0
+
   if (fs.existsSync(variablesListFile)) {
     sVariableListLines = fs.readFileSync(variablesListFile, 'utf8')
   } else {
@@ -41,6 +45,15 @@ export function makeHeaderTable(variablesListFile: string, separator: string) {
         sReturn += sDeviderLines[j]
       }
       if (sDeviderLines[j] == separator) {
+        if (count == 1) {
+          addressCount++
+        }
+        if (count == 2) {
+          nameCount++
+        }
+        if (count == 3) {
+          commentCount++
+        }
         count++
         if (count >= 4) {
           count = 1
@@ -48,5 +61,9 @@ export function makeHeaderTable(variablesListFile: string, separator: string) {
       }
     }
   }
-  return sReturn
+  if (addressCount == nameCount && addressCount == commentCount) {
+    return sReturn
+  } else {
+    return `Bad header ${addressCount}:${nameCount}:${commentCount}! Check variable list!`
+  }
 }

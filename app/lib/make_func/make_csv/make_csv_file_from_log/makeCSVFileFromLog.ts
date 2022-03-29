@@ -14,7 +14,6 @@ const createFileName = () => {
 export function makeCSVFileFromLog(logFile: string, variablesListFile: string, csvFileSavePath: string, logParams: any) {
   try {
     let sData: string = ''
-    let sResult: string = ''
     let fileName: string = createFileName()
     let savePath: string = csvFileSavePath
     let file: string = savePath + fileName
@@ -26,10 +25,7 @@ export function makeCSVFileFromLog(logFile: string, variablesListFile: string, c
         { name: 'CSV', extensions: ['csv'] },
       ]
     }
-
-    sResult += 'Создание шапки файла\n'
     sData += makeHeaderTable(variablesListFile, logParams.delemiter)
-    sResult += 'Создание тела файла\n'
     sData += makeBodyTable(logFile, variablesListFile, logParams.delemiter)
 
     dialog.showSaveDialog(null, options).then((result: any) => {

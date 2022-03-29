@@ -1,1 +1,1 @@
-export declare function saveSolution(key: string, sNote: string): "ok" | "";
+export declare function saveSolution(key: string, sNote: string): "" | "ok";

@@ -1,6 +1,18 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.headerColumnDivider = void 0;
+var checkSeparator = function (sLines, separator) {
+    var sResult = '';
+    var i = 0;
+    for (i = 0; i < sLines.length; i++) {
+        if (sLines[i - 1] == separator && sLines[i] == separator) {
+            continue;
+        }
+        sResult += sLines[i];
+    }
+    sResult += separator;
+    return sResult;
+};
 function headerColumnDivider(sVariableListLines, separator) {
     if (sVariableListLines === void 0) { sVariableListLines = ''; }
     var sReturn = "";
@@ -75,7 +87,7 @@ function headerColumnDivider(sVariableListLines, separator) {
             wordCount = 0;
         }
     }
-    sReturn += separator;
+    sReturn = checkSeparator(sReturn, separator);
     return sReturn;
 }
 exports.headerColumnDivider = headerColumnDivider;
