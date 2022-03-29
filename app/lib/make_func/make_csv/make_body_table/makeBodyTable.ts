@@ -5,6 +5,34 @@ import { RWS } from '../../../../services/read_write_service/rws'
 import { strHexToBinFromSiemens } from '../../../a2b/strHexToBinFromSiemens/strHexToBinFromSiemens'
 import { headerInfo } from '../../make_parser/header_info/headerInfo'
 
+
+const checkBodyTable = (sLines: string, separator: string) => {
+  let currentCount: number = 0
+  let memoryCount: number = 0
+  let lineCount: number = 0
+
+  let i: number = 0
+  for (i = 0; i < sLines.length; i++) {
+    if (sLines[i + 1] == '\n' && sLines[i] == '\n') {
+      continue
+    }
+    if (sLines[i] == separator) {
+      currentCount++
+    }
+    if (sLines[i] == '\n') {
+      if (lineCount == 1) {
+        memoryCount = currentCount
+      }
+      if (memoryCount != currentCount && lineCount > 1) {
+        return `\nBad body ${memoryCount}:${currentCount}! Bad line: ${lineCount}!`
+      }
+      lineCount++
+      currentCount = 0
+    }
+  }
+  return sLines
+}
+
 export function makeBodyTable(logFile: string, variablesListFile: string, separator: string) {
   let sVariableListLines: string = ""
   let sLogLines: string = ""
@@ -82,5 +110,6 @@ export function makeBodyTable(logFile: string, variablesListFile: string, separa
       sumCharCount = 0
     }
   }
+  sReturn = checkBodyTable(sReturn, separator)
   return sReturn
 }

@@ -6,6 +6,31 @@ var deleteSeparator_1 = require("../../make_parser/delete_separator/deleteSepara
 var rws_1 = require("../../../../services/read_write_service/rws");
 var strHexToBinFromSiemens_1 = require("../../../a2b/strHexToBinFromSiemens/strHexToBinFromSiemens");
 var headerInfo_1 = require("../../make_parser/header_info/headerInfo");
+var checkBodyTable = function (sLines, separator) {
+    var currentCount = 0;
+    var memoryCount = 0;
+    var lineCount = 0;
+    var i = 0;
+    for (i = 0; i < sLines.length; i++) {
+        if (sLines[i + 1] == '\n' && sLines[i] == '\n') {
+            continue;
+        }
+        if (sLines[i] == separator) {
+            currentCount++;
+        }
+        if (sLines[i] == '\n') {
+            if (lineCount == 1) {
+                memoryCount = currentCount;
+            }
+            if (memoryCount != currentCount && lineCount > 1) {
+                return "\nBad body " + memoryCount + ":" + currentCount + "! Bad line: " + lineCount + "!";
+            }
+            lineCount++;
+            currentCount = 0;
+        }
+    }
+    return sLines;
+};
 function makeBodyTable(logFile, variablesListFile, separator) {
     var sVariableListLines = "";
     var sLogLines = "";
@@ -81,6 +106,7 @@ function makeBodyTable(logFile, variablesListFile, separator) {
             sumCharCount = 0;
         }
     }
+    sReturn = checkBodyTable(sReturn, separator);
     return sReturn;
 }
 exports.makeBodyTable = makeBodyTable;
