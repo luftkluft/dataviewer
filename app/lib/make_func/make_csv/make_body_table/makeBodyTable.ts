@@ -66,11 +66,13 @@ export function makeBodyTable(logFile: string, variablesListFile: string, separa
               continue
             }
           }
-          if (!wordCharCount)
+          if (!wordCharCount) {
             if (sHeaderInfo[k - sumCharCount]) {
               sReturn += sBitsLine[k]
               sReturn += separator
             }
+          }
+
         }
       }
       sReturn += '\n'
