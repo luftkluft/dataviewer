@@ -309,7 +309,7 @@ ipcMain.on('run_test', function (event, arg) {
     event.returnValue = result;
 });
 ipcMain.on('make_csv_from_log', function (event, arg) {
-    var logFile = global.app_config.last_opened_pattern_file;
+    var logFile = global.app_config.last_opened_log_file;
     var variablesListFile = global.app_config.last_opened_variable_list_file;
     var csvFileSavePath = global.app_config.last_csv_file_path;
     var logParams = global.app_config.log_params;
