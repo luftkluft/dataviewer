@@ -62,6 +62,7 @@ function headerColumnDivider(sVariableListLines, separator) {
             wordCount = 0;
         }
     }
+    sReturn += separator;
     return sReturn;
 }
 exports.headerColumnDivider = headerColumnDivider;
