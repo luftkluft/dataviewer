@@ -7,7 +7,6 @@ const checkSeparator = (sLines: string, separator: string) => {
     }
     sResult += sLines[i]
   }
-  sResult += separator
   return sResult
 }
 

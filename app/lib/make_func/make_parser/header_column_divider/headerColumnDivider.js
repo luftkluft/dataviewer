@@ -10,7 +10,6 @@ var checkSeparator = function (sLines, separator) {
         }
         sResult += sLines[i];
     }
-    sResult += separator;
     return sResult;
 };
 function headerColumnDivider(sVariableListLines, separator) {
