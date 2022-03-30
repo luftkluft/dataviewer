@@ -47,19 +47,19 @@ var csvGetColumns = function (dataFromFile) {
         for (var i = 0; i < columnCount; i++) {
             for (var j = 0; j < dataFromFile.length - 1; j++) {
                 if (dataFromFile[j] == csvParams.delemiter) {
-                    delemiterCount = delemiterCount + 1;
+                    delemiterCount++;
                 }
                 if (dataFromFile[j] == csvParams.end_row) {
-                    rowCount = rowCount + 1;
+                    rowCount++;
                 }
-                if ((j == 0 && i == 0) ||
+                if ((i == 0 && j == 0) ||
                     (i == 0 &&
                         dataFromFile[j - 1] == csvParams.delemiter &&
-                        delemiterCount == columnCount * (rowCount + 1) + i)) {
+                        delemiterCount == (rowCount + 1) * columnCount)) {
                     var cell = (0, csvGetStringCell_1.csvGetStringCell)(dataFromFile, j);
                     columnArray.push(cell);
                 }
-                if (delemiterCount == rowCount * columnCount + i) {
+                if (delemiterCount == rowCount * columnCount + i && i != 0) {
                     if (dataFromFile[j - 1] == csvParams.delemiter) {
                         var cell = (0, csvGetStringCell_1.csvGetStringCell)(dataFromFile, j);
                         if (cell == undefined) {
