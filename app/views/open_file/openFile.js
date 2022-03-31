@@ -56,16 +56,6 @@ var showData = function () {
 (0, jquery_1.default)(document).ready(function () {
     var sortingStatus = ipcRenderer.sendSync('get_sorting');
     var viewArray = ipcRenderer.sendSync('get_sort_params_view_array');
-    var showDataButton = document.querySelector('.show-data-btn');
     var memo = document.querySelector('.memo');
-    if (sortingStatus == 'sorting_manual') {
-        if (viewArray == undefined || viewArray.length == 0) {
-            showDataButton.disabled = true;
-            memo.value = ipcRenderer.sendSync('i18n', 'set_manual_sorting_options');
-        }
-        else {
-            showDataButton.disabled = false;
-        }
-    }
 });
 //# sourceMappingURL=openFile.js.map

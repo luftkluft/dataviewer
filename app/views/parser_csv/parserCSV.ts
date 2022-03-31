@@ -1,9 +1,6 @@
 const ipcCsvRenderer = require('electron').ipcRenderer
 const formCsv: any = document.querySelector('.parser-form')
 
-const fileCsvField = formCsv.querySelector('.target-file-name-field')
-fileCsvField.value = ipcCsvRenderer.sendSync('target_file_name')
-
 const csvParams = ipcCsvRenderer.sendSync('get_csv_params')
 
 const headRowsField = formCsv.querySelector('.head-rows-field')

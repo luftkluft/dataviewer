@@ -1,8 +1,6 @@
 "use strict";
 var ipcCsvRenderer = require('electron').ipcRenderer;
 var formCsv = document.querySelector('.parser-form');
-var fileCsvField = formCsv.querySelector('.target-file-name-field');
-fileCsvField.value = ipcCsvRenderer.sendSync('target_file_name');
 var csvParams = ipcCsvRenderer.sendSync('get_csv_params');
 var headRowsField = formCsv.querySelector('.head-rows-field');
 headRowsField.value = csvParams.head_rows;

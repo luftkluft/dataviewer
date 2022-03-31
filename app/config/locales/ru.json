@@ -7,14 +7,14 @@
   "exit": "Выход",
 
   "parser": "Создать",
-  "csv": "визуализация csv",
-  "parser_csv": "Создать",
+  "csv": "параметры для csv",
+  "parser_csv": "Параметры для csv",
   "log": "создать csv из log",
   "parser_log": "Создать csv из log",
 
-  "sorting": "Сортировка",
+  "sorting": "Показать",
   "no_sorting": "Без сортировки",
-  "manual": "Ручная",
+  "manual": "Ручная сортировка",
   "sorting_manual": "Ручная сортировка",
 
   "language": "Язык",

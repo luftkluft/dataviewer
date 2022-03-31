@@ -1,6 +1,5 @@
 declare const ipcCsvRenderer: any;
 declare const formCsv: any;
-declare const fileCsvField: any;
 declare const csvParams: any;
 declare const headRowsField: any;
 declare const firstColumnName: any;

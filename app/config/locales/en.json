@@ -7,14 +7,14 @@
   "exit": "Exit",
 
   "parser": "Create",
-  "csv": "view by csv",
-  "parser_csv": "Create",
+  "csv": "csv params",
+  "parser_csv": "Params for csv",
   "log": "create csv from log",
   "parser_log": "Сreate csv from log",
 
-  "sorting": "Sorting",
+  "sorting": "View",
   "no_sorting": "No sorting",
-  "manual": "Manual",
+  "manual": "Manual sorting",
   "sorting_manual": "Manual sorting",
 
   "language": "Language",

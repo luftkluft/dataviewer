@@ -55,14 +55,5 @@ const showData = () => {
 $(document).ready(() => {
   const sortingStatus = ipcRenderer.sendSync('get_sorting')
   const viewArray: [] = ipcRenderer.sendSync('get_sort_params_view_array')
-  const showDataButton: any = document.querySelector('.show-data-btn')
   const memo: any = document.querySelector('.memo')
-  if (sortingStatus == 'sorting_manual') {
-    if (viewArray == undefined || viewArray.length == 0) {
-      showDataButton.disabled = true
-      memo.value = ipcRenderer.sendSync('i18n', 'set_manual_sorting_options')
-    }else{
-      showDataButton.disabled = false
-    }
-  }
 })
