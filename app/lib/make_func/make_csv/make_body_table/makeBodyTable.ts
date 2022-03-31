@@ -30,6 +30,9 @@ const checkBodyTable = (sLines: string, separator: string) => {
       currentCount = 0
     }
   }
+  if (sLines[sLines.length - 1] != '\n') {
+    sLines += '\n'
+  }
   return sLines
 }
 
@@ -72,6 +75,7 @@ export function makeBodyTable(logFile: string, variablesListFile: string, separa
       sDataLine = RWS.readDataLineFromLog(sLine)
       sBitsLine = strHexToBinFromSiemens(sDataLine)
       if (sBitsLine != "") {
+        sReturn += '\n'
         sReturn += RWS.readTimeFromLog(sLine)
         sReturn += separator
         let wordCharCount: number = 0
@@ -95,15 +99,13 @@ export function makeBodyTable(logFile: string, variablesListFile: string, separa
             }
           }
           if (!wordCharCount) {
-            if (sHeaderInfo[k - sumCharCount]) {
+            if (sHeaderInfo[k - sumCharCount] == '1') {
               sReturn += sBitsLine[k]
               sReturn += separator
             }
           }
-
         }
       }
-      sReturn += '\n'
       sLine = ""
       sBitsLine = ""
       sDataLine = ""

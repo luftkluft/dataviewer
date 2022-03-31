@@ -29,6 +29,9 @@ var checkBodyTable = function (sLines, separator) {
             currentCount = 0;
         }
     }
+    if (sLines[sLines.length - 1] != '\n') {
+        sLines += '\n';
+    }
     return sLines;
 };
 function makeBodyTable(logFile, variablesListFile, separator) {
@@ -69,6 +72,7 @@ function makeBodyTable(logFile, variablesListFile, separator) {
             sDataLine = rws_1.RWS.readDataLineFromLog(sLine);
             sBitsLine = (0, strHexToBinFromSiemens_1.strHexToBinFromSiemens)(sDataLine);
             if (sBitsLine != "") {
+                sReturn += '\n';
                 sReturn += rws_1.RWS.readTimeFromLog(sLine);
                 sReturn += separator;
                 var wordCharCount = 0;
@@ -92,14 +96,13 @@ function makeBodyTable(logFile, variablesListFile, separator) {
                         }
                     }
                     if (!wordCharCount) {
-                        if (sHeaderInfo[k - sumCharCount]) {
+                        if (sHeaderInfo[k - sumCharCount] == '1') {
                             sReturn += sBitsLine[k];
                             sReturn += separator;
                         }
                     }
                 }
             }
-            sReturn += '\n';
             sLine = "";
             sBitsLine = "";
             sDataLine = "";

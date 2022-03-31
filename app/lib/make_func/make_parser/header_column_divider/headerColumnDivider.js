@@ -25,20 +25,6 @@ function headerColumnDivider(sVariableListLines, separator) {
     var viewLine = 0;
     var j = 0;
     for (j = 0; j < sVariableListLines.length; j++) {
-        if (sVariableListLines[j] == separator) {
-            continue;
-        }
-        if (sVariableListLines[j] == '#') {
-            viewLine--;
-        }
-        if (sVariableListLines[j] == '\n') {
-            viewLine++;
-            if (charCount) {
-                sHeaderInfo += String(viewLine);
-                lineCount++;
-            }
-            viewLine = 0;
-        }
         if (sVariableListLines[j] == '#') {
             isWritingChars = false;
             continue;

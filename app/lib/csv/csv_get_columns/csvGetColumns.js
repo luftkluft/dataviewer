@@ -7,15 +7,17 @@ var csvColumnCounting_1 = require("../csv_column_counting/csvColumnCounting");
 var csvGetStringCell_1 = require("../csv_get_string_cell/csvGetStringCell");
 var doFirstColumn = function (columnsArray) {
     try {
-        columnsArray[0].pop();
         switch (csvParams.head_rows) {
             case "3":
                 columnsArray[0][0] = csvParams.first_column_name;
                 columnsArray[0][1] = '';
                 columnsArray[0][2] = csvParams.first_column_name;
                 var temp = '';
-                for (var i = 3; i < columnsArray[0].length - 1; i++) {
+                for (var i = 3; i < columnsArray[0].length; i++) {
                     for (var j = 0; j < columnsArray[0][i].length; j++) {
+                        if (columnsArray[0][i][j] == ' ') {
+                            continue;
+                        }
                         if (columnsArray[0][i][j] == ':') {
                             temp = '';
                             continue;
@@ -25,8 +27,10 @@ var doFirstColumn = function (columnsArray) {
                         }
                         temp = temp + columnsArray[0][i][j];
                     }
-                    columnsArray[0][i] = temp;
-                    temp = '';
+                    if (columnsArray[0][i] != undefined) {
+                        columnsArray[0][i] = temp;
+                        temp = '';
+                    }
                 }
                 return columnsArray;
             default:
@@ -45,21 +49,20 @@ var csvGetColumns = function (dataFromFile) {
     try {
         var columnCount = Number((0, csvColumnCounting_1.csvColumnCounting)(dataFromFile));
         for (var i = 0; i < columnCount; i++) {
-            for (var j = 0; j < dataFromFile.length - 1; j++) {
+            for (var j = 0; j < dataFromFile.length; j++) {
                 if (dataFromFile[j] == csvParams.delemiter) {
                     delemiterCount++;
-                }
-                if (dataFromFile[j] == csvParams.end_row) {
-                    rowCount++;
                 }
                 if ((i == 0 && j == 0) ||
                     (i == 0 &&
                         dataFromFile[j - 1] == csvParams.delemiter &&
                         delemiterCount == (rowCount + 1) * columnCount)) {
                     var cell = (0, csvGetStringCell_1.csvGetStringCell)(dataFromFile, j);
-                    columnArray.push(cell);
+                    if (cell != undefined) {
+                        columnArray.push(cell);
+                    }
                 }
-                if (delemiterCount == rowCount * columnCount + i && i != 0) {
+                if (delemiterCount == rowCount * columnCount + i) {
                     if (dataFromFile[j - 1] == csvParams.delemiter) {
                         var cell = (0, csvGetStringCell_1.csvGetStringCell)(dataFromFile, j);
                         if (cell == undefined) {
@@ -67,6 +70,9 @@ var csvGetColumns = function (dataFromFile) {
                         }
                         columnArray.push(cell);
                     }
+                }
+                if (dataFromFile[j] == csvParams.end_row) {
+                    rowCount++;
                 }
             }
             columnsArray.push(columnArray);

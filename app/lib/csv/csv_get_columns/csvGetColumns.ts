@@ -5,15 +5,17 @@ import { csvGetStringCell } from '../csv_get_string_cell/csvGetStringCell'
 
 const doFirstColumn = (columnsArray: Array<(string)[]>) => {
   try {
-    columnsArray[0].pop() // TODO: das ist bugfix
     switch (csvParams.head_rows) {
       case "3":
         columnsArray[0][0] = csvParams.first_column_name
         columnsArray[0][1] = ''
         columnsArray[0][2] = csvParams.first_column_name
         let temp = ''
-        for (let i = 3; i < columnsArray[0].length - 1; i++) {
+        for (let i = 3; i < columnsArray[0].length; i++) {
           for (let j = 0; j < columnsArray[0][i].length; j++) {
+            if (columnsArray[0][i][j] == ' ') {
+              continue
+            }
             if (columnsArray[0][i][j] == ':') {
               temp = ''
               continue
@@ -23,8 +25,10 @@ const doFirstColumn = (columnsArray: Array<(string)[]>) => {
             }
             temp = temp + columnsArray[0][i][j]
           }
-          columnsArray[0][i] = temp
-          temp = ''
+          if (columnsArray[0][i] != undefined) {
+            columnsArray[0][i] = temp
+            temp = ''
+          }
         }
         return columnsArray
       default:
@@ -43,12 +47,9 @@ export const csvGetColumns = (dataFromFile: string) => {
   try {
     const columnCount: number = Number(csvColumnCounting(dataFromFile))
     for (let i = 0; i < columnCount; i++) {
-      for (let j = 0; j < dataFromFile.length - 1; j++) {
+      for (let j = 0; j < dataFromFile.length; j++) {
         if (dataFromFile[j] == csvParams.delemiter) {
           delemiterCount++
-        }
-        if (dataFromFile[j] == csvParams.end_row) {
-          rowCount++
         }
         if (
           (i == 0 && j == 0) ||
@@ -57,9 +58,11 @@ export const csvGetColumns = (dataFromFile: string) => {
             delemiterCount == (rowCount + 1) * columnCount)
         ) {
           const cell = csvGetStringCell(dataFromFile, j)
-          columnArray.push(cell)
+          if (cell != undefined) {
+            columnArray.push(cell)
+          }
         }
-        if (delemiterCount == rowCount * columnCount + i && i != 0) {
+        if (delemiterCount == rowCount * columnCount + i) {
           if (dataFromFile[j - 1] == csvParams.delemiter) {
             const cell = csvGetStringCell(dataFromFile, j)
             if (cell == undefined) {
@@ -67,6 +70,9 @@ export const csvGetColumns = (dataFromFile: string) => {
             }
             columnArray.push(cell)
           }
+        }
+        if (dataFromFile[j] == csvParams.end_row) {
+          rowCount++
         }
       }
       columnsArray.push(columnArray)
