@@ -126,7 +126,7 @@ function setEnLanguage() {
 exports.setEnLanguage = setEnLanguage;
 function about() {
     swalOptions.title = "about()";
-    swalOptions.text = "Click";
+    swalOptions.text = "DataViewer v1.0.0 for MIT use";
     Alert.fireToast(swalOptions);
 }
 exports.about = about;
