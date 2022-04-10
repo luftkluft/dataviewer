@@ -7,6 +7,7 @@ import { RWS } from '../../../services/read_write_service/rws'
 export function saveSolution(key: string, sNote: string) {
   try {
     db.set(key, sNote)
+    db.sync()
     return 'ok'
   } catch (error) {
     return ''

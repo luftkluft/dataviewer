@@ -1,6 +1,6 @@
 {
   "name": "dataviewer",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "DataViewer from luftkluft",
   "main": "app/main/main.js",
   "email": "luftkluft@gmail.com",
