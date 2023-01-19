@@ -39,7 +39,7 @@ function initAppConfigFromFile() {
     }
     catch (error) {
         swOp.title = "initStorageFromFile()";
-        swOp.text = "" + error;
+        swOp.text = "".concat(error);
         alertService_1.Alert.fireToast(swOp);
     }
 }

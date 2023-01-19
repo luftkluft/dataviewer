@@ -64,7 +64,7 @@ function makeHeaderTable(variablesListFile, separator) {
         return sReturn;
     }
     else {
-        return "Bad header " + addressCount + ":" + nameCount + ":" + commentCount + "! Check variable list!";
+        return "Bad header ".concat(addressCount, ":").concat(nameCount, ":").concat(commentCount, "! Check variable list!");
     }
 }
 exports.makeHeaderTable = makeHeaderTable;

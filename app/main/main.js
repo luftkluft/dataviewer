@@ -14,7 +14,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     function verb(n) { return function (v) { return step([n, v]); }; }
     function step(op) {
         if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
             if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
             if (y = 0, t) op = [op[0] & 2, t.value];
             switch (op[0]) {
@@ -155,7 +155,7 @@ ipcMain.on('open-file-dialog', function (event) {
         if (!response.canceled) {
             var result = response.filePaths[0];
             global.app_config.target_file_name = basename(result);
-            global.app_config.target_file_path = dirname(result) + "/";
+            global.app_config.target_file_path = "".concat(dirname(result), "/");
             global.app_config.last_opened_file = result;
             event.returnValue = result;
         }
@@ -171,7 +171,7 @@ ipcMain.on('open-log-file-dialog', function (event) {
         if (!response.canceled) {
             var result = response.filePaths[0];
             global.app_config.log_file_name = basename(result);
-            global.app_config.log_file_path = dirname(result) + "/";
+            global.app_config.log_file_path = "".concat(dirname(result), "/");
             global.app_config.last_opened_log_file = result;
             event.returnValue = result;
         }
@@ -191,7 +191,7 @@ ipcMain.on('open-variable-list-file-dialog', function (event) {
         if (!response.canceled) {
             var result = response.filePaths[0];
             global.app_config.variable_list_file_name = basename(result);
-            global.app_config.variable_list_file_path = dirname(result) + "/";
+            global.app_config.variable_list_file_path = "".concat(dirname(result), "/");
             global.app_config.last_opened_variable_list_file = result;
             event.returnValue = result;
         }
@@ -230,7 +230,7 @@ ipcMain.on('open-pattern-file-dialog', function (event) {
         if (!response.canceled) {
             var result = response.filePaths[0];
             global.app_config.pattern_file_name = basename(result);
-            global.app_config.pattern_file_path = dirname(result) + "/";
+            global.app_config.pattern_file_path = "".concat(dirname(result), "/");
             global.app_config.last_opened_pattern_file = result;
             event.returnValue = result;
         }
@@ -250,7 +250,7 @@ ipcMain.on('open-error-file-dialog', function (event) {
         if (!response.canceled) {
             var result = response.filePaths[0];
             global.app_config.error_file_name = basename(result);
-            global.app_config.error_file_path = dirname(result) + "/";
+            global.app_config.error_file_path = "".concat(dirname(result), "/");
             global.app_config.last_opened_error_file = result;
             event.returnValue = result;
         }

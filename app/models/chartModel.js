@@ -11,7 +11,7 @@ var ChartModel = (function () {
             this.setDefaultOptions();
         }
         catch (error) {
-            console.log("class ChartModel constructor: " + error);
+            console.log("class ChartModel constructor: ".concat(error));
         }
     }
     ChartModel.prototype.setDefaultOptions = function () {
@@ -42,7 +42,7 @@ var ChartModel = (function () {
             return targetArray;
         }
         catch (error) {
-            console.log("chartModel copyArray(): " + error);
+            console.log("chartModel copyArray(): ".concat(error));
         }
     };
     ChartModel.prototype.setChartData = function (options) {
@@ -54,17 +54,17 @@ var ChartModel = (function () {
             return options;
         }
         catch (error) {
-            console.log("chartModel setChartData(): " + error);
+            console.log("chartModel setChartData(): ".concat(error));
         }
     };
     ChartModel.prototype.setHead3Texts = function (options) {
         try {
-            options.series[0].name = this.sortedData[0] + " - " + this.sortedData[1];
-            options.title.text = this.sortedData[0] + " - " + this.sortedData[1] + " - " + this.sortedData[2];
+            options.series[0].name = "".concat(this.sortedData[0], " - ").concat(this.sortedData[1]);
+            options.title.text = "".concat(this.sortedData[0], " - ").concat(this.sortedData[1], " - ").concat(this.sortedData[2]);
             return options;
         }
         catch (error) {
-            console.log("chartModel setHead3Texts(): " + error);
+            console.log("chartModel setHead3Texts(): ".concat(error));
         }
     };
     ChartModel.prototype.setHead2Texts = function () {
@@ -91,7 +91,7 @@ var ChartModel = (function () {
             }
         }
         catch (error) {
-            console.log("class ChartModel chartTexts(): " + error);
+            console.log("class ChartModel chartTexts(): ".concat(error));
         }
     };
     ChartModel.prototype.createDefaultChartOptions = function () {
@@ -143,7 +143,7 @@ var ChartModel = (function () {
             }
         }
         catch (error) {
-            console.log("ChartCervice dataCorrector(): " + error);
+            console.log("ChartCervice dataCorrector(): ".concat(error));
         }
     };
     ChartModel.prototype.createChartOptions = function () {

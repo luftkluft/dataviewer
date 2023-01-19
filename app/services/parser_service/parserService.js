@@ -13,7 +13,7 @@ var ParserService = (function () {
             return result;
         }
         catch (error) {
-            console.log("getDataFromFile(): " + error);
+            console.log("getDataFromFile(): ".concat(error));
             return '';
         }
     };
@@ -23,7 +23,7 @@ var ParserService = (function () {
             return result;
         }
         catch (error) {
-            console.log("getParserStatus(): " + error);
+            console.log("getParserStatus(): ".concat(error));
             return '';
         }
     };
@@ -48,7 +48,7 @@ var ParserService = (function () {
             }
         }
         catch (error) {
-            console.log("parsering(): " + error);
+            console.log("parsering(): ".concat(error));
             return [];
         }
     };

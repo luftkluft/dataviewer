@@ -23,7 +23,7 @@ var checkBodyTable = function (sLines, separator) {
                 memoryCount = currentCount;
             }
             if (memoryCount != currentCount && lineCount > 1) {
-                return "\nBad body " + memoryCount + ":" + currentCount + "! Bad line: " + lineCount + "!";
+                return "\nBad body ".concat(memoryCount, ":").concat(currentCount, "! Bad line: ").concat(lineCount, "!");
             }
             lineCount++;
             currentCount = 0;
@@ -41,6 +41,7 @@ function makeBodyTable(logFile, variablesListFile, separator) {
     var sLine = "";
     var sBitsLine = "";
     var sReturn = "";
+    var sTemp = "";
     var isFirstStringRemoved = false;
     var sumCharCount = 0;
     if (fs.existsSync(variablesListFile)) {
@@ -76,10 +77,35 @@ function makeBodyTable(logFile, variablesListFile, separator) {
                 sReturn += rws_1.RWS.readTimeFromLog(sLine);
                 sReturn += separator;
                 var wordCharCount = 0;
+                var expWordCharCount = 0;
                 var k = 0;
                 for (k = 0; k < sBitsLine.length; k++) {
                     if (sBitsLine[k] == '+' || sBitsLine[k] == '-') {
-                        wordCharCount++;
+                        if (sBitsLine[k + 9] == 'E' && (sBitsLine[k + 10] == '+' || sBitsLine[k + 10] == '-')) {
+                            expWordCharCount++;
+                        }
+                        else {
+                            if (sBitsLine[k - 1] != 'E') {
+                                wordCharCount++;
+                            }
+                        }
+                    }
+                    if (expWordCharCount) {
+                        if (expWordCharCount >= 13) {
+                            sReturn += Number.parseFloat(sTemp).toFixed(4).toString;
+                            sReturn += separator;
+                            expWordCharCount = 0;
+                            sTemp = "";
+                            continue;
+                        }
+                        else {
+                            if (sBitsLine[k] == ',') {
+                                sTemp += '.';
+                            }
+                            else {
+                                sTemp += sBitsLine[k];
+                            }
+                        }
                     }
                     if (wordCharCount) {
                         if (wordCharCount >= 6) {
@@ -95,7 +121,10 @@ function makeBodyTable(logFile, variablesListFile, separator) {
                             continue;
                         }
                     }
-                    if (!wordCharCount) {
+                    if (wordCharCount || expWordCharCount) {
+                        continue;
+                    }
+                    else {
                         if (sHeaderInfo[k - sumCharCount] == '1') {
                             sReturn += sBitsLine[k];
                             sReturn += separator;

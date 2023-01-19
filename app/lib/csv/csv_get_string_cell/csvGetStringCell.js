@@ -22,7 +22,7 @@ var csvGetStringCell = function (dataFromFile, startPosition) {
         }
     }
     catch (error) {
-        console.log("csvGetStringCell(): " + error);
+        console.log("csvGetStringCell(): ".concat(error));
         return 'error';
     }
 };

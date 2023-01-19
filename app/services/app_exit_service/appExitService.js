@@ -25,7 +25,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     function verb(n) { return function (v) { return step([n, v]); }; }
     function step(op) {
         if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
             if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
             if (y = 0, t) op = [op[0] & 2, t.value];
             switch (op[0]) {
@@ -67,7 +67,7 @@ var AppExitService = (function () {
                     case 1:
                         _a.trys.push([1, 6, , 7]);
                         mainWindow.closed;
-                        swOp.title = "" + i18nService_1.I18n.t('quit_the_application?');
+                        swOp.title = "".concat(i18nService_1.I18n.t('quit_the_application?'));
                         swOp.text = '';
                         return [4, alertService_1.alert.fireWithFrame(swOp, null, null, false)];
                     case 2:
@@ -84,7 +84,7 @@ var AppExitService = (function () {
                     case 6:
                         error_1 = _a.sent();
                         swOp.title = "appExit()";
-                        swOp.text = "" + error_1;
+                        swOp.text = "".concat(error_1);
                         alertService_1.Alert.fireToast(swOp);
                         return [3, 7];
                     case 7: return [2];

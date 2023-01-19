@@ -36,7 +36,7 @@ var I18n = (function () {
                     }
                     catch (error) {
                         swalOptions.title = "I18n.t()";
-                        swalOptions.text = "" + error;
+                        swalOptions.text = "".concat(error);
                         Alert.fireToast(swalOptions);
                         return constants_1.BAD_STRING;
                     }
@@ -55,7 +55,7 @@ var I18n = (function () {
                     }
                     catch (error) {
                         swalOptions.title = "I18n.t()";
-                        swalOptions.text = "" + error;
+                        swalOptions.text = "".concat(error);
                         Alert.fireToast(swalOptions);
                         return constants_1.BAD_STRING;
                     }
@@ -70,7 +70,7 @@ var I18n = (function () {
         }
         catch (error) {
             swalOptions.title = "I18n.t()";
-            swalOptions.text = "" + error;
+            swalOptions.text = "".concat(error);
             Alert.fireToast(swalOptions);
             return constants_1.BAD_STRING;
         }

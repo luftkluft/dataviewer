@@ -9,7 +9,7 @@ var createFileName = function () {
     var current = new Date();
     var datePart = (new Date().toString()).split(/\.|\s|:/);
     var fileName = '';
-    fileName = datePart[3] + "-" + datePart[1] + "-" + datePart[2] + "-" + datePart[4] + "-" + datePart[5] + ".csv";
+    fileName = "".concat(datePart[3], "-").concat(datePart[1], "-").concat(datePart[2], "-").concat(datePart[4], "-").concat(datePart[5], ".csv");
     return fileName;
 };
 function makeCSVFileFromLog(logFile, variablesListFile, csvFileSavePath, logParams) {
@@ -19,8 +19,8 @@ function makeCSVFileFromLog(logFile, variablesListFile, csvFileSavePath, logPara
         var savePath = csvFileSavePath;
         var file = savePath + fileName;
         var options = {
-            title: "C\u043E\u0437\u0434\u0430\u043D\u0438\u0435 \u0444\u0430\u0439\u043B\u0430 " + fileName,
-            defaultPath: "" + file,
+            title: "C\u043E\u0437\u0434\u0430\u043D\u0438\u0435 \u0444\u0430\u0439\u043B\u0430 ".concat(fileName),
+            defaultPath: "".concat(file),
             filters: [
                 { name: 'CSV', extensions: ['csv'] },
             ]
@@ -38,7 +38,7 @@ function makeCSVFileFromLog(logFile, variablesListFile, csvFileSavePath, logPara
                     type: 'info',
                     buttons: ['Ok'],
                     title: 'Создание csv файла',
-                    message: "\u0424\u0430\u0439\u043B " + result.filePath + " \u0441\u043E\u0437\u0434\u0430\u043D."
+                    message: "\u0424\u0430\u0439\u043B ".concat(result.filePath, " \u0441\u043E\u0437\u0434\u0430\u043D.")
                 });
             }
         }).catch(function () {

@@ -20,13 +20,13 @@ var RestartAppService = (function () {
     RestartAppService.restart = function (app, mainWindow) {
         var swOp = __assign(__assign({}, alertService_1.swalOptions), { showConfirmButton: true });
         try {
-            swOp.title = "" + i18nService_1.I18n.t('required_restart_app');
+            swOp.title = "".concat(i18nService_1.I18n.t('required_restart_app'));
             swOp.text = "";
             alertService_1.Alert.fireToast(swOp);
         }
         catch (error) {
             swOp.title = "RestartAppService()";
-            swOp.text = "" + error;
+            swOp.text = "".concat(error);
             alertService_1.Alert.fireToast(swOp);
         }
     };

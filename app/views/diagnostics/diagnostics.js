@@ -16,7 +16,7 @@ vListFileField.value = ipcDiagnRenderer.sendSync('last_opened_variable_list_file
 var deepField = formDiagn.querySelector('.deep-field');
 deepField.value = ipcDiagnRenderer.sendSync('get_deep_test');
 var fileStat = function (stat) {
-    return "birthtime: " + stat.birthtime + "\nmtime: " + stat.mtime + "\nctime: " + stat.ctime + "\nsize: " + stat.size;
+    return "birthtime: ".concat(stat.birthtime, "\nmtime: ").concat(stat.mtime, "\nctime: ").concat(stat.ctime, "\nsize: ").concat(stat.size);
 };
 var choosePatternFile = function () {
     var path = ipcDiagnRenderer.sendSync('open-pattern-file-dialog');

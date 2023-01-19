@@ -38,7 +38,7 @@ var doFirstColumn = function (columnsArray) {
         }
     }
     catch (error) {
-        console.log("doFirstColumn(): " + error);
+        console.log("doFirstColumn(): ".concat(error));
     }
 };
 var csvGetColumns = function (dataFromFile) {
@@ -84,7 +84,7 @@ var csvGetColumns = function (dataFromFile) {
         return result;
     }
     catch (error) {
-        console.log("csvGetColumns(): " + error);
+        console.log("csvGetColumns(): ".concat(error));
         return columnsArray;
     }
 };

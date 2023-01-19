@@ -11,20 +11,20 @@ var matchLines100 = function () {
 };
 var hintsWord = function (hashDataLog, sSource, sError, charCount) {
     var sHint = '\n';
-    sHint += "\u0410\u0434\u0440\u0435\u0441: " + (0, getAddressByPositionFromLines_1.getAddressByPositionFromLines)(hashDataLog, charCount) + "\n";
-    sHint += "\u0418\u043C\u044F: " + (0, getNameByPositionFromLines_1.getNameByPositionFromLines)(hashDataLog, charCount) + "\n";
-    sHint += "\u041A\u043E\u043C\u043C\u0435\u043D\u0442\u0430\u0440\u0438\u0439: " + (0, getCommentByPositionFromLines_1.getCommentByPositionFromLines)(hashDataLog, charCount) + "\n";
-    sHint += "\u0417\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u0432 \u043E\u0431\u0440\u0430\u0437\u0446\u043E\u0432\u043E\u0439 \u0446\u0438\u043A\u043B\u043E\u0433\u0440\u0430\u043C\u043C\u0435: " + sSource + "\n";
-    sHint += "\u0417\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u0432 \u0430\u0432\u0430\u0440\u0438\u0439\u043D\u043E\u043C \u043B\u043E\u0433\u0435: " + sError + "\n";
+    sHint += "\u0410\u0434\u0440\u0435\u0441: ".concat((0, getAddressByPositionFromLines_1.getAddressByPositionFromLines)(hashDataLog, charCount), "\n");
+    sHint += "\u0418\u043C\u044F: ".concat((0, getNameByPositionFromLines_1.getNameByPositionFromLines)(hashDataLog, charCount), "\n");
+    sHint += "\u041A\u043E\u043C\u043C\u0435\u043D\u0442\u0430\u0440\u0438\u0439: ".concat((0, getCommentByPositionFromLines_1.getCommentByPositionFromLines)(hashDataLog, charCount), "\n");
+    sHint += "\u0417\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u0432 \u043E\u0431\u0440\u0430\u0437\u0446\u043E\u0432\u043E\u0439 \u0446\u0438\u043A\u043B\u043E\u0433\u0440\u0430\u043C\u043C\u0435: ".concat(sSource, "\n");
+    sHint += "\u0417\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u0432 \u0430\u0432\u0430\u0440\u0438\u0439\u043D\u043E\u043C \u043B\u043E\u0433\u0435: ".concat(sError, "\n");
     return sHint;
 };
 var hintsBit = function (hashDataLog, maxMatchLineI, errorLogLineI, charCount) {
     var sHint = '\n';
-    sHint += "\u0410\u0434\u0440\u0435\u0441: " + (0, getAddressByPositionFromLines_1.getAddressByPositionFromLines)(hashDataLog, charCount) + "\n";
-    sHint += "\u0418\u043C\u044F: " + (0, getNameByPositionFromLines_1.getNameByPositionFromLines)(hashDataLog, charCount) + "\n";
-    sHint += "\u041A\u043E\u043C\u043C\u0435\u043D\u0442\u0430\u0440\u0438\u0439: " + (0, getCommentByPositionFromLines_1.getCommentByPositionFromLines)(hashDataLog, charCount) + "\n";
-    sHint += "\u0417\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u0432 \u043E\u0431\u0440\u0430\u0437\u0446\u043E\u0432\u043E\u0439 \u0446\u0438\u043A\u043B\u043E\u0433\u0440\u0430\u043C\u043C\u0435: " + maxMatchLineI + "\n";
-    sHint += "\u0417\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u0432 \u0430\u0432\u0430\u0440\u0438\u0439\u043D\u043E\u043C \u043B\u043E\u0433\u0435: " + errorLogLineI + "\n";
+    sHint += "\u0410\u0434\u0440\u0435\u0441: ".concat((0, getAddressByPositionFromLines_1.getAddressByPositionFromLines)(hashDataLog, charCount), "\n");
+    sHint += "\u0418\u043C\u044F: ".concat((0, getNameByPositionFromLines_1.getNameByPositionFromLines)(hashDataLog, charCount), "\n");
+    sHint += "\u041A\u043E\u043C\u043C\u0435\u043D\u0442\u0430\u0440\u0438\u0439: ".concat((0, getCommentByPositionFromLines_1.getCommentByPositionFromLines)(hashDataLog, charCount), "\n");
+    sHint += "\u0417\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u0432 \u043E\u0431\u0440\u0430\u0437\u0446\u043E\u0432\u043E\u0439 \u0446\u0438\u043A\u043B\u043E\u0433\u0440\u0430\u043C\u043C\u0435: ".concat(maxMatchLineI, "\n");
+    sHint += "\u0417\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u0432 \u0430\u0432\u0430\u0440\u0438\u0439\u043D\u043E\u043C \u043B\u043E\u0433\u0435: ".concat(errorLogLineI, "\n");
     return sHint;
 };
 function hint(hashDataLog, maxMatchLine, errorMainLine) {
@@ -48,11 +48,11 @@ function hint(hashDataLog, maxMatchLine, errorMainLine) {
         }
         match = charMatch / charCount * 100;
         match = Math.floor(match * 100) / 100;
-        sHint = "\u0421\u043E\u0432\u043F\u0430\u0434\u0435\u043D\u0438\u0435 " + match.toString() + "%\n";
-        sHint += "\u041C\u0435\u0442\u043A\u0430 \u0432\u0440\u0435\u043C\u0435\u043D\u0438: " + rws_1.RWS.readTimeFromLog(maxMatchLine) + " / " + rws_1.RWS.readTimeFromLog(errorMainLine) + "\n";
+        sHint = "\u0421\u043E\u0432\u043F\u0430\u0434\u0435\u043D\u0438\u0435 ".concat(match.toString(), "%\n");
+        sHint += "\u041C\u0435\u0442\u043A\u0430 \u0432\u0440\u0435\u043C\u0435\u043D\u0438: ".concat(rws_1.RWS.readTimeFromLog(maxMatchLine), " / ").concat(rws_1.RWS.readTimeFromLog(errorMainLine), "\n");
         if (maxMatchLine.length != errorMainLine.length) {
             sHint += "\u0420\u0430\u0437\u043D\u0430\u044F \u0434\u043B\u0438\u043D\u0430 \u043A\u043E\u043D\u0442\u0440\u043E\u043B\u044C\u043D\u044B\u0445 \u0441\u0442\u0440\u043E\u043A - \u0432\u0435\u0440\u043E\u044F\u0442\u043D\u044B \u043E\u0448\u0438\u0431\u043A\u0438 \u0434\u0438\u0430\u0433\u043D\u043E\u0441\u0442\u0438\u043A\u0438!!!\n";
-            sHint += "\u0418\u0441\u0445\u043E\u0434\u043D\u0438\u043A: " + maxMatchLine + "\n\u041E\u0448\u0438\u0431\u043A\u0430: " + errorMainLine + "\n";
+            sHint += "\u0418\u0441\u0445\u043E\u0434\u043D\u0438\u043A: ".concat(maxMatchLine, "\n\u041E\u0448\u0438\u0431\u043A\u0430: ").concat(errorMainLine, "\n");
         }
         if (match == 100) {
             sHint += matchLines100();

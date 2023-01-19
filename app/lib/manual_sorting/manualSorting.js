@@ -17,7 +17,7 @@ function manualSorting(parseredData) {
         return sortedData;
     }
     catch (error) {
-        console.log("manualSorting(): " + error);
+        console.log("manualSorting(): ".concat(error));
         return [];
     }
 }

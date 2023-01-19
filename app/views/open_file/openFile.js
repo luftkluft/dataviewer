@@ -30,7 +30,7 @@ form.addEventListener('submit', function (event) {
     ipcRenderer.send('open-file');
 });
 var fileStat = function (stat) {
-    return "birthtime: " + stat.birthtime + "\nmtime: " + stat.mtime + "\nctime: " + stat.ctime + "\nsize: " + stat.size;
+    return "birthtime: ".concat(stat.birthtime, "\nmtime: ").concat(stat.mtime, "\nctime: ").concat(stat.ctime, "\nsize: ").concat(stat.size);
 };
 var chooseFile = function () {
     var path = ipcRenderer.sendSync('open-file-dialog');

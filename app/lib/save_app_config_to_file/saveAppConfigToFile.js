@@ -25,7 +25,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     function verb(n) { return function (v) { return step([n, v]); }; }
     function step(op) {
         if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
             if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
             if (y = 0, t) op = [op[0] & 2, t.value];
             switch (op[0]) {
@@ -95,7 +95,7 @@ function saveAppConfigToFile() {
                     return [4, fs.writeFileSync(appRoot + constants_1.PATH_TO_APP_CONFIG + constants_1.APP_CONFIG_FILE_NAME, newData, 'utf8', function (error) {
                             if (error) {
                                 swOp.title = "saveAppConfigToFile()";
-                                swOp.text = "" + error;
+                                swOp.text = "".concat(error);
                                 alertService_1.Alert.fireToast(swOp);
                             }
                         })];
@@ -105,7 +105,7 @@ function saveAppConfigToFile() {
                 case 11:
                     error_1 = _d.sent();
                     swOp.title = "saveAppConfigToFile()";
-                    swOp.text = "\u0421onfig app_config not found! " + error_1;
+                    swOp.text = "\u0421onfig app_config not found! ".concat(error_1);
                     alertService_1.Alert.fireToast(swOp);
                     return [3, 12];
                 case 12: return [2];

@@ -30,7 +30,7 @@ var InitService = (function () {
                     }
                     catch (error) {
                         swOp.title = "init()";
-                        swOp.text = "" + error;
+                        swOp.text = "".concat(error);
                         alertService_1.Alert.fireToast(swOp);
                     }
                     break;
@@ -44,7 +44,7 @@ var InitService = (function () {
         }
         catch (error) {
             swOp.title = "init()";
-            swOp.text = "" + error;
+            swOp.text = "".concat(error);
             alertService_1.Alert.fireToast(swOp);
         }
     };

@@ -43,6 +43,7 @@ export function makeBodyTable(logFile: string, variablesListFile: string, separa
   let sLine: string = ""
   let sBitsLine: string = ""
   let sReturn: string = ""
+  let sTemp: string = ""
   let isFirstStringRemoved: boolean = false
   let sumCharCount: number = 0
 
@@ -79,10 +80,35 @@ export function makeBodyTable(logFile: string, variablesListFile: string, separa
         sReturn += RWS.readTimeFromLog(sLine)
         sReturn += separator
         let wordCharCount: number = 0
+        let expWordCharCount: number = 0
         let k: number = 0
         for (k = 0; k < sBitsLine.length; k++) {
           if (sBitsLine[k] == '+' || sBitsLine[k] == '-') {
-            wordCharCount++
+            if (sBitsLine[k + 9] == 'E' && (sBitsLine[k + 10] == '+' || sBitsLine[k + 10] == '-')) { // format: +0,802835E+04
+              expWordCharCount++
+            }
+            else {
+              if (sBitsLine[k - 1] != 'E') { // end of expWord
+                wordCharCount++
+              }
+            }
+          }
+          if (expWordCharCount) {
+            if (expWordCharCount >= 13) {
+              sReturn += Number.parseFloat(sTemp).toFixed(4).toString
+              sReturn += separator
+              expWordCharCount = 0
+              sTemp = ""
+              continue
+            }
+            else {
+              if (sBitsLine[k] == ',') {
+                sTemp += '.'
+              }
+              else {
+                sTemp += sBitsLine[k]
+              }
+            }
           }
           if (wordCharCount) {
             if (wordCharCount >= 6) {
@@ -98,7 +124,10 @@ export function makeBodyTable(logFile: string, variablesListFile: string, separa
               continue
             }
           }
-          if (!wordCharCount) {
+          if (wordCharCount || expWordCharCount) {
+            continue
+          }
+          else {
             if (sHeaderInfo[k - sumCharCount] == '1') {
               sReturn += sBitsLine[k]
               sReturn += separator

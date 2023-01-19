@@ -21,7 +21,7 @@ var csvColumnCounting = function (dataFromFile) {
         }
     }
     catch (error) {
-        console.log("csvColumnCounting(): " + error);
+        console.log("csvColumnCounting(): ".concat(error));
         return 0;
     }
 };

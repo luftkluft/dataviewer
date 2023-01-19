@@ -14,7 +14,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     function verb(n) { return function (v) { return step([n, v]); }; }
     function step(op) {
         if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
             if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
             if (y = 0, t) op = [op[0] & 2, t.value];
             switch (op[0]) {
@@ -61,7 +61,7 @@ var getSortParamsFromView = function () {
         }
     }
     catch (error) {
-        console.log("getSortParamsFromView(): " + error);
+        console.log("getSortParamsFromView(): ".concat(error));
     }
     return viewArray;
 };
@@ -91,7 +91,7 @@ var getTableData = function () {
         return parseredData;
     }
     catch (error) {
-        console.log("getTableData(): " + error);
+        console.log("getTableData(): ".concat(error));
     }
 };
 var tableConstructor = function () {
@@ -101,7 +101,7 @@ var tableConstructor = function () {
     if (tableData == undefined || tableData.length == 0) {
         divTableInfo.innerHTML = "";
         setSortingParamsButton.disabled = true;
-        return "<h1>" + ipcSManualRenderer.sendSync('i18n', 'nothing_to_sort') + "</h1>";
+        return "<h1>".concat(ipcSManualRenderer.sendSync('i18n', 'nothing_to_sort'), "</h1>");
     }
     try {
         var sortingTable = "";
@@ -120,9 +120,9 @@ var tableConstructor = function () {
                         if (j == 0) {
                             bodyTableHead = "<th scope=\"col\">#</th>";
                         }
-                        bodyTableHead = bodyTableHead + ("<th scope=\"col\">" + tableData[i][j] + "</th>");
+                        bodyTableHead = bodyTableHead + "<th scope=\"col\">".concat(tableData[i][j], "</th>");
                         if (j == headSize - 1) {
-                            bodyTableHead = bodyTableHead + ("<th scope=\"col\">" + ipcSManualRenderer.sendSync('i18n', 'show') + "</th>");
+                            bodyTableHead = bodyTableHead + "<th scope=\"col\">".concat(ipcSManualRenderer.sendSync('i18n', 'show'), "</th>");
                         }
                     }
                 }
@@ -130,11 +130,11 @@ var tableConstructor = function () {
                     if (j < headSize) {
                         if (j == 0) {
                             rowNumber = rowNumber + 1;
-                            tempTableBody = "<tr><td>" + rowNumber + "</td>";
+                            tempTableBody = "<tr><td>".concat(rowNumber, "</td>");
                         }
-                        tempTableBody = tempTableBody + ("<td>" + tableData[i][j] + "</td>");
+                        tempTableBody = tempTableBody + "<td>".concat(tableData[i][j], "</td>");
                         if (j == headSize - 1) {
-                            tempTableBody = tempTableBody + ("<td><input type=\"checkbox\" id=\"" + rowNumber + "\" name=\"ibox\"></td></tr>");
+                            tempTableBody = tempTableBody + "<td><input type=\"checkbox\" id=\"".concat(rowNumber, "\" name=\"ibox\"></td></tr>");
                             bodyTableBody = bodyTableBody + tempTableBody;
                             tempTableBody = "";
                         }
@@ -143,12 +143,12 @@ var tableConstructor = function () {
             }
         }
         sortingTable = beginTableHead + bodyTableHead + endTableHead + beginTableBody + bodyTableBody + endTableBody;
-        divTableInfo.innerHTML = "" + ipcSManualRenderer.sendSync('i18n', 'end_table_creation');
+        divTableInfo.innerHTML = "".concat(ipcSManualRenderer.sendSync('i18n', 'end_table_creation'));
         setSortingParamsButton.disabled = false;
         return sortingTable;
     }
     catch (error) {
-        console.log("tableConstructor(): " + error);
+        console.log("tableConstructor(): ".concat(error));
         return "<h1>Sorting Table Error</h1>";
     }
 };
@@ -165,7 +165,7 @@ var tableConstructor = function () {
             divTableArea.innerHTML = tableConstructor();
         }
         catch (error) {
-            console.log("Sorting table: " + error);
+            console.log("Sorting table: ".concat(error));
         }
     }
 });

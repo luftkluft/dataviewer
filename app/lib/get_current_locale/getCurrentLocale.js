@@ -29,7 +29,7 @@ function getCurrentLocale() {
     }
     catch (error) {
         swOp.title = "getCurrentLocale()";
-        swOp.text = "" + error;
+        swOp.text = "".concat(error);
         alertService_1.Alert.fireToast(swOp);
         return constants_1.DEFAULT_LOCALE;
     }

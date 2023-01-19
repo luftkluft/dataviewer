@@ -29,7 +29,7 @@ var ChartService = (function () {
                 }
             }
             catch (error) {
-                console.log("ChartService createChartsOptions: " + error);
+                console.log("ChartService createChartsOptions: ".concat(error));
             }
         };
         this.sortedData = _sortedData;
@@ -38,13 +38,13 @@ var ChartService = (function () {
         try {
             var chartObject = {
                 divId: options.chart.id,
-                chartAreaDiv: "<div id=\"" + options.chart.id + "\" class=\"list-group-item\"></div>",
+                chartAreaDiv: "<div id=\"".concat(options.chart.id, "\" class=\"list-group-item\"></div>"),
                 options: options,
             };
             return chartObject;
         }
         catch (error) {
-            console.log("createChartObject(): " + error);
+            console.log("createChartObject(): ".concat(error));
             return {};
         }
     };
@@ -54,7 +54,7 @@ var ChartService = (function () {
             return chartsOptions;
         }
         catch (error) {
-            console.log("getChartsOptions(): " + error);
+            console.log("getChartsOptions(): ".concat(error));
             return [];
         }
     };

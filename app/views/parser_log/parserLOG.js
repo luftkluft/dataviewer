@@ -14,7 +14,7 @@ vListFileField.value = ipcLogRenderer.sendSync('last_opened_variable_list_file')
 var csvFilePathField = formLog.querySelector('.csv-file-path-field');
 csvFilePathField.value = ipcLogRenderer.sendSync('last_csv_file_path');
 var fileStat = function (stat) {
-    return "birthtime: " + stat.birthtime + "\nmtime: " + stat.mtime + "\nctime: " + stat.ctime + "\nsize: " + stat.size;
+    return "birthtime: ".concat(stat.birthtime, "\nmtime: ").concat(stat.mtime, "\nctime: ").concat(stat.ctime, "\nsize: ").concat(stat.size);
 };
 var logParams = ipcLogRenderer.sendSync('get_log_params');
 var endRowField = formLog.querySelector('.end-row-field');

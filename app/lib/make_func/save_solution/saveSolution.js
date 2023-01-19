@@ -8,6 +8,7 @@ var db = new JSONdb(appRoot + constants_1.PATH_TO_ERROR_MEMORY + 'errors.json');
 function saveSolution(key, sNote) {
     try {
         db.set(key, sNote);
+        db.sync();
         return 'ok';
     }
     catch (error) {

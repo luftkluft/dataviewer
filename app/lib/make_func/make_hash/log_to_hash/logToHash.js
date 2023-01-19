@@ -11,7 +11,7 @@ var createFileName = function () {
     var current = new Date();
     var datePart = (new Date().toString()).split(/\.|\s|:/);
     var fileName = '';
-    fileName = datePart[3] + "-" + datePart[1] + "-" + datePart[2] + "-" + datePart[4] + "-" + datePart[5] + ".csv";
+    fileName = "".concat(datePart[3], "-").concat(datePart[1], "-").concat(datePart[2], "-").concat(datePart[4], "-").concat(datePart[5], ".csv");
     return fileName;
 };
 var compressHashBody = function (sHashBody, deep) {
