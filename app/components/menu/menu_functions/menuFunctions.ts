@@ -68,7 +68,7 @@ export async function setEnLanguage() {
 // =====
 export function about() {
   swalOptions.title = `about()`
-  swalOptions.text = `DataViewer v1.0.0 for MIT use`
+  swalOptions.text = `DataViewer v1.1.0 for MIT use`
   Alert.fireToast(swalOptions)
 }
 export function codeGithub() {
