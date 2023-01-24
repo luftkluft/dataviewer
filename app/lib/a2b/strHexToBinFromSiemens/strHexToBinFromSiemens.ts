@@ -5,14 +5,34 @@ export const strHexToBinFromSiemens = (sHex: string) => {
   let localString: string = ""
   let bytePosition: number = 0
   let wordCharCount: number = 0
+  let expWordCharCount: number = 0
   for (let i: number = 0; i < sHex.length; i++) {
-    if (sHex[i] == '+' || sHex[i] == '-')
-      if (sHex[i - 1] == '\'') {
-        wordCharCount++
+    if (sHex[i] == '+' || sHex[i] == '-') {
+      if (sHex[i + 9] == 'E' && (sHex[i + 10] == '+' || sHex[i + 10] == '-')) { // format: +0,802835E+04
+        expWordCharCount++
       }
       else {
+        if (sHex[i - 1] != 'E') { // end of expWord
+          wordCharCount++
+        }
+      }
+    }
+    if (expWordCharCount) {
+      if (wordCharCount == 13 && sHex[i + 1] != '\'') // 13 - длина значения в exp: +0,802835E+04
+      {
         return ""
       }
+      if (expWordCharCount >= 13) {
+        sReturn += sHex[i]
+        expWordCharCount = 0
+        continue
+      }
+      else {
+        sReturn += sHex[i]
+        expWordCharCount++
+        continue
+      }
+    }
     if (wordCharCount) {
       if (wordCharCount == 6 && sHex[i + 1] != '\'') // 6 - длина значения в слове: +12345
       {

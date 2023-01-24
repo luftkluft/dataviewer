@@ -88,26 +88,26 @@ export function makeBodyTable(logFile: string, variablesListFile: string, separa
               expWordCharCount++
             }
             else {
-              if (sBitsLine[k - 1] != 'E') { // end of expWord
+              if (!expWordCharCount) {
                 wordCharCount++
               }
             }
           }
           if (expWordCharCount) {
-            if (expWordCharCount >= 13) {
-              sReturn += Number.parseFloat(sTemp).toFixed(4).toString
+            if (sBitsLine[k] == ',') {
+              sTemp += '.'
+            }
+            else {
+              sTemp += sBitsLine[k]
+            }
+            expWordCharCount++
+            sumCharCount++
+            if (expWordCharCount >= 14) {
+              sReturn += Number.parseFloat(sTemp).toFixed(4)
               sReturn += separator
               expWordCharCount = 0
               sTemp = ""
               continue
-            }
-            else {
-              if (sBitsLine[k] == ',') {
-                sTemp += '.'
-              }
-              else {
-                sTemp += sBitsLine[k]
-              }
             }
           }
           if (wordCharCount) {

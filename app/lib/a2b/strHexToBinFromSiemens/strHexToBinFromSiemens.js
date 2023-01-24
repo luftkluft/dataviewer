@@ -7,14 +7,33 @@ var strHexToBinFromSiemens = function (sHex) {
     var localString = "";
     var bytePosition = 0;
     var wordCharCount = 0;
+    var expWordCharCount = 0;
     for (var i = 0; i < sHex.length; i++) {
-        if (sHex[i] == '+' || sHex[i] == '-')
-            if (sHex[i - 1] == '\'') {
-                wordCharCount++;
+        if (sHex[i] == '+' || sHex[i] == '-') {
+            if (sHex[i + 9] == 'E' && (sHex[i + 10] == '+' || sHex[i + 10] == '-')) {
+                expWordCharCount++;
             }
             else {
+                if (sHex[i - 1] != 'E') {
+                    wordCharCount++;
+                }
+            }
+        }
+        if (expWordCharCount) {
+            if (wordCharCount == 13 && sHex[i + 1] != '\'') {
                 return "";
             }
+            if (expWordCharCount >= 13) {
+                sReturn += sHex[i];
+                expWordCharCount = 0;
+                continue;
+            }
+            else {
+                sReturn += sHex[i];
+                expWordCharCount++;
+                continue;
+            }
+        }
         if (wordCharCount) {
             if (wordCharCount == 6 && sHex[i + 1] != '\'') {
                 return "";
